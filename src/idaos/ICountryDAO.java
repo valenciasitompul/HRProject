@@ -24,7 +24,7 @@ public interface ICountryDAO {
      * @param id berupa tipe data char
      * @return kembalian berupa list data berdasar id
      */
-    public List<Country> getAllById(char id);
+    public List<Country> getAllById(String id);
     
     /**
      * method ini digunakan untuk mendapatkan dan menyeleksi data dari table regions
@@ -46,5 +46,5 @@ public interface ICountryDAO {
      * @param id berupa tipe data char
      * @return kembalian berupa boolean
      */
-    public boolean delete(char id);
+    public boolean delete(String id);
 }

@@ -26,8 +26,8 @@ public class CountryDAO implements ICountryDAO{
     }
     
     /**
-     * 
-     * @return 
+     * method fungsi untuk meilhat semuda data dari tabel country
+     * @return kembalian berupa list data tabel country
      */
     @Override
     public List<Country> getAll() {
@@ -37,8 +37,10 @@ public class CountryDAO implements ICountryDAO{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Country c = new Country(resultSet.get =, resultSet.getString(2), resultSet.getInt(3));
-                
+                Country c = new Country(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3));
+                c.setId(resultSet.getString(1));
+                c.setName(resultSet.getString(2));
+                c.setRegion_id(resultSet.getInt(3));
                 listCountry.add(c);
             }
         } catch (Exception e) {
@@ -53,7 +55,7 @@ public class CountryDAO implements ICountryDAO{
      * @return 
      */
     @Override
-    public List<Country> getAllById(char id) {
+    public List<Country> getAllById(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     /**
@@ -81,8 +83,8 @@ public class CountryDAO implements ICountryDAO{
      * @return 
      */
     @Override
-    public boolean delete(char id) {
+    public boolean delete(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

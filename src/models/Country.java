@@ -10,7 +10,7 @@ package models;
  * @author HARRY-PC
  */
 public class Country {
-    private char id;
+    private String id;
     private String name;
     private int region_id;
     
@@ -18,13 +18,13 @@ public class Country {
         
     }
     
-    public Country(char id,String name,int region_id){
+    public Country(String id,String name,int region_id){
         this.id = id;
         this.name = name;
         this.region_id = region_id;
     }
     
-    public char getId(){
+    public String getId(){
         return id;
     }
     
@@ -36,7 +36,7 @@ public class Country {
         return region_id;
     }
     
-    public void setId(char id){
+    public void setId(String id){
         this.id = id;
     }
     
