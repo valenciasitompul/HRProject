@@ -15,7 +15,7 @@ import models.Country;
  */
 public class ManualTest {
     public static void main(String[] args) {
-        //fugsi test untuk model
+        //fungsi test untuk model
 //        Country country = new Country();
 //        country.setId("0");
 //        country.setName("country");
@@ -29,8 +29,9 @@ public class ManualTest {
         Koneksi koneksi = new Koneksi();
 //        System.out.println(koneksi);
 
+        //fungsi test method getAll, getById dan search dari class CountryDAO
         ICountryDAO icdao = new CountryDAO(koneksi.getConnection());
-        for(Country country : icdao.getAll()){
+        for(Country country : icdao.search("1")){
             System.out.println(country.getId());
             System.out.println(country.getName());
             System.out.println(country.getRegion_id());
