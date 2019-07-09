@@ -98,23 +98,50 @@ public class CountryDAO implements ICountryDAO{
         return listCountry;
     }
     /**
-     * 
-     * @param c
-     * @param isUpdate
-     * @return 
+     * method fungsi untuk menambahkan 1 baris data pada tabel country
+     * @param c berupa instansiasi dari object class model country
+     * @param isUpdate berupa tipe data boolean
+     * @return kembalian berupa boolean
      */
     @Override
     public boolean insertupdate(Country c, boolean isUpdate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean result = false;
+        String query = "INSERT INTO COUNTRIES (COUNTRY_NAME, REGION_ID, COUNTRY_ID) VALUES (?,?,?) ";
+        if(isUpdate){
+            query = "UPDATE COUNTRIES SET COUNTRY_NAME = ?, REGION_ID = ? WHERE COUNTRY_ID = ?";
+        }
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, c.getName());
+            preparedStatement.setInt(2, c.getRegion_id());
+            preparedStatement.setString(3, c.getId());
+            preparedStatement.executeQuery();
+            result = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
     }
     /**
-     * 
-     * @param id
-     * @return 
+     * method fungsi untuk menghapus satu baris data pada tabel country
+     * @param id berupa tipe data String
+     * @return kembalian berupa boolean
      */
     @Override
     public boolean delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean result = false;
+        String query = "DELETE FROM COUNTRIES WHERE COUNTRY_ID = ? ";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, id);
+            preparedStatement.execute();
+            result = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

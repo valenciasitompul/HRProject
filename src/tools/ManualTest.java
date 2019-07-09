@@ -29,12 +29,17 @@ public class ManualTest {
         Koneksi koneksi = new Koneksi();
 //        System.out.println(koneksi);
 
-        //fungsi test method getAll, getById dan search dari class CountryDAO
         ICountryDAO icdao = new CountryDAO(koneksi.getConnection());
-        for(Country country : icdao.search("1")){
-            System.out.println(country.getId());
-            System.out.println(country.getName());
-            System.out.println(country.getRegion_id());
-        }
+        //fungsi test method getAll, getById dan search dari class CountryDAO
+//        for(Country country : icdao.search("1")){
+//            System.out.println(country.getId());
+//            System.out.println(country.getName());
+//            System.out.println(country.getRegion_id());
+//        }
+        //fungsi test method insertupdate dari class CountryDAO
+        //System.out.println(icdao.insertupdate(new Country("ID", "Indonesia", 3), true));
+        
+        //fungsi test methof delete dari class CountryDAO
+        System.out.println(icdao.delete("ID"));
     }
 }
