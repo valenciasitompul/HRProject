@@ -6,6 +6,7 @@
 package icontrollers;
 
 import java.util.List;
+import javax.swing.JComboBox;
 import models.Country;
 
 /**
@@ -15,8 +16,11 @@ import models.Country;
 public interface ICountryController {
     public List<Country> getAll();
     public List<Country> getById(String id);
+    public List<Country> getJustId(String id);
     public List<Country> search(String key);
     public String insert(String id, String name, String region_id);
     public String update(String id, String name, String region_id);
     public String delete(String id);
+
+    public Iterable<Country> getJustId(JComboBox<String> cbRegion_id);
 }

@@ -73,6 +73,29 @@ public class CountryDAO implements ICountryDAO{
         return listCountry;
     }
     /**
+     * method ini digunakan untuk mendapatkan data dari kolom Country ID berdasarkan id
+     * @param id berupa parameter dengan tipe data String
+     * @return kembalian berupa list data kolom country id dari tabel countries
+     */
+    @Override
+    public List<Country> getJustId(String id) {
+        List<Country> listCountry = new ArrayList<Country>();
+        String query = "SELECT COUNTRY_ID FROM COUNTRIES WHERE COUNTRY_ID = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+               Country c = new Country(rs.getString(1));
+               listCountry.add(c);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return listCountry;
+    }
+    /**
      * method fungsi untuk mencari data pada tabel country
      * @param key berupa tipe data String
      * @return kembalian berupa hasil list pencarian dari tabel country
@@ -143,5 +166,4 @@ public class CountryDAO implements ICountryDAO{
         }
         return result;
     }
-
 }

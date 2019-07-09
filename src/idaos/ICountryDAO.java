@@ -20,11 +20,18 @@ public interface ICountryDAO {
     public List<Country> getAll();
     
     /**
-     *  method ini digunakan untuk mendapatkan dan menyeleksi data dari table regions berdasarkan id
+     * method ini digunakan untuk mendapatkan dan menyeleksi data dari table regions berdasarkan id
      * @param id berupa tipe data char
      * @return kembalian berupa list data berdasar id
      */
     public List<Country> getAllById(String id);
+    
+    /**
+     * method ini digunakan untuk mendapatkan data dari kolom Country ID berdasarkan id
+     * @param id berupa parameter dengan tipe data String
+     * @return kembalian berupa list data kolom country id dari tabel countries
+     */
+    public List<Country> getJustId(String id);
     
     /**
      * method ini digunakan untuk mendapatkan dan menyeleksi data dari table regions

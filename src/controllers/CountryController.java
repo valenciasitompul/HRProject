@@ -10,6 +10,7 @@ import icontrollers.ICountryController;
 import idaos.ICountryDAO;
 import java.sql.Connection;
 import java.util.List;
+import javax.swing.JComboBox;
 import models.Country;
 
 /**
@@ -33,7 +34,12 @@ public class CountryController implements ICountryController {
     public List<Country> getById(String id) {
         return icdao.getAllById(id);
     }
-
+    
+    @Override
+    public List<Country> getJustId(String id) {
+        return icdao.getJustId(id);
+    }
+    
     @Override
     public List<Country> search(String key) {
         return icdao.search(key);
@@ -73,5 +79,9 @@ public class CountryController implements ICountryController {
         }
         return result;
     }
-    
+
+    @Override
+    public Iterable<Country> getJustId(JComboBox<String> cbRegion_id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

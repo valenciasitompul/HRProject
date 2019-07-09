@@ -24,6 +24,10 @@ public class Country {
         this.region_id = region_id;
     }
     
+    public Country(String id){
+        this.id = id;
+    }
+    
     public String getId(){
         return id;
     }
