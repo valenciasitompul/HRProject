@@ -5,8 +5,10 @@
  */
 package tools;
 
+import controllers.CountryController;
 import daos.CountryDAO;
 import daos.EmployeesDAO;
+import icontrollers.ICountryController;
 import idaos.ICountryDAO;
 import idaos.IEmployeesDAO;
 import models.Country;
@@ -32,7 +34,7 @@ public class ManualTest {
 //        System.out.println(koneksi);
 
 //        ICountryDAO icdao = new CountryDAO(koneksi.getConnection());
-          IEmployeesDAO iemdao = new EmployeesDAO(koneksi.getConnection());
+          //IEmployeesDAO iemdao = new EmployeesDAO(koneksi.getConnection());
         //fungsi test method getAll, getById dan search dari class CountryDAO
 //        for(Country country : icdao.search("1")){
 //            System.out.println(country.getId());
@@ -44,6 +46,15 @@ public class ManualTest {
         
         //fungsi test methof delete dari class CountryDAO
 //        System.out.println(icdao.delete("ID"));
-          System.out.println(iemdao.delete(999));
+          //System.out.println(iemdao.delete(999));
+          
+          ICountryController icc = new CountryController(koneksi.getConnection());
+//          for (Country country : icc.search("1")) {
+//              System.out.println(country.getId());
+//              System.out.println(country.getName());
+//              System.out.println(country.getRegion_id());
+//          }
+
+        System.out.println(icc.delete("ID"));
     }
 }
