@@ -5,12 +5,33 @@
  */
 package views;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import tools.Koneksi;
+
 /**
  *
  * @author HARRY-PC
  */
 public class HRFrame extends javax.swing.JFrame {
-
+    
+    Koneksi koneksi = new Koneksi();
+    
+    JasperReport JasRep;
+    JasperPrint JasPri;
+    Map param = new HashMap();
+    JasperDesign JasDes;
+    File file1 = new File("CountriesReport.jrxml");
+    File file2 = new File("CountriesReportBYID.jrxml");
     /**
      * Creates new form HRFrame
      */
@@ -38,6 +59,8 @@ public class HRFrame extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        getAllMenu = new javax.swing.JMenuItem();
+        getByIdMenu = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -110,6 +133,18 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu2.setText("Laporan");
 
         jMenu3.setText("Countries");
+
+        getAllMenu.setText("Semua Data");
+        getAllMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getAllMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(getAllMenu);
+
+        getByIdMenu.setText("Berdasarkan ID");
+        jMenu3.add(getByIdMenu);
+
         jMenu2.add(jMenu3);
 
         jMenu4.setText("Departments");
@@ -179,6 +214,18 @@ public class HRFrame extends javax.swing.JFrame {
         ef.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void getAllMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAllMenuActionPerformed
+        try {
+            JasDes = JRXmlLoader.load(file1);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JasperViewer.viewReport(JasPri);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_getAllMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +263,8 @@ public class HRFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane HR_DesktopPane;
+    private javax.swing.JMenuItem getAllMenu;
+    private javax.swing.JMenuItem getByIdMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
