@@ -12,7 +12,7 @@ package models;
 public class Location {
     private int locid;
     private String stradd;
-    private int poscode;
+    private String poscode;
     private String city;
     private String staprov;
     private String counid;
@@ -22,7 +22,7 @@ public class Location {
     }
     
     
-    public Location(int locid, String stradd, int poscode, String city, String staprov, String counid){
+    public Location(int locid, String stradd, String poscode, String city, String staprov, String counid){
         this.locid = locid;
         this.stradd = stradd;
         this.poscode = poscode;
@@ -39,7 +39,7 @@ public class Location {
         return stradd;
     }
     
-    public int getPoscode(){
+    public String getPoscode(){
         return poscode;
     }
     
@@ -63,7 +63,7 @@ public class Location {
         this.stradd = stradd;
     }
     
-    public void setPoscode(int poscode){
+    public void setPoscode(String poscode){
         this.poscode = poscode;
     }
     
