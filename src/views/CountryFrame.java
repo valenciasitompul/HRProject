@@ -7,11 +7,21 @@ package views;
 
 import controllers.CountryController;
 import icontrollers.ICountryController;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tools.Koneksi;
 import models.Country;
 import models.Region;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -22,6 +32,13 @@ public class CountryFrame extends javax.swing.JInternalFrame {
     ICountryController icc = new CountryController(koneksi.getConnection());
     
     private DefaultTableModel tableCountry;
+    
+    JasperReport JasRep;
+    JasperPrint JasPri;
+    Map param = new HashMap();
+    JasperDesign JasDes;
+    
+    File file1 = new File("CountriesReport.jrxml");
     
     /**
      * Creates new form CountryFrame
@@ -80,6 +97,7 @@ public class CountryFrame extends javax.swing.JInternalFrame {
         cbRegion_id = new javax.swing.JComboBox<>();
         txtSearch = new javax.swing.JTextField();
         cbSearch = new javax.swing.JComboBox<>();
+        btnCetak = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Form Countries");
@@ -137,6 +155,13 @@ public class CountryFrame extends javax.swing.JInternalFrame {
 
         cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Country ID", "Country Name" }));
 
+        btnCetak.setText("Cetak");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,7 +186,9 @@ public class CountryFrame extends javax.swing.JInternalFrame {
                                     .addGap(12, 12, 12)
                                     .addComponent(btnEdit)
                                     .addGap(18, 18, 18)
-                                    .addComponent(btnHapus))
+                                    .addComponent(btnHapus)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnCetak))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(34, 34, 34)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -195,7 +222,8 @@ public class CountryFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
                     .addComponent(btnEdit)
-                    .addComponent(btnHapus))
+                    .addComponent(btnHapus)
+                    .addComponent(btnCetak))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -313,9 +341,23 @@ public class CountryFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtSearchActionPerformed
 
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
+        try {
+            JasDes = JRXmlLoader.load(file1);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JasperViewer.viewReport(JasPri,false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+        
+    }//GEN-LAST:event_btnCetakActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabel_Country;
+    private javax.swing.JButton btnCetak;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnSimpan;

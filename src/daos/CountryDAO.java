@@ -38,9 +38,9 @@ public class CountryDAO implements ICountryDAO{
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Country c = new Country(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3));
-                c.setId(resultSet.getString(1));
-                c.setName(resultSet.getString(2));
-                c.setRegion_id(resultSet.getInt(3));
+//                c.setId(resultSet.getString(1));
+//                c.setName(resultSet.getString(2));
+//                c.setRegion_id(resultSet.getInt(3));
                 listCountry.add(c);
             }
         } catch (Exception e) {

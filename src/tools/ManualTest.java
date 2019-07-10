@@ -9,6 +9,7 @@ import controllers.CountryController;
 import daos.CountryDAO;
 import daos.DepartmentDao;
 import daos.EmployeesDAO;
+import daos.LocationDAO;
 import icontrollers.ICountryController;
 import idaos.ICountryDAO;
 import idaos.IEmployeesDAO;
@@ -16,6 +17,8 @@ import models.Country;
 import models.Department;
 import models.Region;
 import idaos.IDepartmentDao;
+import idaos.ILocationDAO;
+import models.Location;
 
 
 /**
@@ -24,12 +27,17 @@ import idaos.IDepartmentDao;
  */
 public class ManualTest {
     public static void main(String[] args) {
-        Koneksi k = new Koneksi();
-        IDepartmentDao idd = new DepartmentDao(k.getConnection());
-        Department d = new Department("15", "IT", 103, 1400);
-        idd.insertupdate(d, true);
-        
-        
+        Koneksi koneksi = new Koneksi();
+//        IDepartmentDao idd = new DepartmentDao(k.getConnection());
+//        Department d = new Department("15", "IT", 103, 1400);
+//        idd.insertupdate(d, true);
+        //ILocationDAO ildao = new LocationDAO(koneksi.getConnection());
+        ICountryDAO icdao = new CountryDAO(koneksi.getConnection());
+        for(Country c : icdao.getAll()){
+            System.out.println(c.getId());
+            System.out.println(c.getName());
+            System.out.println(c.getRegion_id());
+        }
     }
 //    public static void main(String[] args) {
 //        //fungsi test untuk model
@@ -46,8 +54,7 @@ public class ManualTest {
 //        Koneksi koneksi = new Koneksi();
 //        //fungsi test koneksi database
 ////        System.out.println(koneksi);
-//
-//        //ICountryDAO icdao = new CountryDAO(koneksi.getConnection());
+//     
 //          //IEmployeesDAO iemdao = new EmployeesDAO(koneksi.getConnection());
 //        //fungsi test method getAll, getById dan search dari class CountryDAO
 ////        for(Region r : icdao.getRegionId()){

@@ -8,6 +8,7 @@ package views;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -15,6 +16,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;
 import tools.Koneksi;
 
@@ -30,7 +32,7 @@ public class HRFrame extends javax.swing.JFrame {
     JasperPrint JasPri;
     JasperDesign JasDes;
     Map param = new HashMap();
-    File file1 = new File("CountriesReport.jrxml");
+    File file1 = new File("src/reports/CountriesReport.jrxml");
     File file2 = new File("CountriesReportBYID.jrxml");
     
     File JobReportAll = new File("reports/JobsReportALL.jrxml");
@@ -240,10 +242,18 @@ public class HRFrame extends javax.swing.JFrame {
         try {
             JasDes = JRXmlLoader.load(file1);
             param.clear();
-
             JasRep = JasperCompileManager.compileReport(JasDes);
             JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JasperViewer.viewReport(JasPri, false);
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }

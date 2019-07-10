@@ -31,10 +31,6 @@ FROM
 				</textElement>
 				<text><![CDATA[Countries]]></text>
 			</staticText>
-			<image>
-				<reportElement x="455" y="10" width="120" height="65" uuid="d39eb32f-fab5-4126-8dca-a403e4a5f6a3"/>
-				<imageExpression><![CDATA["C:\\Users\\alzena\\Documents\\BOOTCAMP\\logo mii kecil.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
