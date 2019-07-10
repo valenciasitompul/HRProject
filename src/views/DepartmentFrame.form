@@ -26,13 +26,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblRegion_id1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLocation_id" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblCountry_id" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCountry_name" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegion_id" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDepartmnet_id" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDepartment_name" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblManager_id" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSimpan" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -47,10 +47,10 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtCountry_id" pref="243" max="32767" attributes="0"/>
-                                  <Component id="txtCountry_name" max="32767" attributes="0"/>
-                                  <Component id="txtRegion_id" max="32767" attributes="0"/>
-                                  <Component id="txtRegion_id1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtDepartment_id" pref="243" max="32767" attributes="0"/>
+                                  <Component id="txtDepartment_name" max="32767" attributes="0"/>
+                                  <Component id="txtManager_id" max="32767" attributes="0"/>
+                                  <Component id="txtLocation_id" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -67,23 +67,23 @@
               <Component id="jScrollPane1" min="-2" pref="300" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCountry_id" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCountry_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDepartmnet_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDepartment_id" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCountry_name" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCountry_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDepartment_name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDepartment_name" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblRegion_id" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtRegion_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblManager_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtManager_id" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblRegion_id1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtRegion_id1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLocation_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLocation_id" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="29" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -105,7 +105,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="Tabel_Country">
+        <Component class="javax.swing.JTable" name="Tabel_Department">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -119,24 +119,24 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblCountry_id">
+    <Component class="javax.swing.JLabel" name="lblDepartmnet_id">
       <Properties>
         <Property name="text" type="java.lang.String" value="Department ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblCountry_name">
+    <Component class="javax.swing.JLabel" name="lblDepartment_name">
       <Properties>
         <Property name="text" type="java.lang.String" value="Department Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblRegion_id">
+    <Component class="javax.swing.JLabel" name="lblManager_id">
       <Properties>
         <Property name="text" type="java.lang.String" value="Manager ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCountry_id">
+    <Component class="javax.swing.JTextField" name="txtDepartment_id">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCountry_name">
+    <Component class="javax.swing.JTextField" name="txtDepartment_name">
     </Component>
     <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties>
@@ -156,14 +156,14 @@
         <Property name="text" type="java.lang.String" value="Hapus"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtRegion_id">
+    <Component class="javax.swing.JTextField" name="txtManager_id">
     </Component>
-    <Component class="javax.swing.JLabel" name="lblRegion_id1">
+    <Component class="javax.swing.JLabel" name="lblLocation_id">
       <Properties>
         <Property name="text" type="java.lang.String" value="Location ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtRegion_id1">
+    <Component class="javax.swing.JTextField" name="txtLocation_id">
     </Component>
     <Component class="javax.swing.JButton" name="btnHapus1">
       <Properties>

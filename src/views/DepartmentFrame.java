@@ -5,12 +5,12 @@
  */
 package views;
 
-import controllers.CountryController;
-import icontrollers.ICountryController;
+import controllers.DepartmentController;
+import icontrollers.IDepartmentController;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import tools.Koneksi;
-import models.Country;
+import models.Department;
 
 /**
  *
@@ -18,48 +18,50 @@ import models.Country;
  */
 public class DepartmentFrame extends javax.swing.JInternalFrame {
     Koneksi koneksi = new Koneksi();
-    ICountryController icc = new CountryController(koneksi.getConnection());
+    IDepartmentController icc = new DepartmentController(koneksi.getConnection());
     
-    private DefaultTableModel tableCountry;
+    private DefaultTableModel tableDepartment;
     
     /**
-     * Creates new form CountryFrame
+     * Creates new form DepartmentFrame
      */
     public DepartmentFrame() {
         initComponents();
         
-        tableCountry = new DefaultTableModel();
-        Tabel_Country.setModel(tableCountry);
-        tableCountry.addColumn("Country ID");
-        tableCountry.addColumn("Country Name");
-        tableCountry.addColumn("Region ID");
+        tableDepartment = new DefaultTableModel();
+        Tabel_Department.setModel(tableDepartment);
+        tableDepartment.addColumn("Department ID");
+        tableDepartment.addColumn("Department Name");
+        tableDepartment.addColumn("Manager ID");
+        tableDepartment.addColumn("Location ID");
         
-        getDataCountry();
+        getDataDepartment();
     }
     
-    public void getDataCountry(){
-        tableCountry.getDataVector().removeAllElements();
-        tableCountry.fireTableDataChanged();
-        for(Country country : icc.getAll() ){
-            Object[] objects = new Object[3];
-            objects[0] = country.getId();
-            objects[1] = country.getName();
-            objects[2] = country.getRegion_id();
-            tableCountry.addRow(objects);
+    public void getDataDepartment(){
+        tableDepartment.getDataVector().removeAllElements();
+        tableDepartment.fireTableDataChanged();
+        for(Department department : icc.getAll() ){
+            Object[] objects = new Object[4];
+            objects[0] = department.getId();
+            objects[1] = department.getName();
+            objects[2] = department.getManager_id();
+            objects[3] = department.getLocation_id();
+            tableDepartment.addRow(objects);
         }
     }
     
     public void resetField(){
-        txtCountry_id.setText("");
-        txtCountry_name.setText("");
-        txtRegion_id.setText("");
+        txtDepartment_id.setText("");
+        txtDepartment_name.setText("");
+        txtManager_id.setText("");
     }
     
 //    public void tampil_combo(){
 //        cbRegion_id.removeAllItems();
-//        for(Country country : icc.getJustId()){
+//        for(Department department : icc.getJustId()){
 //            Object[] objects = new Object[1];
-//            objects[0] = country.getId();
+//            objects[0] = department.getId();
 //            cbRegion_id.addItem(objects[0]);
 //        }
 //    }
@@ -74,24 +76,24 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabel_Country = new javax.swing.JTable();
-        lblCountry_id = new javax.swing.JLabel();
-        lblCountry_name = new javax.swing.JLabel();
-        lblRegion_id = new javax.swing.JLabel();
-        txtCountry_id = new javax.swing.JTextField();
-        txtCountry_name = new javax.swing.JTextField();
+        Tabel_Department = new javax.swing.JTable();
+        lblDepartmnet_id = new javax.swing.JLabel();
+        lblDepartment_name = new javax.swing.JLabel();
+        lblManager_id = new javax.swing.JLabel();
+        txtDepartment_id = new javax.swing.JTextField();
+        txtDepartment_name = new javax.swing.JTextField();
         btnSimpan = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
-        txtRegion_id = new javax.swing.JTextField();
-        lblRegion_id1 = new javax.swing.JLabel();
-        txtRegion_id1 = new javax.swing.JTextField();
+        txtManager_id = new javax.swing.JTextField();
+        lblLocation_id = new javax.swing.JLabel();
+        txtLocation_id = new javax.swing.JTextField();
         btnHapus1 = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Form Department");
 
-        Tabel_Country.setModel(new javax.swing.table.DefaultTableModel(
+        Tabel_Department.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -102,13 +104,13 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Tabel_Country);
+        jScrollPane1.setViewportView(Tabel_Department);
 
-        lblCountry_id.setText("Department ID");
+        lblDepartmnet_id.setText("Department ID");
 
-        lblCountry_name.setText("Department Name");
+        lblDepartment_name.setText("Department Name");
 
-        lblRegion_id.setText("Manager ID");
+        lblManager_id.setText("Manager ID");
 
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +123,7 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
 
         btnHapus.setText("Hapus");
 
-        lblRegion_id1.setText("Location ID");
+        lblLocation_id.setText("Location ID");
 
         btnHapus1.setText("Print");
 
@@ -132,13 +134,13 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRegion_id1)
+                    .addComponent(lblLocation_id)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCountry_id)
-                            .addComponent(lblCountry_name)
-                            .addComponent(lblRegion_id)
+                            .addComponent(lblDepartmnet_id)
+                            .addComponent(lblDepartment_name)
+                            .addComponent(lblManager_id)
                             .addComponent(btnSimpan))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -151,10 +153,10 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCountry_id, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                                    .addComponent(txtCountry_name)
-                                    .addComponent(txtRegion_id)
-                                    .addComponent(txtRegion_id1))))))
+                                    .addComponent(txtDepartment_id, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                                    .addComponent(txtDepartment_name)
+                                    .addComponent(txtManager_id)
+                                    .addComponent(txtLocation_id))))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,20 +166,20 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCountry_id)
-                    .addComponent(txtCountry_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDepartmnet_id)
+                    .addComponent(txtDepartment_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCountry_name)
-                    .addComponent(txtCountry_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDepartment_name)
+                    .addComponent(txtDepartment_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRegion_id)
-                    .addComponent(txtRegion_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblManager_id)
+                    .addComponent(txtManager_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRegion_id1)
-                    .addComponent(txtRegion_id1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblLocation_id)
+                    .addComponent(txtLocation_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
@@ -191,33 +193,33 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if(txtCountry_id.getText().isEmpty() || txtCountry_name.getText().isEmpty() || txtRegion_id.getText().isEmpty()){
+        if(txtDepartment_id.getText().isEmpty() || txtDepartment_name.getText().isEmpty() || txtManager_id.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
             resetField();
         }else{
-            icc.insert(txtCountry_id.getText(), txtCountry_name.getText(), txtRegion_id.getText());
-            getDataCountry();
+            icc.insert(txtDepartment_id.getText(), txtDepartment_name.getText(), txtManager_id.getText());
+            getDataDepartment();
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan", "Saved", JOptionPane.INFORMATION_MESSAGE);
             resetField();
         }
-        txtCountry_id.setEditable(true);
+        txtDepartment_id.setEditable(true);
     }//GEN-LAST:event_btnSimpanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabel_Country;
+    private javax.swing.JTable Tabel_Department;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnHapus1;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCountry_id;
-    private javax.swing.JLabel lblCountry_name;
-    private javax.swing.JLabel lblRegion_id;
-    private javax.swing.JLabel lblRegion_id1;
-    private javax.swing.JTextField txtCountry_id;
-    private javax.swing.JTextField txtCountry_name;
-    private javax.swing.JTextField txtRegion_id;
-    private javax.swing.JTextField txtRegion_id1;
+    private javax.swing.JLabel lblDepartment_name;
+    private javax.swing.JLabel lblDepartmnet_id;
+    private javax.swing.JLabel lblLocation_id;
+    private javax.swing.JLabel lblManager_id;
+    private javax.swing.JTextField txtDepartment_id;
+    private javax.swing.JTextField txtDepartment_name;
+    private javax.swing.JTextField txtLocation_id;
+    private javax.swing.JTextField txtManager_id;
     // End of variables declaration//GEN-END:variables
 }
