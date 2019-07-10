@@ -5,6 +5,7 @@
  */
 package views;
 
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +41,8 @@ public class HRFrame extends javax.swing.JFrame {
     
     File JobReportAll = new File("src/reports/JobsReportALL.jrxml");
     File JobReportById = new File("src/reports/JobsReportBYID.jrxml");
+    File RegionReportAll = new File("src/reports/RegionReportAll.jrxml");
+    File RegionReportById = new File("src/reports/RegionReportById.jrxml");
     /**
      * Creates new form HRFrame
      */
@@ -65,6 +68,7 @@ public class HRFrame extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         getCountryReportAll = new javax.swing.JMenuItem();
@@ -74,9 +78,11 @@ public class HRFrame extends javax.swing.JFrame {
         getDeptReportByID = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuJobs = new javax.swing.JMenu();
-        jMenuAll = new javax.swing.JMenuItem();
-        jMenuID = new javax.swing.JMenuItem();
+        getJobReportAll = new javax.swing.JMenuItem();
+        getJobReportById = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
+        getRegionReportAll = new javax.swing.JMenuItem();
+        getRegionReportById = new javax.swing.JMenuItem();
 
         jMenu7.setText("jMenu7");
 
@@ -142,6 +148,15 @@ public class HRFrame extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem5);
 
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_6, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem6.setText("Regions");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Laporan");
@@ -191,25 +206,42 @@ public class HRFrame extends javax.swing.JFrame {
 
         jMenuJobs.setText("Jobs");
 
-        jMenuAll.setText("Semua Data");
-        jMenuAll.addActionListener(new java.awt.event.ActionListener() {
+        getJobReportAll.setText("Semua Data");
+        getJobReportAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuAllActionPerformed(evt);
+                getJobReportAllActionPerformed(evt);
             }
         });
-        jMenuJobs.add(jMenuAll);
+        jMenuJobs.add(getJobReportAll);
 
-        jMenuID.setText("Berdasarkan ID");
-        jMenuID.addActionListener(new java.awt.event.ActionListener() {
+        getJobReportById.setText("Berdasarkan ID");
+        getJobReportById.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuIDActionPerformed(evt);
+                getJobReportByIdActionPerformed(evt);
             }
         });
-        jMenuJobs.add(jMenuID);
+        jMenuJobs.add(getJobReportById);
 
         jMenu2.add(jMenuJobs);
 
-        jMenu8.setText("jMenu8");
+        jMenu8.setText("Regions");
+
+        getRegionReportAll.setText("Semua Data");
+        getRegionReportAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getRegionReportAllActionPerformed(evt);
+            }
+        });
+        jMenu8.add(getRegionReportAll);
+
+        getRegionReportById.setText("Berdasarkan ID");
+        getRegionReportById.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getRegionReportByIdActionPerformed(evt);
+            }
+        });
+        jMenu8.add(getRegionReportById);
+
         jMenu2.add(jMenu8);
 
         jMenuBar1.add(jMenu2);
@@ -289,47 +321,12 @@ public class HRFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_getCountryReportAllActionPerformed
 
     private void jMenuIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIDActionPerformed
-        String id = JOptionPane.showInputDialog(rootPane, "Masukkan ID");
-        try {
-            JasDes = JRXmlLoader.load(JobReportById);
-            param.put("JOB_ID", id);
-            JasRep = JasperCompileManager.compileReport(JasDes);
-            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JInternalFrame frame = new JInternalFrame("Laporan");
-            frame.getContentPane().add(new JRViewer(JasPri));
-            frame.pack();
-            frame.setResizable(true);
-            frame.setClosable(true);
-            frame.setMaximizable(true);
-            frame.setSize(1000,800);
-            frame.setVisible(true);
-            //JasperViewer.viewReport(JasPri, false);
-            HR_DesktopPane.add(frame);
-        } catch (JRException e) {
-            JOptionPane.showMessageDialog(rootPane, e);
-        }
+    
+     
     }//GEN-LAST:event_jMenuIDActionPerformed
 
     private void jMenuAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAllActionPerformed
         
-        try {
-            JasDes = JRXmlLoader.load(JobReportAll);
-            param.clear();
-            JasRep = JasperCompileManager.compileReport(JasDes);
-            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JInternalFrame frame = new JInternalFrame("Laporan");
-            frame.getContentPane().add(new JRViewer(JasPri));
-            frame.pack();
-            frame.setResizable(true);
-            frame.setClosable(true);
-            frame.setMaximizable(true);
-            frame.setSize(1000,800);
-            frame.setVisible(true);
-            //JasperViewer.viewReport(JasPri, false);
-            HR_DesktopPane.add(frame);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e);
-        }
     }//GEN-LAST:event_jMenuAllActionPerformed
 
     private void getCountryReportByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getCountryReportByIdActionPerformed
@@ -405,6 +402,104 @@ public class HRFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_getDeptReportByIDActionPerformed
 
+    private void getRegionReportAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getRegionReportAllActionPerformed
+         try {
+            JasDes = JRXmlLoader.load(RegionReportAll);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }       // TODO add your handling code here:
+    }//GEN-LAST:event_getRegionReportAllActionPerformed
+
+    private void getRegionReportByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getRegionReportByIdActionPerformed
+        String regionId = JOptionPane.showInputDialog(rootPane, "Masukkan id");
+        try {
+            if(regionId.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Masukkan inputan!!!!");
+            }else{
+                JasDes = JRXmlLoader.load(RegionReportById);
+                param.put("region_id", regionId);
+                JasRep = JasperCompileManager.compileReport(JasDes);
+                JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+                JInternalFrame frame = new JInternalFrame("Laporan Region Berdasarkan ID");
+                frame.getContentPane().add(new JRViewer(JasPri));
+                frame.pack();
+                frame.setResizable(true);
+                frame.setClosable(true);
+                frame.setMaximizable(true);
+                frame.setSize(1000,800);
+                frame.setVisible(true);
+                HR_DesktopPane.add(frame);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_getRegionReportByIdActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        RegionFrame rf = new RegionFrame();
+        HR_DesktopPane.add(rf);
+        rf.setVisible(true);  // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void getJobReportAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getJobReportAllActionPerformed
+         try {
+            JasDes = JRXmlLoader.load(JobReportAll);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_getJobReportAllActionPerformed
+
+    private void getJobReportByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getJobReportByIdActionPerformed
+        String jobId = JOptionPane.showInputDialog(rootPane, "Masukkan id");
+        try {
+            if(jobId.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Masukkan inputan!!!!");
+            }else{
+                JasDes = JRXmlLoader.load(JobReportById);
+                param.put("job_id", jobId);
+                JasRep = JasperCompileManager.compileReport(JasDes);
+                JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+                JInternalFrame frame = new JInternalFrame("Laporan Jobs Berdasarkan ID");
+                frame.getContentPane().add(new JRViewer(JasPri));
+                frame.pack();
+                frame.setResizable(true);
+                frame.setClosable(true);
+                frame.setMaximizable(true);
+                frame.setSize(1000,800);
+                frame.setVisible(true);
+                HR_DesktopPane.add(frame);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_getJobReportByIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -446,6 +541,10 @@ public class HRFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem getCountryReportById;
     private javax.swing.JMenuItem getDeptReportAll;
     private javax.swing.JMenuItem getDeptReportByID;
+    private javax.swing.JMenuItem getJobReportAll;
+    private javax.swing.JMenuItem getJobReportById;
+    private javax.swing.JMenuItem getRegionReportAll;
+    private javax.swing.JMenuItem getRegionReportById;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -453,14 +552,13 @@ public class HRFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenuItem jMenuAll;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuID;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu jMenuJobs;
     // End of variables declaration//GEN-END:variables
 }
