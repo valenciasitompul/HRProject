@@ -8,8 +8,6 @@ package views;
 import controllers.LocationController;
 import icontrollers.ILocationController;
 import java.awt.Component;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -25,7 +23,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     Koneksi koneksi = new Koneksi();
     ILocationController ilc = new LocationController(koneksi.getConnection());
     private DefaultTableModel tablocation;
-     Map param = new HashMap();
+    
     
     /**
      * Creates new form LocationFram
@@ -44,28 +42,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         getDataLocation();
     }
     
-    public void ColumnAdjuser()
-    {
-        for (int column = 0; column < Tabel_Location.getColumnCount(); column++)
-        {
-            TableColumn tableColumn = Tabel_Location.getColumnModel().getColumn(column);
-            int preferredWidth = tableColumn.getMinWidth();
-            int maxWidth = tableColumn.getMaxWidth();
-            for (int row = 0; row < Tabel_Location.getRowCount(); row++)
-            {
-                TableCellRenderer cellRenderer = Tabel_Location.getCellRenderer(row, column);
-                Component c = Tabel_Location.prepareRenderer(cellRenderer, row, column);
-                int width = c.getPreferredSize().width + Tabel_Location.getIntercellSpacing().width;
-                preferredWidth = Math.max(preferredWidth, width);
-                if (preferredWidth >= maxWidth)
-                {
-                    preferredWidth = maxWidth;
-                    break;
-                }
-            }
-            tableColumn.setPreferredWidth( preferredWidth );
-        }
-    }
+    
     public void getDataLocation(){
         //mengosongkan textfiled id dan name
         resetField();
@@ -84,7 +61,6 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             obj[5] = l.getCounid();
             tablocation.addRow(obj);
         }
-        ColumnAdjuser();
     }
 
     /**
@@ -294,9 +270,6 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     }
      
        
-    
-       
-    
     private void Search_TextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Search_TextKeyReleased
         String filter=(String)Combo_Search.getSelectedItem();
         String val=Search_Text.getText();
@@ -448,9 +421,10 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_Button_UpdateActionPerformed
 
+    
     private void Button_InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_InsertActionPerformed
-        if (LocId_Text.getText().equals("")||(SA_Text.getText().equals(""))||(Postal_Text.getText().equals(""))||(City_Text.getText().equals(""))
-            ||(SP_Text.getText().equals(""))||(Country_Text.getText().equals(""))) {
+        if (LocId_Text.getText().isEmpty()||(SA_Text.getText().isEmpty())||(Postal_Text.getText().isEmpty())||(City_Text.getText().isEmpty())
+            ||(SP_Text.getText().isEmpty())||(Country_Text.getText().isEmpty())) {
             JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
             resetField();
         }
@@ -458,6 +432,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             ilc.insert(LocId_Text.getText(), SA_Text.getText(),Postal_Text.getText(),City_Text.getText(),SP_Text.getText(),Country_Text.getText());
             getDataLocation();
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan", "Saved", JOptionPane.INFORMATION_MESSAGE);
+            resetField();
         }
         LocId_Text.setEditable(true);
     }//GEN-LAST:event_Button_InsertActionPerformed

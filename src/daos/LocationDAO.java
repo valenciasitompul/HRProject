@@ -27,7 +27,7 @@ public class LocationDAO implements ILocationDAO{
     @Override
     public List<Location> getAll() {
         List<Location> listLocation = new ArrayList<Location>();
-        String query = "SELECT * FROM LOCATIONS";
+        String query = "SELECT * FROM LOCATIONS ORDER BY LOCATION_ID ASC";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
