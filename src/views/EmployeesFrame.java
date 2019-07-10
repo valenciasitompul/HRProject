@@ -163,6 +163,8 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
         txtPNumber = new javax.swing.JTextField();
         Label_pNumber = new javax.swing.JLabel();
 
+        setClosable(true);
+        setResizable(true);
         setTitle("Employees Frame");
 
         Label_hireDate.setText("Hire Date");
@@ -340,7 +342,7 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
                                                 .addComponent(txtJobId, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtPNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(136, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
