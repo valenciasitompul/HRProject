@@ -21,19 +21,19 @@ public interface IDepartmentController {
      * fungsi untuk mendapatkan/menampilkan semua data
      * dari tabel Department berdasarkan Department id
      *
-     * @param dptid bertipe string
+     * @param dptId bertipe string
      * @return nilai kembalian berupa list
      */
-    public List<Department> getById(String dptid);
+    public List<Department> getById(String dptId);
     
     /**
      * fungsi untuk mendapatkan/menampilkan semua data
      * dari tabel Department berdasarkan departmen nama
      *
-     * @param dptname bertipe string
+     * @param dptName bertipe string
      * @return nilai kembalian berupa list
      */
-    public List<Department> getByName(String dptname);
+    public List<Department> getByName(String dptName);
     
     /**
      * fungsi untuk mendapatkan/menampilkan semua data
@@ -48,25 +48,25 @@ public interface IDepartmentController {
      * fungsi untuk menambahkan data baru yaitu department id, departmen name, manager id
      * dan location id pada tabel department
      *
-     * @param dptid bertipe string
-     * @param dptname bertipe string
+     * @param dptId bertipe string
+     * @param dptName bertipe string
      * @param mgid bertipe int
      * @param locId bertipe int
      * @return nilai kembalian berupa string
      */
-    public String insert(String dptid, String dptname, int mgrid, int locId);
+    public String insert(String dptId, String dptName, int mgrId, int locId);
     
     /**
      * fungsi untuk merubah data baru yaitu department id, departmen name, manager id
      * dan location id pada tabel department
      *
-     * @param dptid bertipe string
-     * @param dptname bertipe string
+     * @param dptId bertipe string
+     * @param dptName bertipe string
      * @param mgid bertipe int
      * @param locId bertipe int
      * @return nilai kembalian berupa string
      */
-    public String update(String dptid, String dptname, int mgrid, int locId);
+    public String update(String dptId, String dptName, int mgrId, int locId);
     
     /**
      * fungsi untuk menghapus data pada tabel Department berdasarkan departmen id

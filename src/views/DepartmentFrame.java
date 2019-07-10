@@ -43,9 +43,9 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
         tableDepartment.fireTableDataChanged();
         for(Department department : icc.getAll() ){
             Object[] objects = new Object[4];
-            objects[0] = department.getdptid();
-            objects[1] = department.getdptname();
-            objects[2] = department.getmgrid();
+            objects[0] = department.getdptId();
+            objects[1] = department.getdptName();
+            objects[2] = department.getmgrId();
             objects[3] = department.getlocId();
             tableDepartment.addRow(objects);
         }
@@ -308,9 +308,9 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                // icc.getAll();
                 for (Department d: icc.getById(val)) {
                     Object[] obj = new Object[4];
-                    obj[0] = d.getdptid();
-                    obj[1] = d.getdptname();
-                    obj[2] = d.getmgrid();
+                    obj[0] = d.getdptId();
+                    obj[1] = d.getdptName();
+                    obj[2] = d.getmgrId();
                     obj[3] = d.getlocId();
                     tableDepartment.addRow(obj);
                 }
@@ -325,9 +325,9 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                     tableDepartment.getDataVector().removeAllElements();
                     for (Department d : icc.getByName(val)) {
                         Object[] obj = new Object[4];
-                        obj[0] = d.getdptid();
-                        obj[1] = d.getdptname();
-                        obj[2] = d.getmgrid();
+                        obj[0] = d.getdptId();
+                        obj[1] = d.getdptName();
+                        obj[2] = d.getmgrId();
                         obj[3] = d.getlocId();
                         tableDepartment.addRow(obj);
                     }

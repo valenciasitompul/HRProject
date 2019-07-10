@@ -25,10 +25,10 @@ public interface IDepartmentDao {
      * fungsi untuk mendapatkan/menampilkan data
      * dari tabel Departmnet berdasarkan department id
      *
-     * @param dptid bertipe string
+     * @param dptId bertipe string
      * @return nilai kembalian berupa list
      */
-    public List<Department> getById(String dptid);
+    public List<Department> getById(String dptId);
     
     /**
      * fungsi untuk mendapatkan/menampilkan data
@@ -62,8 +62,8 @@ public interface IDepartmentDao {
      * fungsi untuk mendapatkan/menampilkan data
      * dari tabel Departmnet berdasarkan department name
      *
-     * @param dptname bertipe string
+     * @param dptName bertipe string
      * @return nilai kembalian berupa list
      */
-    public List<Department> getByName(String dptname);
+    public List<Department> getByName(String dptName);
 }

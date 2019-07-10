@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controllers;
-import daos.DepartmentDao;
+import daos.DepartmentDAO;
 import idaos.IDepartmentDao;
 import icontrollers.IDepartmentController;
 import models.Department;
@@ -23,7 +23,7 @@ public class DepartmentController implements icontrollers.IDepartmentController{
      * @param connection bertipe Connection
      */
     public DepartmentController(Connection connection){
-        idc = new DepartmentDao(connection);
+        idc = new DepartmentDAO(connection);
     }
 
     
@@ -42,8 +42,8 @@ public class DepartmentController implements icontrollers.IDepartmentController{
      * @return nilai kembalian berupa list
      */
     @Override
-    public List<Department> getById(String dptid) {
-        return idc.getById(dptid);
+    public List<Department> getById(String dptId) {
+        return idc.getById(dptId);
     }
 
 
@@ -59,16 +59,16 @@ public class DepartmentController implements icontrollers.IDepartmentController{
 
     /**
      * fungsi untuk menambahkan data baru pada tabel Department
-     * @param dptid bertipe string
-     * @param dptname bertipe string
-     * @param mgrid bertipe int
+     * @param dptId bertipe string
+     * @param dptName bertipe string
+     * @param mgrId bertipe int
      * @param locId bertipe int
      * @return nilai kembalian berupa string
      */
     @Override
-    public String insert(String dptid, String dptname, int mgrid, int locId) {
+    public String insert(String dptId, String dptName, int mgrId, int locId) {
         String result;
-        Department d = new Department(dptid, dptname, mgrid, locId);
+        Department d = new Department(dptId, dptName, mgrId, locId);
         if(idc.insertupdate(d, false)){
             result = "data tersimpan";
         }else{
@@ -79,16 +79,16 @@ public class DepartmentController implements icontrollers.IDepartmentController{
     
     /**
      * fungsi untuk mengupdate data baru pada tabel Department
-     * @param dptid bertipe string
-     * @param dptname bertipe string
-     * @param mgrid bertipe int
+     * @param dptId bertipe string
+     * @param dptName bertipe string
+     * @param mgrId bertipe int
      * @param locId bertipe int
      * @return nilai kembalian berupa string
      */
     @Override
-    public String update(String dptid, String dptname, int mgrid, int locId) {
+    public String update(String dptId, String dptName, int mgrId, int locId) {
         String result;
-        Department d = new Department(dptid, dptname, mgrid, locId);
+        Department d = new Department(dptId, dptName, mgrId, locId);
         if(idc.insertupdate(d, true)){
             result = "data terupdate";
         }else{
@@ -114,8 +114,8 @@ public class DepartmentController implements icontrollers.IDepartmentController{
     }
 
     @Override
-    public List<Department> getByName(String dptname) {
-        return idc.getByName(dptname);
+    public List<Department> getByName(String dptName) {
+        return idc.getByName(dptName);
     }
     
 }

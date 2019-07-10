@@ -12,9 +12,9 @@ import javafx.scene.layout.Region;
  * @author Zincostan
  */
     public class Department {
-    private String dptid;
-    private String dptname;
-    private int mgrid;
+    private String dptId;
+    private String dptName;
+    private int mgrId;
     private int locId;
     
     /**
@@ -28,15 +28,15 @@ import javafx.scene.layout.Region;
      * Consturctor empat parameter (department id, departmen name, manager id
      * , dan location id)
      *
-     * @param dptid bertipe string
-     * @param dptname bertipe string
+     * @param dptId bertipe string
+     * @param dptName bertipe string
      * @param mgid bertipe integer
      * @param locId bertipe integer
      */
-    public Department(String dptid, String dptname, int mgrid, int locId){
-        this.dptid = dptid;
-        this.dptname = dptname;
-        this.mgrid = mgrid;
+    public Department(String dptId, String dptName, int mgrId, int locId){
+        this.dptId = dptId;
+        this.dptName = dptName;
+        this.mgrId = mgrId;
         this.locId = locId;
         
     }
@@ -46,8 +46,8 @@ import javafx.scene.layout.Region;
      *
      * @return nilai kembalian berupa string
      */
-    public String getdptid(){
-        return dptid;
+    public String getdptId(){
+        return dptId;
     }
     
      /**
@@ -55,8 +55,8 @@ import javafx.scene.layout.Region;
      *
      * @return nilai kembalian berupa string
      */
-    public String getdptname(){
-        return dptname;
+    public String getdptName(){
+        return dptName;
     }
     
      /**
@@ -64,8 +64,8 @@ import javafx.scene.layout.Region;
      *
      * @return nilai kembalian berupa string
      */
-    public int getmgrid(){
-        return mgrid;
+    public int getmgrId(){
+        return mgrId;
     }
     
      /**
@@ -80,10 +80,10 @@ import javafx.scene.layout.Region;
     /**
      * fungsi untuk mengatur department id
      *
-     * @param dptid bertipe string
+     * @param dptId bertipe string
      */
-    public void setdptid(String dptid){
-        this.dptid = dptid;
+    public void setdptId(String dptId){
+        this.dptId = dptId;
     }
     
     /**
@@ -91,8 +91,8 @@ import javafx.scene.layout.Region;
      *
      * @param id bertipe string
      */
-    public void setdptname(String dptname){
-        this.dptname = dptname;
+    public void setdptName(String dptName){
+        this.dptName = dptName;
     }
     
     /**
@@ -100,8 +100,8 @@ import javafx.scene.layout.Region;
      *
      * @param id bertipe string
      */
-    public void setmgrid(int mgrid){
-        this.mgrid = mgrid;
+    public void setmgrId(int mgrId){
+        this.mgrId = mgrId;
     }
     
     /**
