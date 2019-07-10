@@ -97,7 +97,6 @@ public class CountryFrame extends javax.swing.JInternalFrame {
         cbRegion_id = new javax.swing.JComboBox<>();
         txtSearch = new javax.swing.JTextField();
         cbSearch = new javax.swing.JComboBox<>();
-        btnCetak = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Form Countries");
@@ -155,13 +154,6 @@ public class CountryFrame extends javax.swing.JInternalFrame {
 
         cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Country ID", "Country Name" }));
 
-        btnCetak.setText("Cetak");
-        btnCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCetakActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,9 +178,7 @@ public class CountryFrame extends javax.swing.JInternalFrame {
                                     .addGap(12, 12, 12)
                                     .addComponent(btnEdit)
                                     .addGap(18, 18, 18)
-                                    .addComponent(btnHapus)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnCetak))
+                                    .addComponent(btnHapus))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(34, 34, 34)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -222,9 +212,8 @@ public class CountryFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
                     .addComponent(btnEdit)
-                    .addComponent(btnHapus)
-                    .addComponent(btnCetak))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(btnHapus))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -341,23 +330,9 @@ public class CountryFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtSearchActionPerformed
 
-    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        try {
-            JasDes = JRXmlLoader.load(file1);
-            param.clear();
-            JasRep = JasperCompileManager.compileReport(JasDes);
-            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JasperViewer.viewReport(JasPri,false);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e);
-        }
-        
-    }//GEN-LAST:event_btnCetakActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabel_Country;
-    private javax.swing.JButton btnCetak;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnSimpan;

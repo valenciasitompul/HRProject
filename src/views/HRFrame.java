@@ -33,8 +33,8 @@ public class HRFrame extends javax.swing.JFrame {
     JasperPrint JasPri;
     JasperDesign JasDes;
     Map param = new HashMap();
-    File file1 = new File("src/reports/CountriesReport.jrxml");
-    File file2 = new File("CountriesReportBYID.jrxml");
+    File CountryReportAll = new File("src/reports/CountriesReport.jrxml");
+    File CountryReportById = new File("src/reports/CountriesReportBYID.jrxml");
     
     File JobReportAll = new File("src/reports/JobsReportALL.jrxml");
     File JobReportById = new File("src/reports/JobsReportBYID.jrxml");
@@ -65,11 +65,11 @@ public class HRFrame extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        getAllMenu = new javax.swing.JMenuItem();
-        getByIdMenu = new javax.swing.JMenuItem();
+        getCountryReportAll = new javax.swing.JMenuItem();
+        getCountryReportById = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
+        jMenuJobs = new javax.swing.JMenu();
         jMenuAll = new javax.swing.JMenuItem();
         jMenuID = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
@@ -77,6 +77,8 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        HR_DesktopPane.setToolTipText("");
 
         javax.swing.GroupLayout HR_DesktopPaneLayout = new javax.swing.GroupLayout(HR_DesktopPane);
         HR_DesktopPane.setLayout(HR_DesktopPaneLayout);
@@ -142,16 +144,21 @@ public class HRFrame extends javax.swing.JFrame {
 
         jMenu3.setText("Countries");
 
-        getAllMenu.setText("Semua Data");
-        getAllMenu.addActionListener(new java.awt.event.ActionListener() {
+        getCountryReportAll.setText("Semua Data");
+        getCountryReportAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getAllMenuActionPerformed(evt);
+                getCountryReportAllActionPerformed(evt);
             }
         });
-        jMenu3.add(getAllMenu);
+        jMenu3.add(getCountryReportAll);
 
-        getByIdMenu.setText("Berdasarkan ID");
-        jMenu3.add(getByIdMenu);
+        getCountryReportById.setText("Berdasarkan ID");
+        getCountryReportById.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getCountryReportByIdActionPerformed(evt);
+            }
+        });
+        jMenu3.add(getCountryReportById);
 
         jMenu2.add(jMenu3);
 
@@ -161,7 +168,7 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu5.setText("Employees");
         jMenu2.add(jMenu5);
 
-        jMenu6.setText("Jobs");
+        jMenuJobs.setText("Jobs");
 
         jMenuAll.setText("Semua Data");
         jMenuAll.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +176,7 @@ public class HRFrame extends javax.swing.JFrame {
                 jMenuAllActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuAll);
+        jMenuJobs.add(jMenuAll);
 
         jMenuID.setText("Berdasarkan ID");
         jMenuID.addActionListener(new java.awt.event.ActionListener() {
@@ -177,9 +184,9 @@ public class HRFrame extends javax.swing.JFrame {
                 jMenuIDActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuID);
+        jMenuJobs.add(jMenuID);
 
-        jMenu2.add(jMenu6);
+        jMenu2.add(jMenuJobs);
 
         jMenu8.setText("jMenu8");
         jMenu2.add(jMenu8);
@@ -193,13 +200,13 @@ public class HRFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(HR_DesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(HR_DesktopPane)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(HR_DesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(HR_DesktopPane)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -239,9 +246,9 @@ public class HRFrame extends javax.swing.JFrame {
         ef.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void getAllMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getAllMenuActionPerformed
+    private void getCountryReportAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getCountryReportAllActionPerformed
         try {
-            JasDes = JRXmlLoader.load(file1);
+            JasDes = JRXmlLoader.load(CountryReportAll);
             param.clear();
             JasRep = JasperCompileManager.compileReport(JasDes);
             JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
@@ -258,7 +265,7 @@ public class HRFrame extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }
-    }//GEN-LAST:event_getAllMenuActionPerformed
+    }//GEN-LAST:event_getCountryReportAllActionPerformed
 
     private void jMenuIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIDActionPerformed
         String id = JOptionPane.showInputDialog(rootPane, "Masukkan ID");
@@ -304,6 +311,31 @@ public class HRFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuAllActionPerformed
 
+    private void getCountryReportByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getCountryReportByIdActionPerformed
+        String CountryId = JOptionPane.showInputDialog(rootPane, "Masukkan id");
+        try {
+            if(CountryId.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Masukkan inputan!!!!");
+            }else{
+                JasDes = JRXmlLoader.load(CountryReportById);
+                param.put("country_id", CountryId);
+                JasRep = JasperCompileManager.compileReport(JasDes);
+                JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+                JInternalFrame frame = new JInternalFrame("Laporan Countries Berdasarkan ID");
+                frame.getContentPane().add(new JRViewer(JasPri));
+                frame.pack();
+                frame.setResizable(true);
+                frame.setClosable(true);
+                frame.setMaximizable(true);
+                frame.setSize(1000,800);
+                frame.setVisible(true);
+                HR_DesktopPane.add(frame);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_getCountryReportByIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -341,14 +373,13 @@ public class HRFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane HR_DesktopPane;
-    private javax.swing.JMenuItem getAllMenu;
-    private javax.swing.JMenuItem getByIdMenu;
+    private javax.swing.JMenuItem getCountryReportAll;
+    private javax.swing.JMenuItem getCountryReportById;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuItem jMenuAll;
@@ -359,5 +390,6 @@ public class HRFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenu jMenuJobs;
     // End of variables declaration//GEN-END:variables
 }

@@ -85,18 +85,21 @@
                 <Property name="text" type="java.lang.String" value="Countries"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="getAllMenu">
+                <MenuItem class="javax.swing.JMenuItem" name="getCountryReportAll">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Semua Data"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getAllMenuActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getCountryReportAllActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="getByIdMenu">
+                <MenuItem class="javax.swing.JMenuItem" name="getCountryReportById">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getCountryReportByIdActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
