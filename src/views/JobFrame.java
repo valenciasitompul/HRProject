@@ -5,21 +5,14 @@
  */
 package views;
 
-import view.*;
 import controllers.JobController;
 import icontrollers.IJobController;
 import java.awt.Component;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import models.Job;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
 import tools.Koneksi;
 
 /**
@@ -29,15 +22,10 @@ import tools.Koneksi;
 public class JobFrame extends javax.swing.JInternalFrame {
 
     Koneksi koneksi = new Koneksi();
-    IJobController ijc = (IJobController) new JobController(koneksi.getConnection());
+    IJobController ijc = new JobController(koneksi.getConnection());
     private DefaultTableModel tabjob;
-    JasperDesign JasDes;
-    JasperReport JasRep;
-    JasperPrint JasPri;
-    
-    Map param = new HashMap();
-    File All = new File ("AllJobs.jrxml");
-    File byId = new File ("AllJobsByJobId.jrxml");
+
+
     /**
      * Creates new form JobFrame
      */
@@ -122,7 +110,6 @@ public class JobFrame extends javax.swing.JInternalFrame {
         btnInsert = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnPrint = new javax.swing.JButton();
         Label_Name1 = new javax.swing.JLabel();
         Label_Id1 = new javax.swing.JLabel();
         txtMinSalary = new javax.swing.JTextField();
@@ -197,13 +184,6 @@ public class JobFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        btnPrint.setText("Print");
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
-            }
-        });
-
         Label_Name1.setText("Max Salary");
 
         Label_Id1.setText("Min Salary");
@@ -233,9 +213,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
                         .addComponent(btnUpdate)
                         .addGap(18, 18, 18)
                         .addComponent(btnDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPrint)
-                        .addGap(32, 32, 32))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,7 +225,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(11, 11, 11))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label_Id1)
@@ -266,7 +244,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
                     .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_Id)
@@ -287,8 +265,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInsert)
                     .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnPrint))
+                    .addComponent(btnDelete))
                 .addContainerGap())
         );
 
@@ -300,7 +277,8 @@ public class JobFrame extends javax.swing.JInternalFrame {
         String val=txtSearch.getText();
         switch (filter){
             case "Id":
-            //System.out.println("id" +filter);
+            System.out.println("id" +filter);
+                System.out.println(val);
 
             if(val.isEmpty()){
                 getDataJob();
@@ -319,7 +297,8 @@ public class JobFrame extends javax.swing.JInternalFrame {
             break;
             case "Title":
             try {
-                //System.out.println("name" +filter);
+                System.out.println("name" +filter);
+                System.out.println(val);
                 if(val.isEmpty()){
                     getDataJob();
                 }else{
@@ -344,22 +323,6 @@ public class JobFrame extends javax.swing.JInternalFrame {
             break;
         }
 
-        /*
-        //menampilkan hasil pencarian secara umum tanpa parameter
-        String val=Search_Text.getText();
-        if(val.isEmpty()){
-            getDataRegion();
-        }else{
-            getDataRegion();
-            tabregion.getDataVector().removeAllElements();
-            for (Region r : irc.search(val)) {
-                Object[] obj = new Object[2];
-                obj[0] = r.getId();
-                obj[1] = r.getName();
-                tabregion.addRow(obj);
-            }
-        }
-        */
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void cbSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSearchMouseClicked
@@ -431,32 +394,6 @@ public class JobFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-/*
-        try {
-            if (txtSearch.getText().isEmpty()) {
-                JasDes = JRXmlLoader.load(All);
-                param.clear();
-            }else if  ( cbSearch.getSelectedItem()=="Id"){
-                JasDes = JRXmlLoader.load(byId);
-                param.put("REGION_ID",Integer.parseInt(txtSearch.getText()));
-            }
-            else if (cbSearch.getSelectedItem()=="Name"){
-                JasDes = JRXmlLoader.load(byName);
-                param.put("REGION_NAME",String.valueOf(txtSearch.getText()));
-                System.out.println(cbSearch.getSelectedItem());
-                System.out.println(txtSearch.getText());
-            }
-
-            JasRep = JasperCompileManager.compileReport(JasDes);
-            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JasperViewer.viewReport(JasPri, false);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }*/
-    }//GEN-LAST:event_btnPrintActionPerformed
-
     private void txtMinSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMinSalaryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMinSalaryActionPerformed
@@ -473,7 +410,6 @@ public class JobFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel Label_Name1;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInsert;
-    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbSearch;
     private javax.swing.JScrollPane jScrollPane1;

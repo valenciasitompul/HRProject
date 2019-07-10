@@ -18,13 +18,7 @@ public interface IJobController {
     public List<Job> getById(String id);
     public List<Job> getByTitle(String title);
     public List<Job> search(String key);
-    public String insert(String id, String name);
-    public String update(String id, String name);
+    public String insert(String id, String title, String min, String max);
+    public String update(String id, String title, String min, String max);
     public String delete(String id);
-
-    public void insert(String text, String text0, int parseInt);
-
-    public void insert(String text, String text0, String text1, String text2);
-
-    public void update(String text, String text0, String text1, String text2);
 }

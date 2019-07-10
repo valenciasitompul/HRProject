@@ -45,46 +45,7 @@ public class JobDAO implements IJobDAO{
         return listJob;
     }
     
-    public List<Job> getById(String id) {
-        List<Job> listJobId = new ArrayList<Job>();
-        String query = "SELECT * FROM JOBS WHERE REGEXP_LIKE(JOB_ID, (?), 'i')";
-        try {
-            //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1,id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
-            while (resultSet.next()) {
-                Job j = new Job(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
-                listJobId.add(j);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return listJobId;
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public List<Job> getByTitle(String title) {
-        List<Job> listJobTitle = new ArrayList<Job>();
-        String query = "SELECT * FROM JOBS WHERE REGEXP_LIKE(JOB_TITLE, (?), 'i')";
-        try {
-            //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1,title);
-            ResultSet  resultSet = preparedStatement.executeQuery();
-            //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
-            while (resultSet.next()) {
-                Job j = new Job(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
-                listJobTitle.add(j);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return listJobTitle;
-    }
+
     
         public boolean insertupdate(Job j, boolean isUpdate) {
         boolean result = false;
@@ -124,27 +85,49 @@ public class JobDAO implements IJobDAO{
     }
 
     @Override
-    public List<Job> getAllById() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Job> getById(String id) {
+        List<Job> listJobId = new ArrayList<Job>();
+        String query = "SELECT * FROM JOBS WHERE REGEXP_LIKE(JOB_ID, (?), 'i')";
+        try {
+            //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
+            while (resultSet.next()) {
+                Job j = new Job(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
+                listJobId.add(j);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return listJobId;
     }
 
     @Override
-    public List<Job> getAllByTitle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Job> getByTitle(String title) {
+        List<Job> listJobTitle = new ArrayList<Job>();
+        String query = "SELECT * FROM JOBS WHERE REGEXP_LIKE(JOB_TITLE, (?), 'i')";
+        try {
+            //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,title);
+            ResultSet  resultSet = preparedStatement.executeQuery();
+            //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
+            while (resultSet.next()) {
+                Job j = new Job(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
+                listJobTitle.add(j);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return listJobTitle;
     }
 
     @Override
     public List<Job> search(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Job> getAllById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Job> getAllByTitle(String title) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

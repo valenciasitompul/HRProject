@@ -6,10 +6,9 @@
 package controllers;
 
 import daos.JobDAO;
-import daos.JobDAO;
+import icontrollers.IJobController;
 import idaos.IJobDAO;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.List;
 import models.Job;
 
@@ -17,12 +16,14 @@ import models.Job;
  *
  * @author Bella
  */
-public class JobController {
+public class JobController implements IJobController{
     private IJobDAO ijdao;
     
     public JobController(Connection connection){
         ijdao = new JobDAO(connection);
     }
+
+
 
     
     public List<Job> getAll(){
@@ -30,16 +31,16 @@ public class JobController {
     }
     
     public List<Job> getById(String id){
-        return ijdao.getAllById(id);
+        return ijdao.getById(id);
     }
     
     public List<Job> getByTitle(String title){
-        return ijdao.getAllByTitle(title);
+        return ijdao.getByTitle(title);
     }
     
-    public String insert(String title, int min, int max, String id) {
+    public String insert(String id,String title, String min, String max) {
         String result = "";
-        Job job = new Job (title, min, min, id);
+        Job job = new Job(id, title, Integer.parseInt(min), Integer.parseInt(max));
         if(ijdao.insertupdate(job, false)){
             result = "Data berhasil disimpan";
         }else{
@@ -48,9 +49,9 @@ public class JobController {
         return result;
     }
     
-    public String update(String title, int min, int max, String id) {
+    public String update(String id,String title, String min, String max) {
         String result = "";
-        Job job = new Job (title, min, min, id);
+        Job job = new Job(id, title, Integer.parseInt(min), Integer.parseInt(max));
         if(ijdao.insertupdate(job, true)){
             result = "Data berhasil diupdate";
         }else{
@@ -67,6 +68,11 @@ public class JobController {
             result = "maaf data gagal dihapus";
         }
         return result;
+    }
+
+    @Override
+    public List<Job> search(String key) {
+        return ijdao.search(key);
     }
 
 }

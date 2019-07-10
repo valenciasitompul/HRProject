@@ -24,10 +24,11 @@ public class Job {
         this.min = min;
         this.max = max;       
     }
-
-    public Job(String title, int min, int min0, String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public Job(String id){
+        this.id = id;
     }
+
     
     public String getId(){
         return id;

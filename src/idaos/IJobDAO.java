@@ -16,9 +16,6 @@ public interface IJobDAO {
     
     public List<Job> getAll();
     
-    public List<Job> getAllById();
-    
-    public List<Job> getAllByTitle();
     
     public List<Job> search(String key);
     
@@ -26,9 +23,9 @@ public interface IJobDAO {
    
     public boolean delete(String id);
 
-    public List<Job> getAllById(String id);
+    public List<Job> getById(String id);
 
-    public List<Job> getAllByTitle(String title);
+    public List<Job> getByTitle(String title);
     
     
 }
