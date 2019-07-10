@@ -123,12 +123,12 @@ public class LocationDAO implements ILocationDAO{
         String query = "INSERT INTO LOCATIONS(LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, l.getLocById());
-            preparedStatement.setString(2, l.getstrAdd() );
-            preparedStatement.setString(3, l.getposCode());
-            preparedStatement.setString(4, l.getCity() );
-            preparedStatement.setString(5, l.getStaProv() ); 
-            preparedStatement.setString(6, l.getCounId() ); 
+            preparedStatement.setInt(1, l.getLocid());
+            preparedStatement.setString(2, l.getStaprov());
+            preparedStatement.setString(3, l.getPoscode());
+            preparedStatement.setString(4, l.getCity());
+            preparedStatement.setString(5, l.getStaprov()); 
+            preparedStatement.setString(6, l.getCounid()); 
     
             preparedStatement.executeQuery();
             result = true;
@@ -150,12 +150,12 @@ public class LocationDAO implements ILocationDAO{
         String query = "UPDATE LOCATIONS SET STREET_ADDRESS = ?, POSTAL_CODE = ?, CITY = ?, STATE_PROVINCE = ?, COUNTRY_ID = ? WHERE LOCATION_ID = ? ";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, l.getstrAdd() );
-            preparedStatement.setString(2, l.getPosCode());
+            preparedStatement.setString(1, l.getStradd());
+            preparedStatement.setString(2, l.getPoscode());
             preparedStatement.setString(3, l.getCity() );
-            preparedStatement.setString(4, l.getStaProv() ); 
-            preparedStatement.setString(5, l.getCounId() ); 
-            preparedStatement.setInt(6, l.getLocById());
+            preparedStatement.setString(4, l.getStaprov() ); 
+            preparedStatement.setString(5, l.getCounid()); 
+            preparedStatement.setInt(6, l.getLocid());
     
             preparedStatement.executeQuery();
             result = true;

@@ -11,7 +11,7 @@ package models;
  */
 public class Location {
     private int locid;
-    private String stradd;
+    private String Stradd;
     private String poscode;
     private String city;
     private String staprov;
@@ -22,21 +22,21 @@ public class Location {
     }
     
     
-    public Location(int locid, String stradd, String poscode, String city, String staprov, String counid){
+    public Location(int locid, String Stradd, String poscode, String city, String staprov, String counid){
         this.locid = locid;
-        this.stradd = stradd;
+        this.Stradd = Stradd;
         this.poscode = poscode;
         this.city = city;
         this.staprov = staprov;
         this.counid= counid;
     }
     
-    public int getLocById(){
+    public int getLocid(){
         return locid;
     }
     
     public String getStradd(){
-        return stradd;
+        return Stradd;
     }
     
     public String getPoscode(){
@@ -59,8 +59,8 @@ public class Location {
         this.locid = locid;
     }
     
-    public void setStradd(String stradd){
-        this.stradd = stradd;
+    public void setStradd(String Stradd){
+        this.Stradd = Stradd;
     }
     
     public void setPoscode(String poscode){
@@ -79,4 +79,5 @@ public class Location {
         this.counid = counid;
     }
 
+    
 }

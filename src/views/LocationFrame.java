@@ -78,12 +78,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         //memanggil list data tabel region dari database
         for (Location l : ilc.getAll()) {
             Object[] obj = new Object[6];
-            obj[0] = l.getLocById();
-            obj[1] = l.getstrAdd();
-            obj[2] = l.getPosCode();
+            obj[0] = l.getLocid();
+            obj[1] = l.getStradd();
+            obj[2] = l.getPoscode();
             obj[3] = l.getCity();
-            obj[4] = l.getStaProv();
-            obj[5] = l.getCounId();
+            obj[4] = l.getStaprov();
+            obj[5] = l.getCounid();
             tablocation.addRow(obj);
         }
         ColumnAdjuser();
@@ -304,12 +304,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                 tablocation.getDataVector().removeAllElements();
                 for (Location l : ilc.getLocById(val)) {
                     Object[] obj = new Object[6];
-                    obj[0] = l.getLocById();
-                    obj[1] = l.getstrAdd();
-                    obj[2] = l.getPosCode();
+                     obj[0] = l.getLocid();
+                    obj[1] = l.getStradd();
+                    obj[2] = l.getPoscode();
                     obj[3] = l.getCity();
-                    obj[4] = l.getStaProv();
-                    obj[5] = l.getCounId();
+                    obj[4] = l.getStaprov();
+                    obj[5] = l.getCounid();
                     tablocation.addRow(obj);
                 }
             }
@@ -325,12 +325,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                      tablocation.getDataVector().removeAllElements();
                      for (Location l : ilc.getByCity(val)) {
                      Object[] obj = new Object[6];
-                      obj[0] = l.getLocById();
-                      obj[1] = l.getstrAdd();
-                      obj[2] = l.getPosCode();
-                      obj[3] = l.getCity();
-                      obj[4] = l.getStaProv();
-                      obj[5] = l.getCounId();
+                       obj[0] = l.getLocid();
+                       obj[1] = l.getStradd();
+                       obj[2] = l.getPoscode();
+                       obj[3] = l.getCity();
+                       obj[4] = l.getStaprov();
+                       obj[5] = l.getCounid();
                       tablocation.addRow(obj);
                     }
                  }
