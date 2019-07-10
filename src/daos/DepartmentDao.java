@@ -52,13 +52,13 @@ public class DepartmentDao implements IDepartmentDao{
     }
 
     @Override
-    public List<Department> getById(int dptid) {
+    public List<Department> getById(String dptid) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
       List<Department> listdepartment = new ArrayList<Department>();
       String query = "SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_ID = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, dptid);
+            preparedStatement.setString(1, dptid);
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
                 Department department = new Department(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4));
@@ -136,7 +136,22 @@ public class DepartmentDao implements IDepartmentDao{
 
     @Override
     public List<Department> getByName(String dptname) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Department> listdepartment = new ArrayList<Department>();
+      String query = "SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_NAME = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, dptname);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                Department department = new Department(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4));
+                listdepartment.add(department);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return listdepartment;
     }
     
     

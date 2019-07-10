@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="Department_Id" class="java.lang.Integer"/>
+	<parameter name="Department_Id" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      DEPARTMENTS."DEPARTMENT_ID" AS DEPARTMENTS_DEPARTMENT_ID,

@@ -28,16 +28,20 @@ import models.Location;
 public class ManualTest {
     public static void main(String[] args) {
         Koneksi koneksi = new Koneksi();
-//        IDepartmentDao idd = new DepartmentDao(k.getConnection());
+        IDepartmentDao idd = new DepartmentDao(koneksi.getConnection());
+        for(Department d : idd.getByName("bebas") ){
+            System.out.println(d.getdptid());
+            System.out.println(d.getdptname());
+        }
 //        Department d = new Department("15", "IT", 103, 1400);
 //        idd.insertupdate(d, true);
         //ILocationDAO ildao = new LocationDAO(koneksi.getConnection());
-        ICountryDAO icdao = new CountryDAO(koneksi.getConnection());
-        for(Country c : icdao.getAll()){
-            System.out.println(c.getId());
-            System.out.println(c.getName());
-            System.out.println(c.getRegion_id());
-        }
+//        ICountryDAO icdao = new CountryDAO(koneksi.getConnection());
+//        for(Country c : icdao.getAll()){
+//            System.out.println(c.getId());
+//            System.out.println(c.getName());
+//            System.out.println(c.getRegion_id());
+//        }
     }
 //    public static void main(String[] args) {
 //        //fungsi test untuk model

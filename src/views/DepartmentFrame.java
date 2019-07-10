@@ -90,6 +90,8 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
         lblLocation_id = new javax.swing.JLabel();
         txtLocation_id = new javax.swing.JTextField();
         btnHapus1 = new javax.swing.JButton();
+        txtSearch = new javax.swing.JTextField();
+        cbSearch = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Form Department");
@@ -143,42 +145,69 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
 
         btnHapus1.setText("Print");
 
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
+        cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Title" }));
+        cbSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbSearchMouseClicked(evt);
+            }
+        });
+        cbSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLocation_id)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDepartmnet_id)
-                            .addComponent(lblDepartment_name)
-                            .addComponent(lblManager_id)
-                            .addComponent(btnSimpan))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(btnEdit)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnHapus)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                                .addComponent(btnHapus1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtDepartment_id, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                                    .addComponent(txtDepartment_name)
-                                    .addComponent(txtManager_id)
-                                    .addComponent(txtLocation_id))))))
+                        .addComponent(txtSearch)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblLocation_id)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblDepartmnet_id)
+                                .addComponent(lblDepartment_name)
+                                .addComponent(lblManager_id)
+                                .addComponent(btnSimpan))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addComponent(btnEdit)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnHapus)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                                    .addComponent(btnHapus1))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(34, 34, 34)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtDepartment_id, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                                        .addComponent(txtDepartment_name)
+                                        .addComponent(txtManager_id)
+                                        .addComponent(txtLocation_id)))))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -196,7 +225,7 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLocation_id)
                     .addComponent(txtLocation_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
                     .addComponent(btnEdit)
@@ -274,6 +303,62 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnHapusActionPerformed
 
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        String filter=(String)cbSearch.getSelectedItem();
+        String val=txtSearch.getText();
+        switch (filter){
+            case "Id":
+                if(val.isEmpty()){
+                getDataDepartment();
+            }else{
+                getDataDepartment();
+                tableDepartment.getDataVector().removeAllElements();
+               // icc.getAll();
+                for (Department d: icc.getById(val)) {
+                    Object[] obj = new Object[4];
+                    obj[0] = d.getdptid();
+                    obj[1] = d.getdptname();
+                    obj[2] = d.getmgrid();
+                    obj[3] = d.getlocid();
+                    tableDepartment.addRow(obj);
+                }
+            }
+            break;
+            case "Title":
+            try {
+                    if(val.isEmpty()){
+                    getDataDepartment();
+                }else{
+                    getDataDepartment();
+                    tableDepartment.getDataVector().removeAllElements();
+                    for (Department d : icc.getByName(val)) {
+                        Object[] obj = new Object[4];
+                        obj[0] = d.getdptid();
+                        obj[1] = d.getdptname();
+                        obj[2] = d.getmgrid();
+                        obj[3] = d.getlocid();
+                        tableDepartment.addRow(obj);
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+            break;
+            default:
+            break;
+        }  // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void cbSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSearchMouseClicked
+
+    }//GEN-LAST:event_cbSearchMouseClicked
+
+    private void cbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabel_Department;
@@ -281,6 +366,7 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnHapus1;
     private javax.swing.JButton btnSimpan;
+    private javax.swing.JComboBox<String> cbSearch;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDepartment_name;
     private javax.swing.JLabel lblDepartmnet_id;
@@ -290,5 +376,6 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDepartment_name;
     private javax.swing.JTextField txtLocation_id;
     private javax.swing.JTextField txtManager_id;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

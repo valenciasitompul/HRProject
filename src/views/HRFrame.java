@@ -177,6 +177,11 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu4.add(getDeptReportAll);
 
         getDeptReportByID.setText("Berdasarkan ID");
+        getDeptReportByID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getDeptReportByIDActionPerformed(evt);
+            }
+        });
         jMenu4.add(getDeptReportByID);
 
         jMenu2.add(jMenu4);
@@ -373,6 +378,32 @@ public class HRFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, e);
         }
     }//GEN-LAST:event_getDeptReportAllActionPerformed
+
+    private void getDeptReportByIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getDeptReportByIDActionPerformed
+        // TODO add your handling code here:
+       String DepartmentId = JOptionPane.showInputDialog(rootPane, "Masukkan id");
+        try {
+            if(DepartmentId.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Masukkan inputan!!!!");
+            }else{
+                JasDes = JRXmlLoader.load(DepartmentReportById);
+                param.put("Department_Id", DepartmentId);
+                JasRep = JasperCompileManager.compileReport(JasDes);
+                JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+                JInternalFrame frame = new JInternalFrame("Laporan Department Berdasarkan ID");
+                frame.getContentPane().add(new JRViewer(JasPri));
+                frame.pack();
+                frame.setResizable(true);
+                frame.setClosable(true);
+                frame.setMaximizable(true);
+                frame.setSize(1000,800);
+                frame.setVisible(true);
+                HR_DesktopPane.add(frame);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_getDeptReportByIDActionPerformed
 
     /**
      * @param args the command line arguments

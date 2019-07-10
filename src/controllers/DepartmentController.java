@@ -38,7 +38,7 @@ public class DepartmentController implements icontrollers.IDepartmentController{
 
     @Override
     public List<Department> getById(String dptid) {
-        return idc.getByName(dptid);
+        return idc.getById(dptid);
     }
 
 //    @Override
@@ -88,7 +88,8 @@ public class DepartmentController implements icontrollers.IDepartmentController{
 
     @Override
     public List<Department> getByName(String dptname) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return idc.getByName(dptname);
     }
     
 }

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff0f35c1-a28a-4976-947b-95c8fff02c07">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="42"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
      DEPARTMENTS."DEPARTMENT_ID" AS DEPARTMENTS_DEPARTMENT_ID,
@@ -29,9 +29,6 @@ FROM
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<rectangle>
-				<reportElement x="-20" y="-20" width="595" height="99" backcolor="#FFFFFF" uuid="8462d12b-965a-4181-a3d9-50ed621b0d06"/>
-			</rectangle>
 			<staticText>
 				<reportElement x="0" y="10" width="144" height="44" uuid="d2bdfd29-da3d-4d2c-8680-bb1ab044d56c"/>
 				<textElement>
@@ -39,10 +36,6 @@ FROM
 				</textElement>
 				<text><![CDATA[Department]]></text>
 			</staticText>
-			<image>
-				<reportElement x="445" y="-14" width="110" height="89" uuid="5b783961-413a-4953-8de1-4296bc05ac98"/>
-				<imageExpression><![CDATA["F:\\2014-08-20-112626.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
