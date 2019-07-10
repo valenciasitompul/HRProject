@@ -43,6 +43,9 @@ public class HRFrame extends javax.swing.JFrame {
     File JobReportById = new File("src/reports/JobsReportBYID.jrxml");
     File RegionReportAll = new File("src/reports/RegionReportAll.jrxml");
     File RegionReportById = new File("src/reports/RegionReportById.jrxml");
+    File EmployeeReportAll = new File("src/reports/EmployeeReportALL.jrxml");
+    File EmployeeReportById = new File("src/reports/EmployeeReportBYID.jrxml");
+    
     /**
      * Creates new form HRFrame
      */
@@ -77,6 +80,8 @@ public class HRFrame extends javax.swing.JFrame {
         getDeptReportAll = new javax.swing.JMenuItem();
         getDeptReportByID = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        getEmpAll = new javax.swing.JMenuItem();
+        getEmpById = new javax.swing.JMenuItem();
         jMenuJobs = new javax.swing.JMenu();
         getJobReportAll = new javax.swing.JMenuItem();
         getJobReportById = new javax.swing.JMenuItem();
@@ -202,6 +207,23 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu2.add(jMenu4);
 
         jMenu5.setText("Employees");
+
+        getEmpAll.setText("Semua Data");
+        getEmpAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getEmpAllActionPerformed(evt);
+            }
+        });
+        jMenu5.add(getEmpAll);
+
+        getEmpById.setText("Berdasarkan ID");
+        getEmpById.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getEmpByIdActionPerformed(evt);
+            }
+        });
+        jMenu5.add(getEmpById);
+
         jMenu2.add(jMenu5);
 
         jMenuJobs.setText("Jobs");
@@ -500,6 +522,55 @@ public class HRFrame extends javax.swing.JFrame {
         }// TODO add your handling code here:
     }//GEN-LAST:event_getJobReportByIdActionPerformed
 
+    private void getEmpAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getEmpAllActionPerformed
+        // TODO add your handling code here:
+        try {
+            JasDes = JRXmlLoader.load(EmployeeReportAll);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+        
+    }//GEN-LAST:event_getEmpAllActionPerformed
+
+    private void getEmpByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getEmpByIdActionPerformed
+        // TODO add your handling code here:
+        String id = JOptionPane.showInputDialog(rootPane, "Masukkan id");
+        try {
+            if(id.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Masukkan inputan!!!!");
+            }else{
+                JasDes = JRXmlLoader.load(EmployeeReportById);
+                param.put("emp_id", Integer.parseInt(id));
+                JasRep = JasperCompileManager.compileReport(JasDes);
+                JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+                JInternalFrame frame = new JInternalFrame("Laporan Jobs Berdasarkan ID");
+                frame.getContentPane().add(new JRViewer(JasPri));
+                frame.pack();
+                frame.setResizable(true);
+                frame.setClosable(true);
+                frame.setMaximizable(true);
+                frame.setSize(1000,800);
+                frame.setVisible(true);
+                HR_DesktopPane.add(frame);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_getEmpByIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -541,6 +612,8 @@ public class HRFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem getCountryReportById;
     private javax.swing.JMenuItem getDeptReportAll;
     private javax.swing.JMenuItem getDeptReportByID;
+    private javax.swing.JMenuItem getEmpAll;
+    private javax.swing.JMenuItem getEmpById;
     private javax.swing.JMenuItem getJobReportAll;
     private javax.swing.JMenuItem getJobReportById;
     private javax.swing.JMenuItem getRegionReportAll;
