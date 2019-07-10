@@ -46,7 +46,7 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
             objects[0] = department.getdptid();
             objects[1] = department.getdptname();
             objects[2] = department.getmgrid();
-            objects[3] = department.getlocid();
+            objects[3] = department.getlocId();
             tableDepartment.addRow(objects);
         }
     }
@@ -311,7 +311,7 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                     obj[0] = d.getdptid();
                     obj[1] = d.getdptname();
                     obj[2] = d.getmgrid();
-                    obj[3] = d.getlocid();
+                    obj[3] = d.getlocId();
                     tableDepartment.addRow(obj);
                 }
             }
@@ -328,7 +328,7 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                         obj[0] = d.getdptid();
                         obj[1] = d.getdptname();
                         obj[2] = d.getmgrid();
-                        obj[3] = d.getlocid();
+                        obj[3] = d.getlocId();
                         tableDepartment.addRow(obj);
                     }
                 }

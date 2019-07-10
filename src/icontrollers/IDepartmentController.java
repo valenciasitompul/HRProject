@@ -51,10 +51,10 @@ public interface IDepartmentController {
      * @param dptid bertipe string
      * @param dptname bertipe string
      * @param mgid bertipe int
-     * @param locid bertipe int
+     * @param locId bertipe int
      * @return nilai kembalian berupa string
      */
-    public String insert(String dptid, String dptname, int mgrid, int locid);
+    public String insert(String dptid, String dptname, int mgrid, int locId);
     
     /**
      * fungsi untuk merubah data baru yaitu department id, departmen name, manager id
@@ -63,10 +63,10 @@ public interface IDepartmentController {
      * @param dptid bertipe string
      * @param dptname bertipe string
      * @param mgid bertipe int
-     * @param locid bertipe int
+     * @param locId bertipe int
      * @return nilai kembalian berupa string
      */
-    public String update(String dptid, String dptname, int mgrid, int locid);
+    public String update(String dptid, String dptname, int mgrid, int locId);
     
     /**
      * fungsi untuk menghapus data pada tabel Department berdasarkan departmen id

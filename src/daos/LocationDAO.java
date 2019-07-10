@@ -46,11 +46,11 @@ public class LocationDAO implements ILocationDAO{
                 Location l = new Location(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6)); 
 //                Location l = new Location(); 
 //                l.setLocById(resultSet.getInt(1));
-//                l.setStrAdd(resultSet.getString(2));
+//                l.setstrAdd(resultSet.getString(2));
 //                l.setposCode(resultSet.getInt(3));
 //                l.setCity(resultSet.getString(4));
-//                l.setStaProv(resultSet.getString(5));
-//                l.setCounId(resultSet.getString(6));
+//                l.setstaProv(resultSet.getString(5));
+//                l.setcounId(resultSet.getString(6));
                 listLocation.add(l);
                 
             }
@@ -123,12 +123,12 @@ public class LocationDAO implements ILocationDAO{
         String query = "INSERT INTO LOCATIONS(LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, l.getLocid());
-            preparedStatement.setString(2, l.getStaprov());
-            preparedStatement.setString(3, l.getPoscode());
+            preparedStatement.setInt(1, l.getlocId());
+            preparedStatement.setString(2, l.getstaProv());
+            preparedStatement.setString(3, l.getposCode());
             preparedStatement.setString(4, l.getCity());
-            preparedStatement.setString(5, l.getStaprov()); 
-            preparedStatement.setString(6, l.getCounid()); 
+            preparedStatement.setString(5, l.getstaProv()); 
+            preparedStatement.setString(6, l.getcounId()); 
     
             preparedStatement.executeQuery();
             result = true;
@@ -150,12 +150,12 @@ public class LocationDAO implements ILocationDAO{
         String query = "UPDATE LOCATIONS SET STREET_ADDRESS = ?, POSTAL_CODE = ?, CITY = ?, STATE_PROVINCE = ?, COUNTRY_ID = ? WHERE LOCATION_ID = ? ";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, l.getStradd());
-            preparedStatement.setString(2, l.getPoscode());
+            preparedStatement.setString(1, l.getstrAdd());
+            preparedStatement.setString(2, l.getposCode());
             preparedStatement.setString(3, l.getCity() );
-            preparedStatement.setString(4, l.getStaprov() ); 
-            preparedStatement.setString(5, l.getCounid()); 
-            preparedStatement.setInt(6, l.getLocid());
+            preparedStatement.setString(4, l.getstaProv() ); 
+            preparedStatement.setString(5, l.getcounId()); 
+            preparedStatement.setInt(6, l.getlocId());
     
             preparedStatement.executeQuery();
             result = true;

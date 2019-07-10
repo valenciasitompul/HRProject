@@ -81,12 +81,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         //memanggil list data tabel dari database
         for (Location l : ilc.getAll()) {
             Object[] obj = new Object[6];
-            obj[0] = l.getLocid();
-            obj[1] = l.getStradd();
-            obj[2] = l.getPoscode();
+            obj[0] = l.getlocId();
+            obj[1] = l.getstrAdd();
+            obj[2] = l.getposCode();
             obj[3] = l.getCity();
-            obj[4] = l.getStaprov();
-            obj[5] = l.getCounid();
+            obj[4] = l.getstaProv();
+            obj[5] = l.getcounId();
             tablocation.addRow(obj);
         }
         ColumnAdjuser();
@@ -111,7 +111,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         Label_CountryID = new javax.swing.JLabel();
         Label_StateProvince = new javax.swing.JLabel();
         Label_City = new javax.swing.JLabel();
-        LocId_Text = new javax.swing.JTextField();
+        locId_Text = new javax.swing.JTextField();
         SA_Text = new javax.swing.JTextField();
         Postal_Text = new javax.swing.JTextField();
         Button_Delete = new javax.swing.JButton();
@@ -129,7 +129,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        Combo_Search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LocId", "City" }));
+        Combo_Search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "locId", "City" }));
         Combo_Search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Combo_SearchMouseClicked(evt);
@@ -160,9 +160,9 @@ public class LocationFrame extends javax.swing.JInternalFrame {
 
         Label_City.setText("City");
 
-        LocId_Text.addActionListener(new java.awt.event.ActionListener() {
+        locId_Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LocId_TextActionPerformed(evt);
+                locId_TextActionPerformed(evt);
             }
         });
 
@@ -226,7 +226,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                                 .addComponent(Label_PostalCode))
                             .addGap(25, 25, 25)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(LocId_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                .addComponent(locId_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                 .addComponent(SA_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                 .addComponent(Postal_Text))
                             .addGap(64, 64, 64)
@@ -253,7 +253,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_LocationID)
-                    .addComponent(LocId_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(locId_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_City)
                     .addComponent(City_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
@@ -283,7 +283,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
      * fungsi untuk meghapus nilai inputan pada text field
      */
     public void resetField(){
-        LocId_Text.setText("");
+        locId_Text.setText("");
         SA_Text.setText("");
         Postal_Text.setText("");
         City_Text.setText("");
@@ -297,8 +297,8 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         String filter=(String)Combo_Search.getSelectedItem();
         String val=Search_Text.getText();
         switch (filter){
-            case "LocId":
-            System.out.println("LocId" +filter);
+            case "locId":
+            System.out.println("locId" +filter);
                 System.out.println(val);
 
             if(val.isEmpty()){
@@ -308,12 +308,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                 tablocation.getDataVector().removeAllElements();
                 for (Location l : ilc.getLocById(val)) {
                     Object[] obj = new Object[6];
-                     obj[0] = l.getLocid();
-                    obj[1] = l.getStradd();
-                    obj[2] = l.getPoscode();
+                     obj[0] = l.getlocId();
+                    obj[1] = l.getstrAdd();
+                    obj[2] = l.getposCode();
                     obj[3] = l.getCity();
-                    obj[4] = l.getStaprov();
-                    obj[5] = l.getCounid();
+                    obj[4] = l.getstaProv();
+                    obj[5] = l.getcounId();
                     tablocation.addRow(obj);
                 }
             }
@@ -329,12 +329,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                      tablocation.getDataVector().removeAllElements();
                      for (Location l : ilc.getByCity(val)) {
                      Object[] obj = new Object[6];
-                       obj[0] = l.getLocid();
-                       obj[1] = l.getStradd();
-                       obj[2] = l.getPoscode();
+                       obj[0] = l.getlocId();
+                       obj[1] = l.getstrAdd();
+                       obj[2] = l.getposCode();
                        obj[3] = l.getCity();
-                       obj[4] = l.getStaprov();
-                       obj[5] = l.getCounid();
+                       obj[4] = l.getstaProv();
+                       obj[5] = l.getcounId();
                       tablocation.addRow(obj);
                     }
                  }
@@ -358,19 +358,19 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     private void Tabel_LocationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabel_LocationMouseClicked
         tablocation = (DefaultTableModel) Tabel_Location.getModel();
         int i = Tabel_Location.getSelectedRow();
-        LocId_Text.setText(tablocation.getValueAt(i, 0).toString());
+        locId_Text.setText(tablocation.getValueAt(i, 0).toString());
         SA_Text.setText(tablocation.getValueAt(i, 1).toString());
         Postal_Text.setText(tablocation.getValueAt(i, 2).toString());
         City_Text.setText(tablocation.getValueAt(i, 3).toString());
         SP_Text.setText(tablocation.getValueAt(i, 4).toString());
         Country_Text.setText(tablocation.getValueAt(i, 5).toString());
-        LocId_Text.setEditable(false);
+        locId_Text.setEditable(false);
         Button_Insert.setEnabled(false);
     }//GEN-LAST:event_Tabel_LocationMouseClicked
 
-    private void LocId_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocId_TextActionPerformed
+    private void locId_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locId_TextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LocId_TextActionPerformed
+    }//GEN-LAST:event_locId_TextActionPerformed
 
     private void Postal_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Postal_TextActionPerformed
         // TODO add your handling code here:
@@ -391,40 +391,40 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                 ilc.delete(del);
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Dihapus", "Deleted", JOptionPane.INFORMATION_MESSAGE);
                 getDataLocation();
-                LocId_Text.setEditable(true);
+                locId_Text.setEditable(true);
                 Button_Insert.setEnabled(true);
             }else{
                 getDataLocation();
-                LocId_Text.setEditable(true);
+                locId_Text.setEditable(true);
                 Button_Insert.setEnabled(true);
             }
         }
     }//GEN-LAST:event_Button_DeleteActionPerformed
 
     private void Button_UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_UpdateActionPerformed
-        if (LocId_Text.getText().equals("")||SA_Text.getText().equals("")||Postal_Text.getText().equals("")||City_Text.getText().equals("")||SP_Text.getText().equals("")||Country_Text.getText().equals("")) {
+        if (locId_Text.getText().equals("")||SA_Text.getText().equals("")||Postal_Text.getText().equals("")||City_Text.getText().equals("")||SP_Text.getText().equals("")||Country_Text.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            ilc.update(LocId_Text.getText(), SA_Text.getText(), Postal_Text.getText(), City_Text.getText(), SP_Text.getText(), Country_Text.getText());
+            ilc.update(locId_Text.getText(), SA_Text.getText(), Postal_Text.getText(), City_Text.getText(), SP_Text.getText(), Country_Text.getText());
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diperbaharui", "Updated", JOptionPane.INFORMATION_MESSAGE);
             getDataLocation();
-            LocId_Text.setEditable(true);
+            locId_Text.setEditable(true);
             Button_Insert.setEnabled(true);
         }
     }//GEN-LAST:event_Button_UpdateActionPerformed
 
     private void Button_InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_InsertActionPerformed
-        if (LocId_Text.getText().equals("")||(SA_Text.getText().equals(""))||(Postal_Text.getText().equals(""))||(City_Text.getText().equals(""))
+        if (locId_Text.getText().equals("")||(SA_Text.getText().equals(""))||(Postal_Text.getText().equals(""))||(City_Text.getText().equals(""))
             ||(SP_Text.getText().equals(""))||(Country_Text.getText().equals(""))) {
             JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
             resetField();
         }
         else{
-            ilc.insert(LocId_Text.getText(), SA_Text.getText(),Postal_Text.getText(),City_Text.getText(),SP_Text.getText(),Country_Text.getText());
+            ilc.insert(locId_Text.getText(), SA_Text.getText(),Postal_Text.getText(),City_Text.getText(),SP_Text.getText(),Country_Text.getText());
             getDataLocation();
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan", "Saved", JOptionPane.INFORMATION_MESSAGE);
         }
-        LocId_Text.setEditable(true);
+        locId_Text.setEditable(true);
     }//GEN-LAST:event_Button_InsertActionPerformed
 
 
@@ -441,7 +441,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel Label_PostalCode;
     private javax.swing.JLabel Label_StateProvince;
     private javax.swing.JLabel Label_StreetAddress;
-    private javax.swing.JTextField LocId_Text;
+    private javax.swing.JTextField locId_Text;
     private javax.swing.JTextField Postal_Text;
     private javax.swing.JTextField SA_Text;
     private javax.swing.JTextField SP_Text;

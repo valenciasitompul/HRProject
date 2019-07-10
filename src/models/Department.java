@@ -15,7 +15,7 @@ import javafx.scene.layout.Region;
     private String dptid;
     private String dptname;
     private int mgrid;
-    private int locid;
+    private int locId;
     
     /**
      * Constructor
@@ -31,13 +31,13 @@ import javafx.scene.layout.Region;
      * @param dptid bertipe string
      * @param dptname bertipe string
      * @param mgid bertipe integer
-     * @param locid bertipe integer
+     * @param locId bertipe integer
      */
-    public Department(String dptid, String dptname, int mgrid, int locid){
+    public Department(String dptid, String dptname, int mgrid, int locId){
         this.dptid = dptid;
         this.dptname = dptname;
         this.mgrid = mgrid;
-        this.locid = locid;
+        this.locId = locId;
         
     }
     
@@ -73,8 +73,8 @@ import javafx.scene.layout.Region;
      *
      * @return nilai kembalian berupa string
      */
-    public int getlocid(){
-        return locid;
+    public int getlocId(){
+        return locId;
     }
     
     /**
@@ -109,7 +109,7 @@ import javafx.scene.layout.Region;
      *
      * @param id bertipe string
      */
-    public void setlocid(int locid){
-        this.locid = locid;
+    public void setlocId(int locId){
+        this.locId = locId;
     }
 }

@@ -49,7 +49,7 @@ public class DepartmentDao implements IDepartmentDao{
                 d.setdptid(resultSet.getString(1));
                 d.setdptname(resultSet.getString(2));
                 d.setmgrid(resultSet.getInt(3));
-                d.setlocid(resultSet.getInt(4));
+                d.setlocId(resultSet.getInt(4));
                 listdepartment.add(d);
             }
         }
@@ -138,7 +138,7 @@ public class DepartmentDao implements IDepartmentDao{
             
             preparedStatement.setString(1, d.getdptname());
             preparedStatement.setInt(2, d.getmgrid());
-            preparedStatement.setInt(3, d.getlocid());
+            preparedStatement.setInt(3, d.getlocId());
             preparedStatement.setString(4, d.getdptid());
             preparedStatement.executeQuery();
             result = true;

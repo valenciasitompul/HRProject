@@ -62,13 +62,13 @@ public class DepartmentController implements icontrollers.IDepartmentController{
      * @param dptid bertipe string
      * @param dptname bertipe string
      * @param mgrid bertipe int
-     * @param locid bertipe int
+     * @param locId bertipe int
      * @return nilai kembalian berupa string
      */
     @Override
-    public String insert(String dptid, String dptname, int mgrid, int locid) {
+    public String insert(String dptid, String dptname, int mgrid, int locId) {
         String result;
-        Department d = new Department(dptid, dptname, mgrid, locid);
+        Department d = new Department(dptid, dptname, mgrid, locId);
         if(idc.insertupdate(d, false)){
             result = "data tersimpan";
         }else{
@@ -82,13 +82,13 @@ public class DepartmentController implements icontrollers.IDepartmentController{
      * @param dptid bertipe string
      * @param dptname bertipe string
      * @param mgrid bertipe int
-     * @param locid bertipe int
+     * @param locId bertipe int
      * @return nilai kembalian berupa string
      */
     @Override
-    public String update(String dptid, String dptname, int mgrid, int locid) {
+    public String update(String dptid, String dptname, int mgrid, int locId) {
         String result;
-        Department d = new Department(dptid, dptname, mgrid, locid);
+        Department d = new Department(dptid, dptname, mgrid, locId);
         if(idc.insertupdate(d, true)){
             result = "data terupdate";
         }else{
