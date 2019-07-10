@@ -45,6 +45,8 @@ public class HRFrame extends javax.swing.JFrame {
     File RegionReportById = new File("src/reports/RegionReportById.jrxml");
     File EmployeeReportAll = new File("src/reports/EmployeeReportALL.jrxml");
     File EmployeeReportById = new File("src/reports/EmployeeReportBYID.jrxml");
+    File LocationReportAll = new File("src/reports/LocationReport.jrxml");
+    File LocationReportById = new File("src/reports/LocationReportByID.jrxml");
     
     /**
      * Creates new form HRFrame
@@ -88,6 +90,9 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
         getRegionReportAll = new javax.swing.JMenuItem();
         getRegionReportById = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        getLocationReportAll = new javax.swing.JMenuItem();
+        getLocationReportById = new javax.swing.JMenuItem();
 
         jMenu7.setText("jMenu7");
 
@@ -265,6 +270,21 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu8.add(getRegionReportById);
 
         jMenu2.add(jMenu8);
+
+        jMenu6.setText("Locations");
+
+        getLocationReportAll.setText("Semua Data");
+        jMenu6.add(getLocationReportAll);
+
+        getLocationReportById.setText("Berdasarkan ID");
+        getLocationReportById.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getLocationReportByIdActionPerformed(evt);
+            }
+        });
+        jMenu6.add(getLocationReportById);
+
+        jMenu2.add(jMenu6);
 
         jMenuBar1.add(jMenu2);
 
@@ -571,6 +591,54 @@ public class HRFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_getEmpByIdActionPerformed
 
+    private void getLocationReportAllActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        // TODO add your handling code here:
+       try {
+            JasDes = JRXmlLoader.load(LocationReportAll);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }  
+    
+    private void getLocationReportByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getLocationReportByIdActionPerformed
+        // TODO add your handling code here:
+        String id = JOptionPane.showInputDialog(rootPane, "Masukkan id");
+        try {
+            if(id.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Masukkan inputan!!!!");
+            }else{
+                JasDes = JRXmlLoader.load(LocationReportById);
+                param.put("emp_id", Integer.parseInt(id));
+                JasRep = JasperCompileManager.compileReport(JasDes);
+                JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+                JInternalFrame frame = new JInternalFrame("Laporan Location Berdasarkan ID");
+                frame.getContentPane().add(new JRViewer(JasPri));
+                frame.pack();
+                frame.setResizable(true);
+                frame.setClosable(true);
+                frame.setMaximizable(true);
+                frame.setSize(1000,800);
+                frame.setVisible(true);
+                HR_DesktopPane.add(frame);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_getLocationReportByIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -616,6 +684,8 @@ public class HRFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem getEmpById;
     private javax.swing.JMenuItem getJobReportAll;
     private javax.swing.JMenuItem getJobReportById;
+    private javax.swing.JMenuItem getLocationReportAll;
+    private javax.swing.JMenuItem getLocationReportById;
     private javax.swing.JMenuItem getRegionReportAll;
     private javax.swing.JMenuItem getRegionReportById;
     private javax.swing.JMenu jMenu1;
@@ -623,6 +693,7 @@ public class HRFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
