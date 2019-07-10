@@ -117,6 +117,8 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         Label_StreetAddress = new javax.swing.JLabel();
         Label_LocationID = new javax.swing.JLabel();
 
+        setClosable(true);
+
         Search_Text.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 Search_TextKeyReleased(evt);
