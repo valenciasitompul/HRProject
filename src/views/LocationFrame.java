@@ -20,7 +20,7 @@ import models.Location;
 import tools.Koneksi;
 
 /**
- *
+ * fungsi untuk membuat tampilan menu item location frame yang menjalankan operasi CRUD
  * @author Fachrurrozy
  */
 public class LocationFrame extends javax.swing.JInternalFrame {
@@ -68,14 +68,17 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             tableColumn.setPreferredWidth( preferredWidth );
         }
     }
+    
+    /**
+     * fungsi untuk mengambil data dari tabel LOCATIONS agar tampil di location frame
+     */
     public void getDataLocation(){
-        //mengosongkan textfiled id dan name
         resetField();
         
-        //menghapus isi table region
+        //menghapus isi table
         tablocation.getDataVector().removeAllElements();
         tablocation.fireTableDataChanged();
-        //memanggil list data tabel region dari database
+        //memanggil list data tabel dari database
         for (Location l : ilc.getAll()) {
             Object[] obj = new Object[6];
             obj[0] = l.getLocid();
@@ -276,6 +279,9 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * fungsi untuk meghapus nilai inputan pada text field
+     */
     public void resetField(){
         LocId_Text.setText("");
         SA_Text.setText("");
@@ -285,8 +291,6 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         Country_Text.setText("");
     }
      
-       
-    
        
     
     private void Search_TextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Search_TextKeyReleased
