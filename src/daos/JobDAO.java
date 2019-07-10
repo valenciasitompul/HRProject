@@ -10,6 +10,7 @@ import models.Job;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class JobDAO implements IJobDAO {
 
-    private Connection connection;
+    private final Connection connection;
 
     /**
      * Constructor dengan satu parameter
@@ -37,6 +38,7 @@ public class JobDAO implements IJobDAO {
      *
      * @return nilai kembalian berupa list
      */
+    @Override
     public List<Job> getAll() {
         List<Job> listJob = new ArrayList<Job>();
         String query = "SELECT * FROM JOBS ORDER BY JOB_ID ASC";
@@ -45,13 +47,9 @@ public class JobDAO implements IJobDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Job j = new Job(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(4));
-                j.setId(resultSet.getString(1));
-                j.setTitle(resultSet.getString(2));
-                j.setMin(resultSet.getInt(3));
-                j.setMax(resultSet.getInt(4));
                 listJob.add(j);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -68,6 +66,7 @@ public class JobDAO implements IJobDAO {
      * @param isUpdate bertipe boolean
      * @return nilai kembalian berupa boolean
      */
+    @Override
     public boolean insertupdate(Job j, boolean isUpdate) {
         boolean result = false;
         String query = "INSERT INTO JOBS (JOB_TITLE, MIN_SALARY, MAX_SALARY, JOB_ID) VALUES (?,?,?,?) ";
@@ -82,7 +81,7 @@ public class JobDAO implements IJobDAO {
             preparedStatement.setString(4, j.getId());
             preparedStatement.executeQuery();
             result = true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -95,6 +94,7 @@ public class JobDAO implements IJobDAO {
      * @param d bertipe string
      * @return nilai kembalian berupa boolean
      */
+    @Override
     public boolean delete(String d) {
         boolean result = false;
         String query = "DELETE FROM JOBS WHERE JOB_ID = ? ";
@@ -103,7 +103,7 @@ public class JobDAO implements IJobDAO {
             statement.setString(1, d);
             statement.execute();
             result = true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -150,31 +150,18 @@ public class JobDAO implements IJobDAO {
         List<Job> listJobTitle = new ArrayList<Job>();
         String query = "SELECT * FROM JOBS WHERE REGEXP_LIKE(JOB_TITLE, (?), 'i')";
         try {
-            //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, title);
             ResultSet resultSet = preparedStatement.executeQuery();
-            //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
             while (resultSet.next()) {
                 Job j = new Job(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(4));
                 listJobTitle.add(j);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
         return listJobTitle;
-    }
-
-    /**
-     * fungsi untuk melakukan pencarian pada tabel JOBS
-     *
-     * @param key bertipe string
-     * @return nilai kembalian berupa string
-     */
-    @Override
-    public List<Job> search(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

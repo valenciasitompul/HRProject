@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -35,8 +36,8 @@ public class HRFrame extends javax.swing.JFrame {
     File file1 = new File("src/reports/CountriesReport.jrxml");
     File file2 = new File("CountriesReportBYID.jrxml");
     
-    File JobReportAll = new File("reports/JobsReportALL.jrxml");
-    File JobReportById = new File("JobsReportBYID.jrxml");
+    File JobReportAll = new File("src/reports/JobsReportALL.jrxml");
+    File JobReportById = new File("src/reports/JobsReportBYID.jrxml");
     /**
      * Creates new form HRFrame
      */
@@ -226,7 +227,7 @@ public class HRFrame extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-      LocationFrame lf = new LocationFrame();
+        LocationFrame lf = new LocationFrame();
         HR_DesktopPane.add(lf);
         lf.setVisible(true);  
     }//GEN-LAST:event_jMenuItem5ActionPerformed
@@ -260,25 +261,44 @@ public class HRFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_getAllMenuActionPerformed
 
     private void jMenuIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIDActionPerformed
-   
+        String id = JOptionPane.showInputDialog(rootPane, "Masukkan ID");
         try {
-            JasDes = JRXmlLoader.load(JobReportAll);
-            param.clear();
+            JasDes = JRXmlLoader.load(JobReportById);
+            param.put("JOB_ID", id);
             JasRep = JasperCompileManager.compileReport(JasDes);
             JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JasperViewer.viewReport(JasPri);
-        } catch (Exception e) {
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
+        } catch (JRException e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }
     }//GEN-LAST:event_jMenuIDActionPerformed
 
     private void jMenuAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAllActionPerformed
+        
         try {
             JasDes = JRXmlLoader.load(JobReportAll);
             param.clear();
             JasRep = JasperCompileManager.compileReport(JasDes);
             JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JasperViewer.viewReport(JasPri);
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }

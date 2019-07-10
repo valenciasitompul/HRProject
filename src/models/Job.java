@@ -38,15 +38,6 @@ public class Job {
     }
 
     /**
-     * Constructor satu parameter (job id)
-     *
-     * @param id bertipe string
-     */
-    public Job(String id) {
-        this.id = id;
-    }
-
-    /**
      * fungsi untuk mendapatkan job id
      *
      * @return nilai kembalian berupa string

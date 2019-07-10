@@ -18,7 +18,7 @@ import models.Job;
  */
 public class JobController implements IJobController{
     
-    private IJobDAO ijdao;
+    private final IJobDAO ijdao;
     
     /**
      * Constructor dengan satu parameter 
@@ -32,6 +32,7 @@ public class JobController implements IJobController{
      * fungsi untuk mendapatkan/menampilkan semua data yaitu job id, job title, minimal salary dan maksimal salary dari tabel JOBS
      * @return nilai kembalian berupa list
      */
+    @Override
     public List<Job> getAll(){
         return ijdao.getAll();
     }
@@ -41,6 +42,7 @@ public class JobController implements IJobController{
      * @param id bertipe string
      * @return nilai kembalian berupa list
      */
+    @Override
     public List<Job> getById(String id){
         return ijdao.getById(id);
     }
@@ -50,6 +52,7 @@ public class JobController implements IJobController{
      * @param title bertipe string
      * @return nilai kembalian berupa list
      */
+    @Override
     public List<Job> getByTitle(String title){
         return ijdao.getByTitle(title);
     }
@@ -62,8 +65,9 @@ public class JobController implements IJobController{
      * @param max bertipe string
      * @return nilai kembalian berupa string
      */
+    @Override
     public String insert(String id,String title, String min, String max) {
-        String result = "";
+        String result = null;
         Job job = new Job(id, title, Integer.parseInt(min), Integer.parseInt(max));
         if(ijdao.insertupdate(job, false)){
             result = "Data berhasil disimpan";
@@ -82,8 +86,9 @@ public class JobController implements IJobController{
      * @param max bertipe string
      * @return nilai kembalian berupa string
      */
+    @Override
     public String update(String id, String title, String min, String max) {
-        String result = "";
+        String result = null;
         Job job = new Job(id, title, Integer.parseInt(min), Integer.parseInt(max));
         if(ijdao.insertupdate(job, true)){
             result = "Data berhasil diupdate";
@@ -98,24 +103,15 @@ public class JobController implements IJobController{
      * @param id bertipe string
      * @return nilai kebalian berupa string
      */
+    @Override
     public String delete(String id) {
-        String result = "";
+        String result = null;
         if(ijdao.delete(id)){
             result = "Data berhasil dihapus";
         }else{
             result = "maaf data gagal dihapus";
         }
         return result;
-    }
-
-    /**
-     * fungsi untuk melakukan pencarian pada tabel JOBS
-     * @param key bertipe string
-     * @return nilai kembalian berupa list
-     */
-    @Override
-    public List<Job> search(String key) {
-        return ijdao.search(key);
     }
 
 }

@@ -40,13 +40,6 @@ public interface IJobController {
      */
     public List<Job> getByTitle(String title);
 
-    /**
-     * fungsi untuk melakukan pencarian pada tabel JOBS
-     *
-     * @param key bertipe string
-     * @return nilai kembalian berupa list
-     */
-    public List<Job> search(String key);
 
     /**
      * fungsi untuk menambahkan data baru yaitu job id, job title, minimal
