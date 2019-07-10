@@ -24,7 +24,7 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
- *
+ * fungsi untuk membuat tampilan menu item country frame yang menjalankan operasi CRUD
  * @author HARRY-PC
  */
 public class CountryFrame extends javax.swing.JInternalFrame {
@@ -57,6 +57,9 @@ public class CountryFrame extends javax.swing.JInternalFrame {
         tampil_combo();
     }
     
+    /**
+     * fungsi untuk mengambil data dari tabel COUNTRIES agar tampil di country frame
+     */
     public void getDataCountry(){
         tableCountry.getDataVector().removeAllElements();
         tableCountry.fireTableDataChanged();
@@ -69,6 +72,9 @@ public class CountryFrame extends javax.swing.JInternalFrame {
         }
     }
     
+    /**
+     * fungsi untuk meghapus nilai inputan pada text field
+     */
     public void resetField(){
         txtCountry_id.setText("");
         txtCountry_name.setText("");
