@@ -43,10 +43,10 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
         tableDepartment.fireTableDataChanged();
         for(Department department : icc.getAll() ){
             Object[] objects = new Object[4];
-            objects[0] = department.getId();
-            objects[1] = department.getName();
-            objects[2] = department.getManager_id();
-            objects[3] = department.getLocation_id();
+            objects[0] = department.getdptid();
+            objects[1] = department.getdptname();
+            objects[2] = department.getmgrid();
+            objects[3] = department.getlocid();
             tableDepartment.addRow(objects);
         }
     }
@@ -120,6 +120,11 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
         });
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnHapus.setText("Hapus");
 
@@ -197,13 +202,17 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
             resetField();
         }else{
-            icc.insert(txtDepartment_id.getText(), txtDepartment_name.getText(), txtManager_id.getText());
+            icc.insert(txtDepartment_id.getText(), txtDepartment_name.getText(), Integer.parseInt(txtManager_id.getText()),Integer.parseInt(txtManager_id.getText()));
             getDataDepartment();
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan", "Saved", JOptionPane.INFORMATION_MESSAGE);
             resetField();
         }
         txtDepartment_id.setEditable(true);
     }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
