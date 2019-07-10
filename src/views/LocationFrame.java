@@ -1,13 +1,17 @@
+package views;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views;
+
 
 import controllers.LocationController;
 import icontrollers.ILocationController;
 import java.awt.Component;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -23,7 +27,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     Koneksi koneksi = new Koneksi();
     ILocationController ilc = new LocationController(koneksi.getConnection());
     private DefaultTableModel tablocation;
-    
+     Map param = new HashMap();
     
     /**
      * Creates new form LocationFram
@@ -36,13 +40,34 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         tablocation.addColumn("Street ad ");
         tablocation.addColumn("Pose code ");
         tablocation.addColumn("City ");
-        tablocation.addColumn("Staprov ");
+        tablocation.addColumn("staProv ");
         tablocation.addColumn("Country Id");
         
         getDataLocation();
     }
     
-    
+    public void ColumnAdjuser()
+    {
+        for (int column = 0; column < Tabel_Location.getColumnCount(); column++)
+        {
+            TableColumn tableColumn = Tabel_Location.getColumnModel().getColumn(column);
+            int preferredWidth = tableColumn.getMinWidth();
+            int maxWidth = tableColumn.getMaxWidth();
+            for (int row = 0; row < Tabel_Location.getRowCount(); row++)
+            {
+                TableCellRenderer cellRenderer = Tabel_Location.getCellRenderer(row, column);
+                Component c = Tabel_Location.prepareRenderer(cellRenderer, row, column);
+                int width = c.getPreferredSize().width + Tabel_Location.getIntercellSpacing().width;
+                preferredWidth = Math.max(preferredWidth, width);
+                if (preferredWidth >= maxWidth)
+                {
+                    preferredWidth = maxWidth;
+                    break;
+                }
+            }
+            tableColumn.setPreferredWidth( preferredWidth );
+        }
+    }
     public void getDataLocation(){
         //mengosongkan textfiled id dan name
         resetField();
@@ -53,14 +78,15 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         //memanggil list data tabel region dari database
         for (Location l : ilc.getAll()) {
             Object[] obj = new Object[6];
-            obj[0] = l.getLocid();
-            obj[1] = l.getStradd();
-            obj[2] = l.getPoscode();
+            obj[0] = l.getLocById();
+            obj[1] = l.getstrAdd();
+            obj[2] = l.getPosCode();
             obj[3] = l.getCity();
-            obj[4] = l.getStaprov();
-            obj[5] = l.getCounid();
+            obj[4] = l.getStaProv();
+            obj[5] = l.getCounId();
             tablocation.addRow(obj);
         }
+        ColumnAdjuser();
     }
 
     /**
@@ -79,7 +105,6 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         City_Text = new javax.swing.JTextField();
         SP_Text = new javax.swing.JTextField();
         Country_Text = new javax.swing.JTextField();
-        Button_Print = new javax.swing.JButton();
         Label_CountryID = new javax.swing.JLabel();
         Label_StateProvince = new javax.swing.JLabel();
         Label_City = new javax.swing.JLabel();
@@ -101,7 +126,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        Combo_Search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Name" }));
+        Combo_Search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LocId", "City" }));
         Combo_Search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Combo_SearchMouseClicked(evt);
@@ -125,13 +150,6 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(Tabel_Location);
-
-        Button_Print.setText("Print");
-        Button_Print.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_PrintActionPerformed(evt);
-            }
-        });
 
         Label_CountryID.setText("Country ID");
 
@@ -191,14 +209,13 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                         .addComponent(Button_Update)
                         .addGap(18, 18, 18)
                         .addComponent(Button_Delete)
-                        .addGap(315, 315, 315)
-                        .addComponent(Button_Print))
+                        .addGap(370, 370, 370))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Search_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Combo_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Label_StreetAddress)
@@ -229,8 +246,8 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                     .addComponent(Combo_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Search_Text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_LocationID)
                     .addComponent(LocId_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,7 +259,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                     .addComponent(SA_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_StateProvince)
                     .addComponent(SP_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_PostalCode)
                     .addComponent(Postal_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,8 +269,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button_Insert)
                     .addComponent(Button_Update)
-                    .addComponent(Button_Delete)
-                    .addComponent(Button_Print))
+                    .addComponent(Button_Delete))
                 .addGap(24, 24, 24))
         );
 
@@ -270,65 +286,65 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     }
      
        
+    
+       
+    
     private void Search_TextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Search_TextKeyReleased
         String filter=(String)Combo_Search.getSelectedItem();
         String val=Search_Text.getText();
         switch (filter){
             case "LocId":
-            //System.out.println("id" +filter);
+            System.out.println("LocId" +filter);
+                System.out.println(val);
 
             if(val.isEmpty()){
                 getDataLocation();
             }else{
                 getDataLocation();
                 tablocation.getDataVector().removeAllElements();
-                for (Location l : ilc.getLocid(val)) {
-                    Object[] obj = new Object[2];
-                    obj[0] = l.getLocid();
+                for (Location l : ilc.getLocById(val)) {
+                    Object[] obj = new Object[6];
+                    obj[0] = l.getLocById();
+                    obj[1] = l.getstrAdd();
+                    obj[2] = l.getPosCode();
+                    obj[3] = l.getCity();
+                    obj[4] = l.getStaProv();
+                    obj[5] = l.getCounId();
                     tablocation.addRow(obj);
                 }
             }
             break;
-            //            case "Name":
-            //                try {
-                //                    //System.out.println("name" +filter);
-                //                if(val.isEmpty()){
-                    //                    getDataLocation();
-                    //                }else{
-                    //                    getDataLocation();
-                    //                    tablocation.getDataVector().removeAllElements();
-                    //                    for (Location l : ilc.getByName(val)) {
-                        //                         Object[] obj = new Object[2];
-                        //                         obj[0] = l.getLocid();
-                        //                         tablocation.addRow(obj);
-                        //                    }
-                    //                }
-                //
-                //                } catch (Exception e) {
-                //                    System.out.println(e.getMessage());
-                //            e.printStackTrace();
-                //                }
-            //                break;
+            case "City":
+            try {
+                System.out.println("City" +filter);
+                System.out.println(val);                    //System.out.println("name" +filter);
+                if(val.isEmpty()){
+                     getDataLocation();
+                }else{
+                     getDataLocation();
+                     tablocation.getDataVector().removeAllElements();
+                     for (Location l : ilc.getByCity(val)) {
+                     Object[] obj = new Object[6];
+                      obj[0] = l.getLocById();
+                      obj[1] = l.getstrAdd();
+                      obj[2] = l.getPosCode();
+                      obj[3] = l.getCity();
+                      obj[4] = l.getStaProv();
+                      obj[5] = l.getCounId();
+                      tablocation.addRow(obj);
+                    }
+                 }
+                
+            } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            }
+           break;
             default:
             break;
         }
 
-        /*
-        //menampilkan hasil pencarian secara umum tanpa parameter
-        String val=Search_Text.getText();
-        if(val.isEmpty()){
-            getDataRegion();
-        }else{
-            getDataRegion();
-            tabregion.getDataVector().removeAllElements();
-            for (Region r : irc.search(val)) {
-                Object[] obj = new Object[2];
-                obj[0] = r.getId();
-                obj[1] = r.getName();
-                tabregion.addRow(obj);
-            }
-        }
-        */
+        
     }//GEN-LAST:event_Search_TextKeyReleased
 
     private void Combo_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Combo_SearchMouseClicked
@@ -347,34 +363,6 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         LocId_Text.setEditable(false);
         Button_Insert.setEnabled(false);
     }//GEN-LAST:event_Tabel_LocationMouseClicked
-
-    private void Button_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_PrintActionPerformed
-        //
-        try {
-            if (Search_Text.getText().isEmpty()) {
-
-                //                JasDes = JRXmlLoader.load(All);
-                //                param.clear();
-                //            }else if  ( Combo_Search.getSelectedItem()=="Id"){
-                //                JasDes = JRXmlLoader.load(byId);
-                //                param.put("REGION_ID",Integer.parseInt(Search_Text.getText()));
-                //            }
-            //            else if (Combo_Search.getSelectedItem()=="Name"){
-                //                JasDes = JRXmlLoader.load(byName);
-                //                param.put("REGION_NAME",String.valueOf(Search_Text.getText()));
-                //                System.out.println(Combo_Search.getSelectedItem());
-                //                System.out.println(Search_Text.getText());
-            }
-            //
-            //
-            //            JasRep = JasperCompileManager.compileReport(JasDes);
-            //            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            //            JasperViewer.viewReport(JasPri, false);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_Button_PrintActionPerformed
 
     private void LocId_TextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocId_TextActionPerformed
         // TODO add your handling code here:
@@ -421,10 +409,9 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_Button_UpdateActionPerformed
 
-    
     private void Button_InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_InsertActionPerformed
-        if (LocId_Text.getText().isEmpty()||(SA_Text.getText().isEmpty())||(Postal_Text.getText().isEmpty())||(City_Text.getText().isEmpty())
-            ||(SP_Text.getText().isEmpty())||(Country_Text.getText().isEmpty())) {
+        if (LocId_Text.getText().equals("")||(SA_Text.getText().equals(""))||(Postal_Text.getText().equals(""))||(City_Text.getText().equals(""))
+            ||(SP_Text.getText().equals(""))||(Country_Text.getText().equals(""))) {
             JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
             resetField();
         }
@@ -432,7 +419,6 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             ilc.insert(LocId_Text.getText(), SA_Text.getText(),Postal_Text.getText(),City_Text.getText(),SP_Text.getText(),Country_Text.getText());
             getDataLocation();
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan", "Saved", JOptionPane.INFORMATION_MESSAGE);
-            resetField();
         }
         LocId_Text.setEditable(true);
     }//GEN-LAST:event_Button_InsertActionPerformed
@@ -441,7 +427,6 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Delete;
     private javax.swing.JButton Button_Insert;
-    private javax.swing.JButton Button_Print;
     private javax.swing.JButton Button_Update;
     private javax.swing.JTextField City_Text;
     private javax.swing.JComboBox<String> Combo_Search;

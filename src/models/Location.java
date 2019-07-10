@@ -31,7 +31,7 @@ public class Location {
         this.counid= counid;
     }
     
-    public int getLocid(){
+    public int getLocById(){
         return locid;
     }
     
