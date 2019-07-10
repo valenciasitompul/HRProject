@@ -274,6 +274,11 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu6.setText("Locations");
 
         getLocationReportAll.setText("Semua Data");
+        getLocationReportAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getLocationReportAllActionPerformed(evt);
+            }
+        });
         jMenu6.add(getLocationReportAll);
 
         getLocationReportById.setText("Berdasarkan ID");
@@ -591,27 +596,7 @@ public class HRFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_getEmpByIdActionPerformed
 
-    private void getLocationReportAllActionPerformed(java.awt.event.ActionEvent evt) {                                                      
-        // TODO add your handling code here:
-       try {
-            JasDes = JRXmlLoader.load(LocationReportAll);
-            param.clear();
-            JasRep = JasperCompileManager.compileReport(JasDes);
-            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JInternalFrame frame = new JInternalFrame("Laporan");
-            frame.getContentPane().add(new JRViewer(JasPri));
-            frame.pack();
-            frame.setResizable(true);
-            frame.setClosable(true);
-            frame.setMaximizable(true);
-            frame.setSize(1000,800);
-            frame.setVisible(true);
-            //JasperViewer.viewReport(JasPri, false);
-            HR_DesktopPane.add(frame);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e);
-        }
-    }  
+    
     
     private void getLocationReportByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getLocationReportByIdActionPerformed
         // TODO add your handling code here:
@@ -638,6 +623,29 @@ public class HRFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, e);
         }
     }//GEN-LAST:event_getLocationReportByIdActionPerformed
+
+    private void getLocationReportAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getLocationReportAllActionPerformed
+        // TODO add your handling code here:
+       try {
+            JasDes = JRXmlLoader.load(LocationReportAll);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    
+    }//GEN-LAST:event_getLocationReportAllActionPerformed
 
     /**
      * @param args the command line arguments
