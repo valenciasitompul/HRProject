@@ -115,6 +115,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
         txtMinSalary = new javax.swing.JTextField();
         txtMaxSalary = new javax.swing.JTextField();
 
+        setClosable(true);
         setTitle("Jobs Form");
 
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
