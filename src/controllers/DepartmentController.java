@@ -37,7 +37,7 @@ public class DepartmentController implements icontrollers.IDepartmentController{
     }
 
     /**
-     * fungsi untuk mendapatkan/menampilkan data Department berdasarkan id
+     * fungsi untuk mendapatkan/menampilkan data Department berdasarkan department id
      * @param id bertipe string
      * @return nilai kembalian berupa list
      */
@@ -98,7 +98,7 @@ public class DepartmentController implements icontrollers.IDepartmentController{
     }
     
     /**
-     * fungsi untuk menghapus data pada tabel department berdasarkan id
+     * fungsi untuk menghapus data pada tabel department berdasarkan department id
      * @param id bertipe string
      * @return nilai kebalian berupa string
      */

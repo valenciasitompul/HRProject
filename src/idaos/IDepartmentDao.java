@@ -21,14 +21,28 @@ public interface IDepartmentDao {
      */
     public List<Department> getAll();
         
+    /**
+     * fungsi untuk mendapatkan/menampilkan data
+     * dari tabel Departmnet berdasarkan department id
+     *
+     * @param dptid bertipe string
+     * @return nilai kembalian berupa list
+     */
     public List<Department> getById(String dptid);
     
+    /**
+     * fungsi untuk mendapatkan/menampilkan data
+     * dari tabel Departmenet berdasarkan inputan
+     *
+     * @param key bertipe string
+     * @return nilai kembalian berupa list
+     */
     public List<Department> search(String key);
     
     /**
      * fungsi untuk menambahkan data baru atau untuk mengubah data
      * pada tabel department pada saat
-     * mengubah data, job id tidak dapat diubah
+     * mengubah data, departmen id tidak dapat diubah
      *
      * @param j bertipe Job
      * @param isUpdate bertipe boolean
@@ -36,7 +50,20 @@ public interface IDepartmentDao {
      */
     public boolean insertupdate(Department d,boolean isUpdate);
   
+    /**
+     * fungsi untuk menghapus data pada tabel Department berdasarkan department id
+     *
+     * @param del bertipe string
+     * @return nilai kembalian berupa boolean
+     */
     public boolean delete(String del);
     
+    /**
+     * fungsi untuk mendapatkan/menampilkan data
+     * dari tabel Departmnet berdasarkan department name
+     *
+     * @param dptname bertipe string
+     * @return nilai kembalian berupa list
+     */
     public List<Department> getByName(String dptname);
 }

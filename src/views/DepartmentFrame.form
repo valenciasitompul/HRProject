@@ -39,26 +39,20 @@
                               <Component id="lblDepartmnet_id" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblDepartment_name" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblManager_id" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnSimpan" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="btnHapus" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="78" max="32767" attributes="0"/>
-                                  <Component id="btnHapus1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtDepartment_id" pref="243" max="32767" attributes="0"/>
-                                      <Component id="txtDepartment_name" max="32767" attributes="0"/>
-                                      <Component id="txtManager_id" max="32767" attributes="0"/>
-                                      <Component id="txtLocation_id" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="txtDepartment_id" pref="243" max="32767" attributes="0"/>
+                              <Component id="txtDepartment_name" max="32767" attributes="0"/>
+                              <Component id="txtManager_id" max="32767" attributes="0"/>
+                              <Component id="txtLocation_id" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -97,12 +91,11 @@
                   <Component id="lblLocation_id" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtLocation_id" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnHapus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnHapus1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
@@ -185,11 +178,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLocation_id">
-    </Component>
-    <Component class="javax.swing.JButton" name="btnHapus1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Print"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSearch">
       <Events>

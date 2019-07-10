@@ -28,7 +28,7 @@ public interface IDepartmentController {
     
     /**
      * fungsi untuk mendapatkan/menampilkan semua data
-     * dari tabel Department berdasarkan nama
+     * dari tabel Department berdasarkan departmen nama
      *
      * @param dptname bertipe string
      * @return nilai kembalian berupa list
@@ -45,7 +45,7 @@ public interface IDepartmentController {
     public List<Department> search(String key);
     
     /**
-     * fungsi untuk menambahkan data baru yaitu department id, departmen name, management id
+     * fungsi untuk menambahkan data baru yaitu department id, departmen name, manager id
      * dan location id pada tabel department
      *
      * @param dptid bertipe string
@@ -57,7 +57,7 @@ public interface IDepartmentController {
     public String insert(String dptid, String dptname, int mgrid, int locid);
     
     /**
-     * fungsi untuk merubah data baru yaitu department id, departmen name, management id
+     * fungsi untuk merubah data baru yaitu department id, departmen name, manager id
      * dan location id pada tabel department
      *
      * @param dptid bertipe string
@@ -69,7 +69,7 @@ public interface IDepartmentController {
     public String update(String dptid, String dptname, int mgrid, int locid);
     
     /**
-     * fungsi untuk menghapus data pada tabel Department berdasarkan id
+     * fungsi untuk menghapus data pada tabel Department berdasarkan departmen id
      *
      * @param id bertipe string
      * @return nilai kembalian berupa string

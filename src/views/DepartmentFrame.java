@@ -89,7 +89,6 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
         txtManager_id = new javax.swing.JTextField();
         lblLocation_id = new javax.swing.JLabel();
         txtLocation_id = new javax.swing.JTextField();
-        btnHapus1 = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         cbSearch = new javax.swing.JComboBox<>();
 
@@ -143,8 +142,6 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
 
         lblLocation_id.setText("Location ID");
 
-        btnHapus1.setText("Print");
-
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
@@ -181,23 +178,19 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblDepartmnet_id)
                                 .addComponent(lblDepartment_name)
-                                .addComponent(lblManager_id)
-                                .addComponent(btnSimpan))
+                                .addComponent(lblManager_id))
+                            .addGap(34, 34, 34)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
+                                    .addComponent(btnSimpan)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnEdit)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnHapus)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                                    .addComponent(btnHapus1))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(34, 34, 34)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtDepartment_id, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                                        .addComponent(txtDepartment_name)
-                                        .addComponent(txtManager_id)
-                                        .addComponent(txtLocation_id)))))))
+                                    .addGap(30, 30, 30)
+                                    .addComponent(btnHapus))
+                                .addComponent(txtDepartment_id, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                                .addComponent(txtDepartment_name)
+                                .addComponent(txtManager_id)
+                                .addComponent(txtLocation_id)))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -225,12 +218,11 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLocation_id)
                     .addComponent(txtLocation_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
                     .addComponent(btnEdit)
-                    .addComponent(btnHapus)
-                    .addComponent(btnHapus1))
+                    .addComponent(btnHapus))
                 .addGap(23, 23, 23))
         );
 
@@ -364,7 +356,6 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTable Tabel_Department;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
-    private javax.swing.JButton btnHapus1;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JComboBox<String> cbSearch;
     private javax.swing.JScrollPane jScrollPane1;

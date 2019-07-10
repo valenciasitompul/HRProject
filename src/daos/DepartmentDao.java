@@ -33,7 +33,7 @@ public class DepartmentDao implements IDepartmentDao{
    
     /**
      * fungsi untuk mendapatkan/menampilkan semua data pada yaitu department id, 
-     * department name, management id dan location id dari tabel Department
+     * department name, manager id dan location id dari tabel Department
      *
      * @return nilai kembalian berupa list
      */
@@ -63,7 +63,8 @@ public class DepartmentDao implements IDepartmentDao{
     
     /**
      * fungsi untuk mendapatkan/menampilkan semua data yaitu department id, 
-     * department name, management id dan location id dari tabel Department berdasarkan id
+     * department name, manager id dan location id dari tabel 
+     * Department berdasarkan departmen id
      *
      * @param dptid bertipe string
      * @return nilai kembalian berupa list
@@ -116,8 +117,8 @@ public class DepartmentDao implements IDepartmentDao{
 
     /**
      * fungsi untuk menambahkan data baru yaitu department id, 
-     * department name, management id dan location id pada tabel Department atau untuk mengubah data department id, 
-     * department name, management id dan location id pada tabel Department pada saat
+     * department name, manager id dan location id pada tabel Department atau untuk mengubah data department id, 
+     * department name, manager id dan location id pada tabel Department pada saat
      * mengubah data, department id tidak dapat diubah
      *
      * @param d bertipe Department
@@ -149,7 +150,7 @@ public class DepartmentDao implements IDepartmentDao{
     }
 
      /**
-     * fungsi untuk menghapus data pada tabel Department berdasarkan id
+     * fungsi untuk menghapus data pada tabel Department berdasarkan department id
      *
      * @param del bertipe string
      * @return nilai kembalian berupa boolean
@@ -172,7 +173,8 @@ public class DepartmentDao implements IDepartmentDao{
 
     /**
      * fungsi untuk mendapatkan/menampilkan semua data yaitu department id, 
-     * department name, management id dan location id dari tabel department berdasarkan nama
+     * department name, manager id dan location id dari tabel department 
+     * berdasarkan departmen nama
      *
      * @param dptname bertipe string
      * @return nilai kembalian berupa list
