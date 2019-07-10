@@ -158,7 +158,6 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
         Label_employeeId = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         Combo_Search = new javax.swing.JComboBox<>();
-        Button_Print = new javax.swing.JButton();
         Label_email = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         txtPNumber = new javax.swing.JTextField();
@@ -260,13 +259,6 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        Button_Print.setText("Print");
-        Button_Print.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_PrintActionPerformed(evt);
-            }
-        });
-
         Label_email.setText("Email");
 
         txtPNumber.addActionListener(new java.awt.event.ActionListener() {
@@ -300,9 +292,7 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(Button_Update)
                                 .addGap(18, 18, 18)
-                                .addComponent(Button_Delete)
-                                .addGap(18, 18, 18)
-                                .addComponent(Button_Print))
+                                .addComponent(Button_Delete))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -407,12 +397,11 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Label_departmentId)
                             .addComponent(txtDepartmentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button_Insert)
                     .addComponent(Button_Update)
-                    .addComponent(Button_Delete)
-                    .addComponent(Button_Print))
+                    .addComponent(Button_Delete))
                 .addGap(22, 22, 22))
         );
 
@@ -598,32 +587,6 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_Combo_SearchMouseClicked
 
-    private void Button_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_PrintActionPerformed
-
-        try {
-            if (txtSearch.getText().isEmpty()) {
-                JasDes = JRXmlLoader.load(All);
-                param.clear();
-            }else if  ( Combo_Search.getSelectedItem()=="Id"){
-                JasDes = JRXmlLoader.load(byId);
-                param.put("EMPLOYEE_ID",Integer.parseInt(txtSearch.getText()));
-            }
-            else if (Combo_Search.getSelectedItem()=="Name"){
-                JasDes = JRXmlLoader.load(byName);
-                param.put("FIRST_NAME",String.valueOf(txtSearch.getText()));
-                System.out.println(Combo_Search.getSelectedItem());
-                System.out.println(txtSearch.getText());
-            }
-
-            JasRep = JasperCompileManager.compileReport(JasDes);
-            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
-            JasperViewer.viewReport(JasPri, false);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_Button_PrintActionPerformed
-
     private void txtPNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPNumberActionPerformed
@@ -666,7 +629,6 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Delete;
     private javax.swing.JButton Button_Insert;
-    private javax.swing.JButton Button_Print;
     private javax.swing.JButton Button_Update;
     private javax.swing.JComboBox<String> Combo_Search;
     private javax.swing.JLabel Label_FName;
