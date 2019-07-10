@@ -35,6 +35,8 @@ public class HRFrame extends javax.swing.JFrame {
     Map param = new HashMap();
     File CountryReportAll = new File("src/reports/CountriesReport.jrxml");
     File CountryReportById = new File("src/reports/CountriesReportBYID.jrxml");
+    File DepartmentReportAll = new File("src/reports/DepartmentReport.jrxml");
+    File DepartmentReportById = new File("src/reports/DepartmentReportById.jrxml");
     
     File JobReportAll = new File("src/reports/JobsReportALL.jrxml");
     File JobReportById = new File("src/reports/JobsReportBYID.jrxml");
@@ -68,6 +70,8 @@ public class HRFrame extends javax.swing.JFrame {
         getCountryReportAll = new javax.swing.JMenuItem();
         getCountryReportById = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        getDeptReportAll = new javax.swing.JMenuItem();
+        getDeptReportByID = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuJobs = new javax.swing.JMenu();
         jMenuAll = new javax.swing.JMenuItem();
@@ -163,6 +167,18 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu2.add(jMenu3);
 
         jMenu4.setText("Departments");
+
+        getDeptReportAll.setText("Semua Data");
+        getDeptReportAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getDeptReportAllActionPerformed(evt);
+            }
+        });
+        jMenu4.add(getDeptReportAll);
+
+        getDeptReportByID.setText("Berdasarkan ID");
+        jMenu4.add(getDeptReportByID);
+
         jMenu2.add(jMenu4);
 
         jMenu5.setText("Employees");
@@ -336,6 +352,28 @@ public class HRFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_getCountryReportByIdActionPerformed
 
+    private void getDeptReportAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getDeptReportAllActionPerformed
+        // TODO add your handling code here:
+          try {
+            JasDes = JRXmlLoader.load(DepartmentReportAll);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JInternalFrame frame = new JInternalFrame("Laporan");
+            frame.getContentPane().add(new JRViewer(JasPri));
+            frame.pack();
+            frame.setResizable(true);
+            frame.setClosable(true);
+            frame.setMaximizable(true);
+            frame.setSize(1000,800);
+            frame.setVisible(true);
+            //JasperViewer.viewReport(JasPri, false);
+            HR_DesktopPane.add(frame);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_getDeptReportAllActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -375,6 +413,8 @@ public class HRFrame extends javax.swing.JFrame {
     private javax.swing.JDesktopPane HR_DesktopPane;
     private javax.swing.JMenuItem getCountryReportAll;
     private javax.swing.JMenuItem getCountryReportById;
+    private javax.swing.JMenuItem getDeptReportAll;
+    private javax.swing.JMenuItem getDeptReportByID;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
