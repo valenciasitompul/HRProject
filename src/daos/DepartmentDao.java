@@ -118,13 +118,13 @@ public class DepartmentDao implements IDepartmentDao{
     }
 
     @Override
-    public boolean delete(int del) {
+    public boolean delete(String del) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         boolean result = false;
         String query = "DELETE FROM DEPARTMENTS WHERE DEPARTMENT_ID = ? ";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, del);
+            preparedStatement.setString(1, del);
             preparedStatement.execute();
             result = true;
         } catch (Exception e) {

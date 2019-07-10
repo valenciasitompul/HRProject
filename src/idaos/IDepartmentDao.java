@@ -22,7 +22,7 @@ public interface IDepartmentDao {
     
     public boolean insertupdate(Department d,boolean isUpdate);
   
-    public boolean delete(int del);
+    public boolean delete(String del);
     
     public List<Department> getByName(String dptname);
 }

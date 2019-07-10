@@ -55,6 +55,7 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
         txtDepartment_id.setText("");
         txtDepartment_name.setText("");
         txtManager_id.setText("");
+        txtLocation_id.setText("");
     }
     
 //    public void tampil_combo(){
@@ -104,6 +105,11 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tabel_Department.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabel_DepartmentMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabel_Department);
 
         lblDepartmnet_id.setText("Department ID");
@@ -127,6 +133,11 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
         });
 
         btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         lblLocation_id.setText("Location ID");
 
@@ -211,8 +222,57 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+        if(txtDepartment_id.getText().isEmpty() || txtDepartment_name.getText().isEmpty() || txtManager_id.getText().isEmpty() || txtLocation_id.getText().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            resetField();
+        }else{
+            icc.update(txtDepartment_id.getText(), txtDepartment_name.getText(), Integer.parseInt(txtManager_id.getText()),Integer.parseInt(txtLocation_id.getText()));
+            JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diperbaharui", "Updated", JOptionPane.INFORMATION_MESSAGE);
+            getDataDepartment();
+            resetField();
+            txtDepartment_id.setEditable(true);
+            btnSimpan.setEnabled(true);
+        }
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void Tabel_DepartmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabel_DepartmentMouseClicked
+        tableDepartment = (DefaultTableModel) Tabel_Department.getModel();
+       int i = Tabel_Department.getSelectedRow();
+       txtDepartment_id.setText(tableDepartment.getValueAt(i, 0).toString());
+       txtDepartment_name.setText(tableDepartment.getValueAt(i, 1).toString());
+       txtManager_id.setText(tableDepartment.getValueAt(i, 2).toString());
+       txtLocation_id.setText(tableDepartment.getValueAt(i, 3).toString());
+       
+       txtDepartment_id.setEditable(false);
+       txtManager_id.setEditable(false);
+      
+       btnSimpan.setEnabled(false);
+    }//GEN-LAST:event_Tabel_DepartmentMouseClicked
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        tableDepartment = (DefaultTableModel) Tabel_Department.getModel();
+        int i = Tabel_Department.getSelectedRow();
+        
+        if(i==-1){
+            JOptionPane.showMessageDialog(rootPane, "Mohon Memilih Baris Data!", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            String del = Tabel_Department.getModel().getValueAt(i, 0).toString();
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(this, "Yakin Akan Menghapus Data ", "Delete", dialogButton);
+            if(dialogResult == 0){
+                icc.delete(del);
+                JOptionPane.showMessageDialog(rootPane, "Data Berhasil Dihapus", "Deleted", JOptionPane.INFORMATION_MESSAGE);
+                getDataDepartment();
+                resetField();
+                txtDepartment_id.setEditable(true);
+                btnSimpan.setEnabled(true);
+            }else{
+                getDataDepartment();
+                txtDepartment_id.setEditable(true);
+                btnSimpan.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

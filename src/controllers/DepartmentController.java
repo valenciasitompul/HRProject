@@ -11,21 +11,29 @@ import models.Department;
 import java.sql.Connection;
 import java.util.List;
 /**
- *
+ * mengimplementasi class DepartmentController
  * @author Zincostan
  */
 public class DepartmentController implements icontrollers.IDepartmentController{
     
     private IDepartmentDao idc;
     
+    /**
+     * Constructor dengan satu parameter 
+     * @param connection bertipe Connection
+     */
     public DepartmentController(Connection connection){
         idc = new DepartmentDao(connection);
     }
 
+    
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data dari tabel Departmnet
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Department> getAll() {
         return idc.getAll();
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -69,7 +77,13 @@ public class DepartmentController implements icontrollers.IDepartmentController{
 
     @Override
     public String delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String result = "";
+        if(idc.delete(id)){
+            result = "Data berhasil dihapus";
+        }else{
+            result = "maaf data gagal dihapus";
+        }
+        return result; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
