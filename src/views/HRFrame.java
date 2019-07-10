@@ -28,10 +28,13 @@ public class HRFrame extends javax.swing.JFrame {
     
     JasperReport JasRep;
     JasperPrint JasPri;
-    Map param = new HashMap();
     JasperDesign JasDes;
+    Map param = new HashMap();
     File file1 = new File("CountriesReport.jrxml");
     File file2 = new File("CountriesReportBYID.jrxml");
+    
+    File JobReportAll = new File("reports/JobsReportALL.jrxml");
+    File JobReportById = new File("JobsReportBYID.jrxml");
     /**
      * Creates new form HRFrame
      */
@@ -64,6 +67,8 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenuAll = new javax.swing.JMenuItem();
+        jMenuID = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
 
         jMenu7.setText("jMenu7");
@@ -154,6 +159,23 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu2.add(jMenu5);
 
         jMenu6.setText("Jobs");
+
+        jMenuAll.setText("Semua Data");
+        jMenuAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAllActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuAll);
+
+        jMenuID.setText("Berdasarkan ID");
+        jMenuID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIDActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuID);
+
         jMenu2.add(jMenu6);
 
         jMenu8.setText("jMenu8");
@@ -218,13 +240,39 @@ public class HRFrame extends javax.swing.JFrame {
         try {
             JasDes = JRXmlLoader.load(file1);
             param.clear();
+
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JasperViewer.viewReport(JasPri, false);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_getAllMenuActionPerformed
+
+    private void jMenuIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIDActionPerformed
+   
+        try {
+            JasDes = JRXmlLoader.load(JobReportAll);
+            param.clear();
             JasRep = JasperCompileManager.compileReport(JasDes);
             JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
             JasperViewer.viewReport(JasPri);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }
-    }//GEN-LAST:event_getAllMenuActionPerformed
+    }//GEN-LAST:event_jMenuIDActionPerformed
+
+    private void jMenuAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAllActionPerformed
+        try {
+            JasDes = JRXmlLoader.load(JobReportAll);
+            param.clear();
+            JasRep = JasperCompileManager.compileReport(JasDes);
+            JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
+            JasperViewer.viewReport(JasPri);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_jMenuAllActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,7 +321,9 @@ public class HRFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenuItem jMenuAll;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuID;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
