@@ -18,6 +18,6 @@ public interface IEmployeesController {
     public List<Employees> getByName(String name);
     public List<Employees> search(String key);
     public String insert(String id, String fname, String lname, String email, String pNumber, String hireDate, String jobId, String salary, String commissionPct, String managerId, String departmentId);
-    public String update(String id, String name);
+    public String update(String id, String salary);
     public String delete(String id);
 }
