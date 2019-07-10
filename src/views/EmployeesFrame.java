@@ -166,6 +166,11 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setResizable(true);
         setTitle("Employees Frame");
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         Label_hireDate.setText("Hire Date");
 
@@ -592,6 +597,11 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
     private void txtPNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPNumberActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        Button_Insert.setEnabled(true);
+    }//GEN-LAST:event_formMouseClicked
     
         public static void main(String args[]) {
         /* Set the Nimbus look and feel */
