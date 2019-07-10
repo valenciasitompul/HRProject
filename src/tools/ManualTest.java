@@ -12,6 +12,7 @@ import icontrollers.ICountryController;
 import idaos.ICountryDAO;
 import idaos.IEmployeesDAO;
 import models.Country;
+import models.Region;
 
 /**
  *
@@ -37,8 +38,8 @@ public class ManualTest {
         //ICountryDAO icdao = new CountryDAO(koneksi.getConnection());
           //IEmployeesDAO iemdao = new EmployeesDAO(koneksi.getConnection());
         //fungsi test method getAll, getById dan search dari class CountryDAO
-//        for(Country country : icdao.getJustId("AR")){
-//            System.out.println(country.getId());
+//        for(Region r : icdao.getRegionId()){
+//            System.out.println(r.getId());
 //            System.out.println(country.getName());
 //            System.out.println(country.getRegion_id());
 //        }
@@ -51,12 +52,16 @@ public class ManualTest {
           
           ICountryController icc = new CountryController(koneksi.getConnection());
           //fungsi test method getAll, getById dan search dari class CountryController
-          for (Country country : icc.getJustId("AR")) {
-              System.out.println(country.getId());
-//              System.out.println(country.getName());
-//              System.out.println(country.getRegion_id());
-          }
-
+//          for (Country country : icc.getJustId()) {
+//              System.out.println(country.getId());
+////              System.out.println(country.getName());
+////              System.out.println(country.getRegion_id());
+//          }
+            for(Region r : icc.getRegionId()){
+                System.out.println(r.getId());
+//                System.out.println(country.getName());
+//                System.out.println(country.getRegion_id());
+            }
         //System.out.println(icc.delete("ID"));
     }
 }

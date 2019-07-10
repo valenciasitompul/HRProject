@@ -78,22 +78,21 @@ public class CountryDAO implements ICountryDAO{
      * @return kembalian berupa list data kolom country id dari tabel countries
      */
     @Override
-    public List<Country> getJustId(String id) {
-        List<Country> listCountry = new ArrayList<Country>();
-        String query = "SELECT COUNTRY_ID FROM COUNTRIES WHERE COUNTRY_ID = ?";
+    public List<models.Region> getRegionId() {
+        List<models.Region> listRegion =  new ArrayList<models.Region>();
+        String query = "SELECT REGION_ID FROM REGIONS ORDER BY REGION_ID ASC";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-               Country c = new Country(rs.getString(1));
-               listCountry.add(c);
+               models.Region r = new models.Region(rs.getInt(1));
+               listRegion.add(r);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        return listCountry;
+        return listRegion;
     }
     /**
      * method fungsi untuk mencari data pada tabel country

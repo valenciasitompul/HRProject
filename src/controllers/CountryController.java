@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.util.List;
 import javax.swing.JComboBox;
 import models.Country;
+import models.Region;
 
 /**
  *
@@ -35,9 +36,10 @@ public class CountryController implements ICountryController {
         return icdao.getAllById(id);
     }
     
+    
     @Override
-    public List<Country> getJustId(String id) {
-        return icdao.getJustId(id);
+    public List<Region> getRegionId() {
+        return icdao.getRegionId();
     }
     
     @Override

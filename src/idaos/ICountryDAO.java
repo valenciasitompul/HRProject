@@ -7,6 +7,7 @@ package idaos;
 
 import java.util.List;
 import models.Country;
+import models.Region;
 
 /**
  *
@@ -31,7 +32,7 @@ public interface ICountryDAO {
      * @param id berupa parameter dengan tipe data String
      * @return kembalian berupa list data kolom country id dari tabel countries
      */
-    public List<Country> getJustId(String id);
+    public List<Region> getRegionId();
     
     /**
      * method ini digunakan untuk mendapatkan dan menyeleksi data dari table regions
