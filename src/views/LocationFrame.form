@@ -1,45 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.JTextField" name="jTextField2">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel4"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="100" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-    </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
-    </Component>
-  </NonVisualComponents>
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Location Form"/>
-    <Property name="resizable" type="boolean" value="false"/>
-  </Properties>
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -59,7 +22,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="Button_Insert" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="Button_Update" min="-2" max="-2" attributes="0"/>
@@ -68,24 +31,24 @@
                       <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
                       <Component id="Button_Print" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="Search_Text" min="-2" pref="144" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="Combo_Search" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jScrollPane1" alignment="0" pref="597" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Label_StreetAddress" min="-2" max="-2" attributes="0"/>
-                              <Component id="Label_LocationID" min="-2" max="-2" attributes="0"/>
+                              <Component id="Label_StreetAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="Label_LocationID" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="Label_PostalCode" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="LocId_Text" pref="166" max="32767" attributes="0"/>
-                              <Component id="SA_Text" pref="166" max="32767" attributes="0"/>
-                              <Component id="Postal_Text" max="32767" attributes="0"/>
+                              <Component id="LocId_Text" alignment="0" pref="166" max="32767" attributes="0"/>
+                              <Component id="SA_Text" alignment="0" pref="166" max="32767" attributes="0"/>
+                              <Component id="Postal_Text" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -95,9 +58,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="City_Text" max="32767" attributes="0"/>
-                              <Component id="SP_Text" max="32767" attributes="0"/>
-                              <Component id="Country_Text" pref="168" max="32767" attributes="0"/>
+                              <Component id="City_Text" alignment="0" max="32767" attributes="0"/>
+                              <Component id="SP_Text" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Country_Text" alignment="0" pref="168" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -111,7 +74,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Combo_Search" min="-2" max="-2" attributes="0"/>
+                  <Component id="Combo_Search" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="Search_Text" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -130,7 +93,7 @@
                   <Component id="Label_StateProvince" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="SP_Text" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Label_PostalCode" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Postal_Text" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -150,98 +113,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="Label_LocationID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Location ID"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="Label_StreetAddress">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Street Addres"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="LocId_Text">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LocId_TextActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="SA_Text">
-    </Component>
-    <Component class="javax.swing.JButton" name="Button_Insert">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Insert"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_InsertActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="Button_Update">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Update"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_UpdateActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="Button_Delete">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Delete"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_DeleteActionPerformed"/>
-      </Events>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="Tabel_Location">
-          <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-              </Table>
-            </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-              </TableColumnModel>
-            </Property>
-            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Tabel_LocationMouseClicked"/>
-          </Events>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JTextField" name="Search_Text">
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Search_TextKeyReleased"/>
@@ -263,6 +134,39 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="Tabel_Location">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="4">
+                <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              </Table>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Tabel_LocationMouseClicked"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JTextField" name="City_Text">
+    </Component>
+    <Component class="javax.swing.JTextField" name="SP_Text">
+    </Component>
+    <Component class="javax.swing.JTextField" name="Country_Text">
+    </Component>
     <Component class="javax.swing.JButton" name="Button_Print">
       <Properties>
         <Property name="text" type="java.lang.String" value="Print"/>
@@ -271,9 +175,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_PrintActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="Label_City">
+    <Component class="javax.swing.JLabel" name="Label_CountryID">
       <Properties>
-        <Property name="text" type="java.lang.String" value="City"/>
+        <Property name="text" type="java.lang.String" value="Country ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Label_StateProvince">
@@ -281,26 +185,61 @@
         <Property name="text" type="java.lang.String" value="State Province"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="Label_PostalCode">
+    <Component class="javax.swing.JLabel" name="Label_City">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Postal Code"/>
+        <Property name="text" type="java.lang.String" value="City"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="LocId_Text">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LocId_TextActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="SA_Text">
     </Component>
     <Component class="javax.swing.JTextField" name="Postal_Text">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Postal_TextActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="Label_CountryID">
+    <Component class="javax.swing.JButton" name="Button_Delete">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Country ID"/>
+        <Property name="text" type="java.lang.String" value="Delete"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_DeleteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Button_Update">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_UpdateActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Button_Insert">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Insert"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_InsertActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Label_PostalCode">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Postal Code"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="City_Text">
+    <Component class="javax.swing.JLabel" name="Label_StreetAddress">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Street Addres"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="SP_Text">
-    </Component>
-    <Component class="javax.swing.JTextField" name="Country_Text">
+    <Component class="javax.swing.JLabel" name="Label_LocationID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Location ID"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
