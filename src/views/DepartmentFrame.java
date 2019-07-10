@@ -198,11 +198,11 @@ public class DepartmentFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if(txtDepartment_id.getText().isEmpty() || txtDepartment_name.getText().isEmpty() || txtManager_id.getText().isEmpty()){
+        if(txtDepartment_id.getText().isEmpty() || txtDepartment_name.getText().isEmpty() || txtManager_id.getText().isEmpty() || txtLocation_id.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
             resetField();
         }else{
-            icc.insert(txtDepartment_id.getText(), txtDepartment_name.getText(), Integer.parseInt(txtManager_id.getText()),Integer.parseInt(txtManager_id.getText()));
+            icc.insert(txtDepartment_id.getText(), txtDepartment_name.getText(), Integer.parseInt(txtManager_id.getText()),Integer.parseInt(txtLocation_id.getText()));
             getDataDepartment();
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan", "Saved", JOptionPane.INFORMATION_MESSAGE);
             resetField();

@@ -29,8 +29,8 @@ public class DepartmentController implements icontrollers.IDepartmentController{
     }
 
     @Override
-    public List<Department> getById(int dptid) {
-        return idc.getById(dptid);
+    public List<Department> getById(String dptid) {
+        return idc.getByName(dptid);
     }
 
 //    @Override
@@ -46,7 +46,7 @@ public class DepartmentController implements icontrollers.IDepartmentController{
     @Override
     public String insert(String dptid, String dptname, int mgrid, int locid) {
         String result;
-        Department d = new Department(locid, dptname, mgrid, locid);
+        Department d = new Department(dptid, dptname, mgrid, locid);
         if(idc.insertupdate(d, false)){
             result = "data tersimpan";
         }else{
@@ -58,7 +58,7 @@ public class DepartmentController implements icontrollers.IDepartmentController{
     @Override
     public String update(String dptid, String dptname, int mgrid, int locid) {
         String result;
-        Department d = new Department(locid, dptname, mgrid, locid);
+        Department d = new Department(dptid, dptname, mgrid, locid);
         if(idc.insertupdate(d, true)){
             result = "data terupdate";
         }else{

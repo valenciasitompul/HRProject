@@ -36,8 +36,8 @@ public class DepartmentDao implements IDepartmentDao{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Department d = new Department(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
-                d.setdptid(resultSet.getInt(1));
+                Department d = new Department(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
+                d.setdptid(resultSet.getString(1));
                 d.setdptname(resultSet.getString(2));
                 d.setmgrid(resultSet.getInt(3));
                 d.setlocid(resultSet.getInt(4));
@@ -61,7 +61,7 @@ public class DepartmentDao implements IDepartmentDao{
             preparedStatement.setInt(1, dptid);
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
-                Department department = new Department(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4));
+                Department department = new Department(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4));
                 listdepartment.add(department);
             }
         } catch (Exception e) {
@@ -83,7 +83,7 @@ public class DepartmentDao implements IDepartmentDao{
             preparedStatement.setString(2,key);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                Department department = new Department(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4));
+                Department department = new Department(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getInt(4));
                 listdepartment.add(department);
             }
         } catch (Exception e) {
@@ -107,7 +107,7 @@ public class DepartmentDao implements IDepartmentDao{
             preparedStatement.setString(1, d.getdptname());
             preparedStatement.setInt(2, d.getmgrid());
             preparedStatement.setInt(3, d.getlocid());
-            preparedStatement.setInt(4, d.getdptid());
+            preparedStatement.setString(4, d.getdptid());
             preparedStatement.executeQuery();
             result = true;
         } catch (Exception e) {

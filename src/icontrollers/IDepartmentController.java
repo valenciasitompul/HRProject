@@ -12,7 +12,7 @@ import models.Department;
  */
 public interface IDepartmentController {
    public List<Department> getAll();
-    public List<Department> getById(int dptid);
+    public List<Department> getById(String dptid);
     public List<Department> getByName(String dptname);
     public List<Department> search(String key);
     public String insert(String dptid, String dptname, int mgrid, int locid);

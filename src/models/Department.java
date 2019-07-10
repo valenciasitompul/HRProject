@@ -12,7 +12,7 @@ import javafx.scene.layout.Region;
  * @author Zincostan
  */
 public class Department {
-    private int dptid;
+    private String dptid;
     private String dptname;
     private int mgrid;
     private int locid;
@@ -20,7 +20,7 @@ public class Department {
         
     }
     
-    public Department(int dptid, String dptname, int mgrid, int locid){
+    public Department(String dptid, String dptname, int mgrid, int locid){
         this.dptid = dptid;
         this.dptname = dptname;
         this.mgrid = mgrid;
@@ -28,7 +28,7 @@ public class Department {
         
     }
     
-    public int getdptid(){
+    public String getdptid(){
         return dptid;
     }
     
@@ -44,7 +44,7 @@ public class Department {
         return locid;
     }
     
-    public void setdptid(int dptid){
+    public void setdptid(String dptid){
         this.dptid = dptid;
     }
     
