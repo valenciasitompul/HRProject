@@ -29,7 +29,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author HARRY-PC
  */
-public class EmployeesView extends javax.swing.JFrame {
+public class EmployeesFrame extends javax.swing.JFrame {
     Koneksi koneksi = new Koneksi();
     IEmployeesController iec = new EmployeesController(koneksi.getConnection());
     private DefaultTableModel tabEmployees;
@@ -47,7 +47,7 @@ public class EmployeesView extends javax.swing.JFrame {
      * Membuat kolom pada view tabel region
      * menampilkan data region ke tabel
      */
-    public EmployeesView() {
+    public EmployeesFrame() {
         initComponents();
         tabEmployees = new DefaultTableModel();
         Tabel_Employees.setModel(tabEmployees);
@@ -730,21 +730,23 @@ public class EmployeesView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeesFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeesFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeesFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmployeesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeesFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeesView().setVisible(true);
+                new EmployeesFrame().setVisible(true);
             }
         });
     }
