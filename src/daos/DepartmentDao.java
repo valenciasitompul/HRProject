@@ -15,21 +15,30 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * mengimplementasi class IDepartmentDAO
  * @author Zincostan
  */
 public class DepartmentDao implements IDepartmentDao{
     private Connection connection;
     
+    /**
+     * Constructor dengan satu parameter
+     *
+     * @param connection bertipe connection
+     */
     public DepartmentDao(Connection connection){
         this.connection = connection;
     }
 
    
-
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data pada yaitu department id, 
+     * department name, management id dan location id dari tabel Department
+     *
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Department> getAll() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         List<Department> listdepartment = new ArrayList<Department>();
         String query = "SELECT * FROM DEPARTMENTS ORDER BY DEPARTMENT_ID";
         try{
@@ -51,9 +60,16 @@ public class DepartmentDao implements IDepartmentDao{
         return listdepartment;
     }
 
+    
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data yaitu department id, 
+     * department name, management id dan location id dari tabel Department berdasarkan id
+     *
+     * @param dptid bertipe string
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Department> getById(String dptid) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
       List<Department> listdepartment = new ArrayList<Department>();
       String query = "SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_ID = ?";
         try {
@@ -71,10 +87,15 @@ public class DepartmentDao implements IDepartmentDao{
         return listdepartment;
     }
 
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data yang sesuai dngan inputan pada
+     * tabel Department berdasarkan inputan
+     *
+     * @param key bertipe string
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Department> search(String key) {
-        //throw new UnsupportedOperationException("Not supported yet.");
-        //To change body of generated methods, choose Tools | Templates.
         List<Department> listdepartment = new ArrayList<Department>();
         String query = "SELECT * FROM DEPARTMENTS WHERE REGEXP_LIKE(DEPARTMENT_ID, (?), 'i') OR REGEXP_LIKE(DEPARTMENT_NAME, (?), 'i') ORDER BY DEPARTMENT_ID";
         try {
@@ -93,6 +114,16 @@ public class DepartmentDao implements IDepartmentDao{
         return listdepartment;
     }
 
+    /**
+     * fungsi untuk menambahkan data baru yaitu department id, 
+     * department name, management id dan location id pada tabel Department atau untuk mengubah data department id, 
+     * department name, management id dan location id pada tabel Department pada saat
+     * mengubah data, department id tidak dapat diubah
+     *
+     * @param d bertipe Department
+     * @param isUpdate bertipe boolean
+     * @return nilai kembalian berupa boolean
+     */
     @Override
     public boolean insertupdate(Department d, boolean isUpdate) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -117,9 +148,14 @@ public class DepartmentDao implements IDepartmentDao{
         return result;
     }
 
+     /**
+     * fungsi untuk menghapus data pada tabel Department berdasarkan id
+     *
+     * @param del bertipe string
+     * @return nilai kembalian berupa boolean
+     */
     @Override
     public boolean delete(String del) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         boolean result = false;
         String query = "DELETE FROM DEPARTMENTS WHERE DEPARTMENT_ID = ? ";
         try {
@@ -134,9 +170,15 @@ public class DepartmentDao implements IDepartmentDao{
         return result;
     }
 
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data yaitu department id, 
+     * department name, management id dan location id dari tabel department berdasarkan nama
+     *
+     * @param dptname bertipe string
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Department> getByName(String dptname) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         List<Department> listdepartment = new ArrayList<Department>();
       String query = "SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_NAME = ?";
         try {

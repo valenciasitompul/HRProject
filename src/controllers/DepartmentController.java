@@ -36,21 +36,35 @@ public class DepartmentController implements icontrollers.IDepartmentController{
         return idc.getAll();
     }
 
+    /**
+     * fungsi untuk mendapatkan/menampilkan data Department berdasarkan id
+     * @param id bertipe string
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Department> getById(String dptid) {
         return idc.getById(dptid);
     }
 
-//    @Override
-//    public List<Department> getByName(String dptname) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 
+    /**
+     * fungsi untuk mendapatkan/menampilkan data Department berdasarkan yang diinputkan
+     * @param inputan bertipe string
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Department> search(String key) {
         return idc.search(key);
     }
 
+    /**
+     * fungsi untuk menambahkan data baru pada tabel Department
+     * @param dptid bertipe string
+     * @param dptname bertipe string
+     * @param mgrid bertipe int
+     * @param locid bertipe int
+     * @return nilai kembalian berupa string
+     */
     @Override
     public String insert(String dptid, String dptname, int mgrid, int locid) {
         String result;
@@ -62,7 +76,15 @@ public class DepartmentController implements icontrollers.IDepartmentController{
         }
         return result;
     }
-
+    
+    /**
+     * fungsi untuk mengupdate data baru pada tabel Department
+     * @param dptid bertipe string
+     * @param dptname bertipe string
+     * @param mgrid bertipe int
+     * @param locid bertipe int
+     * @return nilai kembalian berupa string
+     */
     @Override
     public String update(String dptid, String dptname, int mgrid, int locid) {
         String result;
@@ -74,7 +96,12 @@ public class DepartmentController implements icontrollers.IDepartmentController{
         }
         return result;
     }
-
+    
+    /**
+     * fungsi untuk menghapus data pada tabel department berdasarkan id
+     * @param id bertipe string
+     * @return nilai kebalian berupa string
+     */
     @Override
     public String delete(String id) {
         String result = "";
@@ -88,7 +115,6 @@ public class DepartmentController implements icontrollers.IDepartmentController{
 
     @Override
     public List<Department> getByName(String dptname) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         return idc.getByName(dptname);
     }
     
