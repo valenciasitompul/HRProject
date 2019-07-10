@@ -13,31 +13,55 @@ import java.util.List;
 import models.Job;
 
 /**
- *
+ * mengimplementasi class IJobController
  * @author Bella
  */
 public class JobController implements IJobController{
+    
     private IJobDAO ijdao;
     
+    /**
+     * Constructor dengan satu parameter 
+     * @param connection bertipe Connection
+     */
     public JobController(Connection connection){
         ijdao = new JobDAO(connection);
     }
-
-
-
     
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data yaitu job id, job title, minimal salary dan maksimal salary dari tabel JOBS
+     * @return nilai kembalian berupa list
+     */
     public List<Job> getAll(){
         return ijdao.getAll();
     }
     
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data yaitu job id, job title, minimal salary dan maksimal salary dari tabel JOBS berdasarkan job id
+     * @param id bertipe string
+     * @return nilai kembalian berupa list
+     */
     public List<Job> getById(String id){
         return ijdao.getById(id);
     }
     
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data yaitu job id, job title, minimal salary dan maksimal salary dari tabel JOBS berdasarkan job title
+     * @param title bertipe string
+     * @return nilai kembalian berupa list
+     */
     public List<Job> getByTitle(String title){
         return ijdao.getByTitle(title);
     }
     
+    /**
+     * fungsi untuk menambahkan data baru yaitu job id, job title, minimal salary dan maksimal salary pada tabel JOBS
+     * @param id bertipe string
+     * @param title bertipe string
+     * @param min bertipe string
+     * @param max bertipe string
+     * @return nilai kembalian berupa string
+     */
     public String insert(String id,String title, String min, String max) {
         String result = "";
         Job job = new Job(id, title, Integer.parseInt(min), Integer.parseInt(max));
@@ -49,7 +73,16 @@ public class JobController implements IJobController{
         return result;
     }
     
-    public String update(String id,String title, String min, String max) {
+    /**
+     * fungsi untuk mengubah data job title, minimal salary dan maksimal salary pada tabel JOBS
+     * pada saat mengubah data, job title tidak dapat diubah
+     * @param id bertipe string
+     * @param title bertipe string
+     * @param min bertipe string
+     * @param max bertipe string
+     * @return nilai kembalian berupa string
+     */
+    public String update(String id, String title, String min, String max) {
         String result = "";
         Job job = new Job(id, title, Integer.parseInt(min), Integer.parseInt(max));
         if(ijdao.insertupdate(job, true)){
@@ -60,6 +93,11 @@ public class JobController implements IJobController{
         return result;
     }
     
+    /**
+     * fungsi untuk menghapus data pada tabel JOBS berdasarkan job id
+     * @param id bertipe string
+     * @return nilai kebalian berupa string
+     */
     public String delete(String id) {
         String result = "";
         if(ijdao.delete(id)){
@@ -70,6 +108,11 @@ public class JobController implements IJobController{
         return result;
     }
 
+    /**
+     * fungsi untuk melakukan pencarian pada tabel JOBS
+     * @param key bertipe string
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Job> search(String key) {
         return ijdao.search(key);

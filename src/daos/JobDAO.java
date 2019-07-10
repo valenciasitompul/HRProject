@@ -14,16 +14,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * mengimplementasi class IJobDAO
  *
  * @author Bella
  */
-public class JobDAO implements IJobDAO{
+public class JobDAO implements IJobDAO {
+
     private Connection connection;
-    
-    public JobDAO(Connection connection){
+
+    /**
+     * Constructor dengan satu parameter
+     *
+     * @param connection bertipe connection
+     */
+    public JobDAO(Connection connection) {
         this.connection = connection;
     }
-    
+
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data pada yaitu job id, job
+     * title, minimal salary dan maksimal salary dari tabel JOBS
+     *
+     * @return nilai kembalian berupa list
+     */
     public List<Job> getAll() {
         List<Job> listJob = new ArrayList<Job>();
         String query = "SELECT * FROM JOBS ORDER BY JOB_ID ASC";
@@ -44,13 +57,21 @@ public class JobDAO implements IJobDAO{
         }
         return listJob;
     }
-    
 
-    
-        public boolean insertupdate(Job j, boolean isUpdate) {
+    /**
+     * fungsi untuk menambahkan data baru yaitu job id, job title, minimal
+     * salary dan maksimal salary pada tabel JOBS atau untuk mengubah data job
+     * title, minimal salary dan maksimal salary pada tabel JOBS pada saat
+     * mengubah data, job id tidak dapat diubah
+     *
+     * @param j bertipe Job
+     * @param isUpdate bertipe boolean
+     * @return nilai kembalian berupa boolean
+     */
+    public boolean insertupdate(Job j, boolean isUpdate) {
         boolean result = false;
         String query = "INSERT INTO JOBS (JOB_TITLE, MIN_SALARY, MAX_SALARY, JOB_ID) VALUES (?,?,?,?) ";
-        if(isUpdate){
+        if (isUpdate) {
             query = "UPDATE JOBS SET JOB_TITLE = ?, MIN_SALARY = ?, MAX_SALARY = ? WHERE JOB_ID = ?";
         }
         try {
@@ -67,8 +88,14 @@ public class JobDAO implements IJobDAO{
         }
         return result;
     }
-    
-        public boolean delete(String d) {
+
+    /**
+     * fungsi untuk menghapus data pada tabel JOBS berdasarkan job id
+     *
+     * @param d bertipe string
+     * @return nilai kembalian berupa boolean
+     */
+    public boolean delete(String d) {
         boolean result = false;
         String query = "DELETE FROM JOBS WHERE JOB_ID = ? ";
         try {
@@ -81,9 +108,15 @@ public class JobDAO implements IJobDAO{
             e.printStackTrace();
         }
         return result;
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data yaitu job id, job title,
+     * minimal salary dan maksimal salary dari tabel JOBS berdasarkan job id
+     *
+     * @param id bertipe string
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Job> getById(String id) {
         List<Job> listJobId = new ArrayList<Job>();
@@ -91,11 +124,11 @@ public class JobDAO implements IJobDAO{
         try {
             //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1,id);
+            preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
             while (resultSet.next()) {
-                Job j = new Job(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
+                Job j = new Job(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(4));
                 listJobId.add(j);
             }
         } catch (Exception e) {
@@ -105,6 +138,13 @@ public class JobDAO implements IJobDAO{
         return listJobId;
     }
 
+    /**
+     * fungsi untuk mendapatkan/menampilkan semua data yaitu job id, job title,
+     * minimal salary dan maksimal salary dari tabel JOBS berdasarkan job title
+     *
+     * @param title bertipe string
+     * @return nilai kembalian berupa list
+     */
     @Override
     public List<Job> getByTitle(String title) {
         List<Job> listJobTitle = new ArrayList<Job>();
@@ -112,11 +152,11 @@ public class JobDAO implements IJobDAO{
         try {
             //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1,title);
-            ResultSet  resultSet = preparedStatement.executeQuery();
+            preparedStatement.setString(1, title);
+            ResultSet resultSet = preparedStatement.executeQuery();
             //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
             while (resultSet.next()) {
-                Job j = new Job(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
+                Job j = new Job(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(4));
                 listJobTitle.add(j);
             }
         } catch (Exception e) {
@@ -126,6 +166,12 @@ public class JobDAO implements IJobDAO{
         return listJobTitle;
     }
 
+    /**
+     * fungsi untuk melakukan pencarian pada tabel JOBS
+     *
+     * @param key bertipe string
+     * @return nilai kembalian berupa string
+     */
     @Override
     public List<Job> search(String key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
