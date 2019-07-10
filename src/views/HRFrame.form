@@ -73,6 +73,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+6"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Regions"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
@@ -136,28 +147,46 @@
                 <Property name="text" type="java.lang.String" value="Jobs"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuAll">
+                <MenuItem class="javax.swing.JMenuItem" name="getJobReportAll">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Semua Data"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAllActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getJobReportAllActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuID">
+                <MenuItem class="javax.swing.JMenuItem" name="getJobReportById">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuIDActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getJobReportByIdActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenu8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenu8"/>
+                <Property name="text" type="java.lang.String" value="Regions"/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="getRegionReportAll">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Semua Data"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getRegionReportAllActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="getRegionReportById">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getRegionReportByIdActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
             </Menu>
           </SubComponents>
         </Menu>

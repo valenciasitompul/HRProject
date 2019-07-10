@@ -29,6 +29,12 @@ public class RegionFrame extends javax.swing.JInternalFrame {
      */
     public RegionFrame() {
         initComponents();
+        tabregion = new DefaultTableModel();
+        Tabel_Region.setModel(tabregion);
+        tabregion.addColumn("Region ID");
+        tabregion.addColumn("Region Name");
+        
+        getDataRegion();
     }
 
     /**
