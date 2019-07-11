@@ -37,12 +37,12 @@ public class EmployeesDAO implements IEmployeesDAO{
     @Override
     public List<Employees> getAll() {
         List<Employees> listEmployees = new  ArrayList<Employees>();
-        String query = "SELECT E.EMPLOYEE_ID, E.FIRST_NAME ||' '|| E.LAST_NAME, E.HIRE_DATE, J.JOB_TITLE, M.FIRST_NAME ||' '|| M.LAST_NAME, D.DEPARTMENT_NAME FROM EMPLOYEES E JOIN EMPLOYEES M ON E.MANAGER_ID = M.EMPLOYEE_ID JOIN JOBS J ON E.JOB_ID = J.JOB_ID JOIN DEPARTMENTS D ON E.DEPARTMENT_ID = D.DEPARTMENT_ID ORDER BY EMPLOYEE_ID";
+        String query = "SELECT * FROM EMPLOYEES ORDER BY EMPLOYEE_ID";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Employees e = new  Employees(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getString(6));
+                Employees e = new  Employees(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getString(6),resultSet.getString(7),resultSet.getInt(8),resultSet.getInt(9),resultSet.getInt(11),resultSet.getInt(11));
 //                e.setId(resultSet.getInt(1));
 //                e.setFName(resultSet.getString(2));
 //                e.setLName(resultSet.getString(3));
@@ -76,7 +76,7 @@ public class EmployeesDAO implements IEmployeesDAO{
     @Override
     public List<Employees> getById(int id) {
         List<Employees> emps = new ArrayList<Employees>();
-        String query = "SELECT E.EMPLOYEE_ID, E.FIRST_NAME ||' '|| E.LAST_NAME, E.HIRE_DATE, J.JOB_TITLE, M.FIRST_NAME ||' '|| M.LAST_NAME, D.DEPARTMENT_NAME FROM EMPLOYEES E JOIN EMPLOYEES M ON E.MANAGER_ID = M.EMPLOYEE_ID JOIN JOBS J ON E.JOB_ID = J.JOB_ID JOIN DEPARTMENTS D ON E.DEPARTMENT_ID = D.DEPARTMENT_ID WHERE REGEXP_LIKE(E.EMPLOYEE_ID, (?), 'i') ORDER BY EMPLOYEE_ID";
+        String query = "SELECT * FROM EMPLOYEES WHERE REGEXP_LIKE(EMPLOYEE_ID, (?), 'i')";
         try {
             //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -84,7 +84,7 @@ public class EmployeesDAO implements IEmployeesDAO{
             ResultSet resultSet = preparedStatement.executeQuery();
             //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
             while (resultSet.next()) {
-                Employees emp = new Employees(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getString(6));
+                Employees emp = new Employees(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getString(6),resultSet.getString(7),resultSet.getInt(8),resultSet.getInt(9),resultSet.getInt(11),resultSet.getInt(11));
                 emps.add(emp);
             }
         } catch (Exception e) {
@@ -246,7 +246,7 @@ public class EmployeesDAO implements IEmployeesDAO{
     @Override
     public List<Employees> getByName(String name) {
         List<Employees> emps = new ArrayList<Employees>();
-        String query = "SELECT E.EMPLOYEE_ID, E.FIRST_NAME ||' '|| E.LAST_NAME, E.HIRE_DATE, J.JOB_TITLE, M.FIRST_NAME ||' '|| M.LAST_NAME, D.DEPARTMENT_NAME FROM EMPLOYEES E JOIN EMPLOYEES M ON E.MANAGER_ID = M.EMPLOYEE_ID JOIN JOBS J ON E.JOB_ID = J.JOB_ID JOIN DEPARTMENTS D ON E.DEPARTMENT_ID = D.DEPARTMENT_ID WHERE REGEXP_LIKE(E.FIRST_NAME || E.LAST_NAME, (?), 'i') ORDER BY EMPLOYEE_ID";
+        String query = "SELECT * FROM EMPLOYEES WHERE REGEXP_LIKE(FIRST_NAME||LAST_NAME, (?), 'i')";
         try {
             //penamaan preparedstatemnet di samakan saja dari awal sampai akhir
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -254,7 +254,7 @@ public class EmployeesDAO implements IEmployeesDAO{
             ResultSet resultSet = preparedStatement.executeQuery();
             //rs.next = menampung data dari statement diatas sampai mendapatkan nilai yang diinginkan
             while (resultSet.next()) {
-                Employees emp = new Employees(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getString(6));
+                Employees emp = new Employees(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getString(5),resultSet.getString(6),resultSet.getString(7),resultSet.getInt(8),resultSet.getInt(9),resultSet.getInt(11),resultSet.getInt(11));
                 emps.add(emp);
             }
         } catch (Exception e) {

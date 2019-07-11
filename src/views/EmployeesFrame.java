@@ -52,11 +52,16 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
         tabEmployees = new DefaultTableModel();
         Tabel_Employees.setModel(tabEmployees);
         tabEmployees.addColumn("Employee ID");
-        tabEmployees.addColumn("Name");
+        tabEmployees.addColumn("First Name");
+        tabEmployees.addColumn("Last Name");
+        tabEmployees.addColumn("Email");
+        tabEmployees.addColumn("Phone Number");
         tabEmployees.addColumn("Hire Date");
-        tabEmployees.addColumn("Title");
-        tabEmployees.addColumn("Manager Name");
-        tabEmployees.addColumn("Department Name");
+        tabEmployees.addColumn("Job ID");
+        tabEmployees.addColumn("Salary");
+        tabEmployees.addColumn("Commission Percent");
+        tabEmployees.addColumn("Manager ID");
+        tabEmployees.addColumn("Department ID");
 
         getDataEmployees();
     }
@@ -631,13 +636,18 @@ public class EmployeesFrame extends javax.swing.JInternalFrame {
 
     public void loadEmpData(List<Employees> dataEmp) {
         for (Employees emp : dataEmp) {
-            Object[] obj = new Object[6];
-            obj[0] = emp.getId();
-            obj[1] = emp.getName();
-            obj[2] = emp.getHiredate();
-            obj[3] = emp.getJobTitle();
-            obj[4] = emp.getManagerName();
-            obj[5] = emp.getDepartmentName();
+            Object[] obj = new Object[11];
+                    obj[0] = emp.getId();
+                    obj[1] = emp.getFName();
+                    obj[2] = emp.getLName();
+                    obj[3] = emp.getEmail();
+                    obj[4] = emp.getPNumber();
+                    obj[5] = emp.getHiredate();
+                    obj[6] = emp.getJobid();
+                    obj[7] = emp.getSalary();
+                    obj[8] = emp.getCommissionpct();
+                    obj[9] = emp.getManagerid();
+                    obj[10] = emp.getDepartmentid();
             tabEmployees.addRow(obj);
         }
     }
