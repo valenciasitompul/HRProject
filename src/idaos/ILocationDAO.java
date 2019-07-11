@@ -33,26 +33,23 @@ public interface ILocationDAO {
      * @return nilai kembalian berupa list
      */
     public List<Location> getByCity(String city);
-    
+      
     /**
      * fungsi untuk melakukan pencarian pada tabel location
      * @param key nilai kembalian berupa list
      * @return nilai kembalian berupa list
      */
     public List<Location> search(String key);
-    
-/**
- * fungsi untuk menambahkan data baru pada tabel location
- * @param l bertipe int dan string
- * @return kembalian bertipe boolean
- */
-    public boolean insert(Location l);
+ 
     /**
- * fungsi untuk mengupdate data baru pada tabel location
- * @param l bertipe int dan string
- * @return kembalian bertipe boolean
- */
-    public boolean update(Location l);
+     * fungsi menambahkan data baru atau mengubah data pada tabel location
+     * @param l bertipe Location
+     * @param isUpdate bertipe boolean
+     * @return nilai kembalian berupa boolean
+     */
+    public boolean insertupdate(Location l, boolean isUpdate);
+    
+
     /**
  * fungsi untuk menambahkan data baru pada tabel location berdasarkan location id
  * @param l bertipe int 

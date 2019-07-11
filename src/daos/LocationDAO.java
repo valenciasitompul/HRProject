@@ -44,13 +44,6 @@ public class LocationDAO implements ILocationDAO{
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Location l = new Location(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6)); 
-//                Location l = new Location(); 
-//                l.setLocById(resultSet.getInt(1));
-//                l.setstrAdd(resultSet.getString(2));
-//                l.setposCode(resultSet.getInt(3));
-//                l.setCity(resultSet.getString(4));
-//                l.setstaProv(resultSet.getString(5));
-//                l.setcounId(resultSet.getString(6));
                 listLocation.add(l);
                 
             }
@@ -76,8 +69,6 @@ public class LocationDAO implements ILocationDAO{
             ResultSet resultSet = preparedStatement.executeQuery();//resultSet untuk menampung data
             while (resultSet.next()) {//memeriksa apakah 
                 Location l = new Location(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
-                //r.setId(resultSet.getInt(1));
-                //r.setName(resultSet.getString(2));
                 listLocation.add(l);
             }
         } catch (Exception e) {
@@ -112,59 +103,7 @@ public class LocationDAO implements ILocationDAO{
         return listLocation;
     }
 
-    /**
-     * fungsi untuk menambahkan data baru pada tabel location
-     * @param l betipe location
-     * @return  nilai kembalian berupa boolean
-     */
-    @Override
-    public boolean insert(Location l) {
-     boolean result = false;
-        String query = "INSERT INTO LOCATIONS(LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID) VALUES (?, ?, ?, ?, ?, ?)";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, l.getlocId());
-            preparedStatement.setString(2, l.getstaProv());
-            preparedStatement.setString(3, l.getposCode());
-            preparedStatement.setString(4, l.getCity());
-            preparedStatement.setString(5, l.getstaProv()); 
-            preparedStatement.setString(6, l.getcounId()); 
     
-            preparedStatement.executeQuery();
-            result = true;
- 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-           e.printStackTrace();
-        }
-        return result;
-    }
-/**
- * fungsi untuk mengubah data pada tabel location
- * @param l bertipe location
- * @return nilai kembalian berupa boolean
- */
-    @Override
-    public boolean update(Location l) {
-        boolean result = false;
-        String query = "UPDATE LOCATIONS SET STREET_ADDRESS = ?, POSTAL_CODE = ?, CITY = ?, STATE_PROVINCE = ?, COUNTRY_ID = ? WHERE LOCATION_ID = ? ";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, l.getstrAdd());
-            preparedStatement.setString(2, l.getposCode());
-            preparedStatement.setString(3, l.getCity() );
-            preparedStatement.setString(4, l.getstaProv() ); 
-            preparedStatement.setString(5, l.getcounId()); 
-            preparedStatement.setInt(6, l.getlocId());
-    
-            preparedStatement.executeQuery();
-            result = true;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-           e.printStackTrace();
-        }
-        return result;
-    }
 
     /**
      * fungsi untuk menghapus data pada tabel Location berdasarkan location id
@@ -190,7 +129,7 @@ public class LocationDAO implements ILocationDAO{
     @Override
     public List<Location> getByCity(String city) {
         List<Location> listLocationCity = new ArrayList<Location>();
-        String query = "SELECT * FROM LOCATIONS WHERE REGEXP_LIKE(CITY, (?), 'i')";
+        String query = "SELECT * FROM LOCATIONS WHERE CITY = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, city);
@@ -204,6 +143,35 @@ public class LocationDAO implements ILocationDAO{
             e.printStackTrace();
         }
         return listLocationCity;
+    }
+
+    /**
+     * fungsi menambahkan data baru atau mengubah data pada tabel location
+     * @param l bertipe Location
+     * @param isUpdate bertipe boolean
+     * @return nilai kembalian berupa boolean
+     */
+    @Override
+    public boolean insertupdate(Location l, boolean isUpdate) {
+       boolean result = false;
+       String query = "INSERT INTO LOCATIONS(LOCATION_ID, STREET_ADDRESS, POSTAL_CODE, CITY, STATE_PROVINCE, COUNTRY_ID) VALUES (?, ?, ?, ?, ?, ?)";
+       if (isUpdate){
+           query = "UPDATE LOCATIONS SET STREET_ADDRESS = ?, POSTAL_CODE = ?, CITY = ?, STATE_PROVINCE = ?, COUNTRY_ID = ? WHERE LOCATION_ID = ? ";
+       }
+        try {
+           PreparedStatement preparedStatement = connection.prepareStatement(query);
+           preparedStatement.setString(1, l.getstrAdd());
+           preparedStatement.setString(2, l.getposCode());
+           preparedStatement.setString(3, l.getCity() );
+           preparedStatement.setString(4, l.getstaProv() ); 
+           preparedStatement.setString(5, l.getcounId()); 
+           preparedStatement.setInt(6, l.getlocId());
+           result = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+       return result;
     }
        
 }

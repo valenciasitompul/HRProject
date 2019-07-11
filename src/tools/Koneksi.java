@@ -21,7 +21,7 @@ public class Koneksi {
             ods.setServerName("localhost");
             ods.setPortNumber(1521);
             ods.setUser("system");
-            ods.setPassword("090291");
+            ods.setPassword("system");
             ods.setServiceName("XE");
             ods.setDriverType("thin");
             connection = ods.getConnection();
