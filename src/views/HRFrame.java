@@ -97,6 +97,7 @@ public class HRFrame extends javax.swing.JFrame {
         jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("HR Data and Reports");
 
         HR_DesktopPane.setToolTipText("");
 
@@ -104,11 +105,11 @@ public class HRFrame extends javax.swing.JFrame {
         HR_DesktopPane.setLayout(HR_DesktopPaneLayout);
         HR_DesktopPaneLayout.setHorizontalGroup(
             HR_DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1202, Short.MAX_VALUE)
+            .addGap(0, 1174, Short.MAX_VALUE)
         );
         HR_DesktopPaneLayout.setVerticalGroup(
             HR_DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 773, Short.MAX_VALUE)
+            .addGap(0, 715, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File Master");
@@ -300,14 +301,16 @@ public class HRFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(HR_DesktopPane)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(HR_DesktopPane)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(3, 3, 3))
         );
 
         pack();
