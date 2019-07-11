@@ -8,6 +8,7 @@ package views;
 import controllers.JobController;
 import icontrollers.IJobController;
 import java.awt.Component;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -72,14 +73,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
         tabjob.getDataVector().removeAllElements();
         tabjob.fireTableDataChanged();
         //memanggil list data tabel region dari database
-        for (Job j : ijc.getAll()) {
-            Object[] obj = new Object[4];
-            obj[0] = j.getId();
-            obj[1] = j.getTitle();
-            obj[2] = j.getMin();
-            obj[3] = j.getMax();
-            tabjob.addRow(obj);
-        }
+        loadData(ijc.getAll());
         ColumnAdjuser();
     }
     
@@ -103,20 +97,23 @@ public class JobFrame extends javax.swing.JInternalFrame {
         cbSearch = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblJob = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        txtTitle = new javax.swing.JTextField();
+        txtMaxSalary = new javax.swing.JTextField();
+        txtMinSalary = new javax.swing.JTextField();
+        Label_Id1 = new javax.swing.JLabel();
+        Label_Name1 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
+        btnInsert = new javax.swing.JButton();
         Label_Id = new javax.swing.JLabel();
         Label_Name = new javax.swing.JLabel();
-        txtTitle = new javax.swing.JTextField();
-        btnInsert = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        Label_Name1 = new javax.swing.JLabel();
-        Label_Id1 = new javax.swing.JLabel();
-        txtMinSalary = new javax.swing.JTextField();
-        txtMaxSalary = new javax.swing.JTextField();
 
         setClosable(true);
-        setTitle("Jobs Form");
+        setIconifiable(true);
+        setResizable(true);
+        setTitle("Form Jobs");
 
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -154,20 +151,22 @@ public class JobFrame extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblJob);
 
-        txtId.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Detail of Job"));
+
+        txtMinSalary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+                txtMinSalaryActionPerformed(evt);
             }
         });
 
-        Label_Id.setText("Id");
+        Label_Id1.setText("Min Salary");
 
-        Label_Name.setText("Title");
+        Label_Name1.setText("Max Salary");
 
-        btnInsert.setText("Insert");
-        btnInsert.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -178,22 +177,81 @@ public class JobFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+        txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
+                txtIdActionPerformed(evt);
             }
         });
 
-        Label_Name1.setText("Max Salary");
-
-        Label_Id1.setText("Min Salary");
-
-        txtMinSalary.addActionListener(new java.awt.event.ActionListener() {
+        btnInsert.setText("Insert");
+        btnInsert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMinSalaryActionPerformed(evt);
+                btnInsertActionPerformed(evt);
             }
         });
+
+        Label_Id.setText("Id");
+
+        Label_Name.setText("Title");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_Name)
+                            .addComponent(Label_Id))
+                        .addGap(55, 55, 55)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_Id1)
+                            .addComponent(Label_Name1))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMinSalary)
+                            .addComponent(txtMaxSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInsert)
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdate)
+                .addGap(18, 18, 18)
+                .addComponent(btnDelete)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_Id)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_Name)
+                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_Id1)
+                    .addComponent(txtMinSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_Name1)
+                    .addComponent(txtMaxSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInsert)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnDelete))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,71 +261,31 @@ public class JobFrame extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnInsert)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnUpdate)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDelete))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Label_Name)
-                                    .addComponent(Label_Id))
-                                .addGap(55, 55, 55)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Label_Id1)
-                                    .addComponent(Label_Name1))
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtMinSalary, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                                    .addComponent(txtMaxSalary)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 10, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Id)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Name)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Id1)
-                    .addComponent(txtMinSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Name1)
-                    .addComponent(txtMaxSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInsert)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -279,41 +297,23 @@ public class JobFrame extends javax.swing.JInternalFrame {
         String val=txtSearch.getText();
         switch (filter){
             case "Id":
-            System.out.println("id" +filter);
-                System.out.println(val);
-
             if(val.isEmpty()){
                 getDataJob();
             }else{
                 getDataJob();
                 tabjob.getDataVector().removeAllElements();
-                for (Job j : ijc.getById(val)) {
-                    Object[] obj = new Object[4];
-                    obj[0] = j.getId();
-                    obj[1] = j.getTitle();
-                    obj[2] = j.getMin();
-                    obj[3] = j.getMax();
-                    tabjob.addRow(obj);
-                }
+                loadData(ijc.getById(val));
+
             }
             break;
             case "Title":
             try {
-                System.out.println("name" +filter);
-                System.out.println(val);
                 if(val.isEmpty()){
                     getDataJob();
                 }else{
                     getDataJob();
                     tabjob.getDataVector().removeAllElements();
-                    for (Job j : ijc.getByTitle(val)) {
-                        Object[] obj = new Object[4];
-                        obj[0] = j.getId();
-                        obj[1] = j.getTitle();
-                        obj[2] = j.getMin();
-                        obj[3] = j.getMax();
-                        tabjob.addRow(obj);
-                    }
+                    loadData(ijc.getByTitle(val));
                 }
 
             } catch (Exception e) {
@@ -338,7 +338,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
         txtTitle.setText(tabjob.getValueAt(i, 1).toString());
         txtMinSalary.setText(tabjob.getValueAt(i, 2).toString());
         txtMaxSalary.setText(tabjob.getValueAt(i, 3).toString());
-        txtId.setEditable(false);
+        txtId.setEnabled(false);
         btnInsert.setEnabled(false);
     }//GEN-LAST:event_tblJobMouseClicked
 
@@ -349,14 +349,15 @@ public class JobFrame extends javax.swing.JInternalFrame {
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         if (txtId.getText().isEmpty()||txtTitle.getText().isEmpty()||txtMinSalary.getText().isEmpty()||txtMaxSalary.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Mohon Mengisi Data Secara Lengkap!", "Warning", JOptionPane.INFORMATION_MESSAGE);
-            resetField();
+            
         }
         else{
             ijc.insert(txtId.getText(), txtTitle.getText(), txtMinSalary.getText(), txtMaxSalary.getText());
             getDataJob();
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Disimpan", "Saved", JOptionPane.INFORMATION_MESSAGE);
         }
-        txtId.setEditable(true);
+        resetField();
+        txtId.setEnabled(true);
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -366,7 +367,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
             ijc.update(txtId.getText(), txtTitle.getText(), txtMinSalary.getText(), txtMaxSalary.getText());
             JOptionPane.showMessageDialog(rootPane, "Data Berhasil Diperbaharui", "Updated", JOptionPane.INFORMATION_MESSAGE);
             getDataJob();
-            txtId.setEditable(true);
+            txtId.setEnabled(true);
             btnInsert.setEnabled(true);
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
@@ -378,19 +379,16 @@ public class JobFrame extends javax.swing.JInternalFrame {
         if (i==-1){
             JOptionPane.showMessageDialog(rootPane, "Mohon Memilih Baris Data!", "Warning", JOptionPane.INFORMATION_MESSAGE);
         } else {
-
             String del = tblJob.getModel().getValueAt(i, 0).toString();
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(this, "Yakin Akan Menghapus Data ", "Delete", dialogButton);
-            if(dialogResult == 0){
+            if(JOptionPane.showConfirmDialog(this, "Yakin Akan Menghapus Data ", "Delete", JOptionPane.YES_NO_OPTION) == 0){
                 ijc.delete(del);
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Dihapus", "Deleted", JOptionPane.INFORMATION_MESSAGE);
                 getDataJob();
-                txtId.setEditable(true);
+                txtId.setEnabled(true);
                 btnInsert.setEnabled(true);
             }else{
                 getDataJob();
-                txtId.setEditable(true);
+                txtId.setEnabled(true);
                 btnInsert.setEnabled(true);
             }
         }
@@ -414,6 +412,7 @@ public class JobFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnInsert;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbSearch;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblJob;
     private javax.swing.JTextField txtId;
@@ -422,4 +421,17 @@ public class JobFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void loadData (List<Job> data){
+        for (Job j : data ){
+                        Object[] obj = new Object[4];
+                        obj[0] = j.getId();
+                        obj[1] = j.getTitle();
+                        obj[2] = j.getMin();
+                        obj[3] = j.getMax();
+                        tabjob.addRow(obj);
+                    }
+    }    
+    
 }

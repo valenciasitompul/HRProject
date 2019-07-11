@@ -59,7 +59,7 @@ public class RegionFrame extends javax.swing.JInternalFrame {
         Button_Delete = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Regions Form");
+        setTitle("Form Regions");
 
         Tabel_Region.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

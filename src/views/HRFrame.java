@@ -43,10 +43,10 @@ public class HRFrame extends javax.swing.JFrame {
     File JobReportById = new File("src/reports/JobsReportBYID.jrxml");
     File RegionReportAll = new File("src/reports/RegionReportAll.jrxml");
     File RegionReportById = new File("src/reports/RegionReportById.jrxml");
-    File EmployeeReportAll = new File("src/reports/EmployeesReportALL.jrxml");
-    File EmployeeReportById = new File("src/reports/EmployeesReportBYID.jrxml");
     File LocationReportAll = new File("src/reports/LocationReport.jrxml");
     File LocationReportById = new File("src/reports/LocationReportByID.jrxml");
+    File EmployeeReportAll = new File("src/reports/EmployeesReportALL.jrxml");
+    File EmployeeReportById = new File("src/reports/EmployeesReportBYID.jrxml");
     
     /**
      * Creates new form HRFrame
@@ -169,11 +169,11 @@ public class HRFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Laporan");
+        jMenu2.setText("Reports");
 
         jMenu3.setText("Countries");
 
-        getCountryReportAll.setText("Semua Data");
+        getCountryReportAll.setText("All Data");
         getCountryReportAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getCountryReportAllActionPerformed(evt);
@@ -181,7 +181,7 @@ public class HRFrame extends javax.swing.JFrame {
         });
         jMenu3.add(getCountryReportAll);
 
-        getCountryReportById.setText("Berdasarkan ID");
+        getCountryReportById.setText("By Id");
         getCountryReportById.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getCountryReportByIdActionPerformed(evt);
@@ -193,7 +193,7 @@ public class HRFrame extends javax.swing.JFrame {
 
         jMenu4.setText("Departments");
 
-        getDeptReportAll.setText("Semua Data");
+        getDeptReportAll.setText("All Data");
         getDeptReportAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getDeptReportAllActionPerformed(evt);
@@ -201,7 +201,7 @@ public class HRFrame extends javax.swing.JFrame {
         });
         jMenu4.add(getDeptReportAll);
 
-        getDeptReportByID.setText("Berdasarkan ID");
+        getDeptReportByID.setText("By Id");
         getDeptReportByID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getDeptReportByIDActionPerformed(evt);
@@ -213,7 +213,7 @@ public class HRFrame extends javax.swing.JFrame {
 
         jMenu5.setText("Employees");
 
-        getEmpAll.setText("Semua Data");
+        getEmpAll.setText("All Data");
         getEmpAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getEmpAllActionPerformed(evt);
@@ -221,7 +221,7 @@ public class HRFrame extends javax.swing.JFrame {
         });
         jMenu5.add(getEmpAll);
 
-        getEmpById.setText("Berdasarkan ID");
+        getEmpById.setText("By Id");
         getEmpById.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getEmpByIdActionPerformed(evt);
@@ -233,7 +233,7 @@ public class HRFrame extends javax.swing.JFrame {
 
         jMenuJobs.setText("Jobs");
 
-        getJobReportAll.setText("Semua Data");
+        getJobReportAll.setText("All Data");
         getJobReportAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getJobReportAllActionPerformed(evt);
@@ -241,7 +241,7 @@ public class HRFrame extends javax.swing.JFrame {
         });
         jMenuJobs.add(getJobReportAll);
 
-        getJobReportById.setText("Berdasarkan ID");
+        getJobReportById.setText("By Id");
         getJobReportById.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getJobReportByIdActionPerformed(evt);
@@ -253,7 +253,7 @@ public class HRFrame extends javax.swing.JFrame {
 
         jMenu8.setText("Regions");
 
-        getRegionReportAll.setText("Semua Data");
+        getRegionReportAll.setText("All Data");
         getRegionReportAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getRegionReportAllActionPerformed(evt);
@@ -261,7 +261,7 @@ public class HRFrame extends javax.swing.JFrame {
         });
         jMenu8.add(getRegionReportAll);
 
-        getRegionReportById.setText("Berdasarkan ID");
+        getRegionReportById.setText("By Id");
         getRegionReportById.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getRegionReportByIdActionPerformed(evt);
@@ -273,7 +273,7 @@ public class HRFrame extends javax.swing.JFrame {
 
         jMenu6.setText("Locations");
 
-        getLocationReportAll.setText("Semua Data");
+        getLocationReportAll.setText("All Data");
         getLocationReportAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getLocationReportAllActionPerformed(evt);
@@ -281,7 +281,7 @@ public class HRFrame extends javax.swing.JFrame {
         });
         jMenu6.add(getLocationReportAll);
 
-        getLocationReportById.setText("Berdasarkan ID");
+        getLocationReportById.setText("By Id");
         getLocationReportById.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getLocationReportByIdActionPerformed(evt);
@@ -595,8 +595,6 @@ public class HRFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, e);
         }
     }//GEN-LAST:event_getEmpByIdActionPerformed
-
-    
     
     private void getLocationReportByIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getLocationReportByIdActionPerformed
         // TODO add your handling code here:
@@ -625,8 +623,7 @@ public class HRFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_getLocationReportByIdActionPerformed
 
     private void getLocationReportAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getLocationReportAllActionPerformed
-        // TODO add your handling code here:
-       try {
+        try {
             JasDes = JRXmlLoader.load(LocationReportAll);
             param.clear();
             JasRep = JasperCompileManager.compileReport(JasDes);
@@ -644,7 +641,6 @@ public class HRFrame extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e);
         }
-    
     }//GEN-LAST:event_getLocationReportAllActionPerformed
 
     /**
@@ -672,6 +668,9 @@ public class HRFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(HRFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

@@ -9,6 +9,7 @@ import controllers.CountryController;
 import icontrollers.ICountryController;
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -33,13 +34,6 @@ public class CountryFrame extends javax.swing.JInternalFrame {
     
     private DefaultTableModel tableCountry;
     
-    JasperReport JasRep;
-    JasperPrint JasPri;
-    Map param = new HashMap();
-    JasperDesign JasDes;
-    
-    File file1 = new File("CountriesReport.jrxml");
-    
     /**
      * Creates new form CountryFrame
      */
@@ -63,13 +57,7 @@ public class CountryFrame extends javax.swing.JInternalFrame {
     public void getDataCountry(){
         tableCountry.getDataVector().removeAllElements();
         tableCountry.fireTableDataChanged();
-        for(Country country : icc.getAll() ){
-            Object[] objects = new Object[3];
-            objects[0] = country.getId();
-            objects[1] = country.getName();
-            objects[2] = country.getRegion_id();
-            tableCountry.addRow(objects);
-        }
+        load(icc.getAll());
     }
     
     /**
@@ -92,17 +80,18 @@ public class CountryFrame extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel_Country = new javax.swing.JTable();
+        txtSearch = new javax.swing.JTextField();
+        cbSearch = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
         lblCountry_id = new javax.swing.JLabel();
         lblCountry_name = new javax.swing.JLabel();
         lblRegion_id = new javax.swing.JLabel();
+        btnSimpan = new javax.swing.JButton();
         txtCountry_id = new javax.swing.JTextField();
         txtCountry_name = new javax.swing.JTextField();
-        btnSimpan = new javax.swing.JButton();
+        cbRegion_id = new javax.swing.JComboBox<>();
         btnEdit = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
-        cbRegion_id = new javax.swing.JComboBox<>();
-        txtSearch = new javax.swing.JTextField();
-        cbSearch = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setTitle("Form Countries");
@@ -124,6 +113,16 @@ public class CountryFrame extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(Tabel_Country);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+
+        cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Country ID", "Country Name" }));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Details of Country"));
 
         lblCountry_id.setText("Country ID");
 
@@ -152,74 +151,85 @@ public class CountryFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
-
-        cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Country ID", "Country Name" }));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblRegion_id)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                                .addComponent(btnEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnHapus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSimpan))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(cbRegion_id, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCountry_name)
+                            .addComponent(lblCountry_id))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCountry_id, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+                            .addComponent(txtCountry_name)))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCountry_id)
+                    .addComponent(txtCountry_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCountry_name)
+                    .addComponent(txtCountry_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRegion_id)
+                    .addComponent(cbRegion_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSimpan)
+                    .addComponent(btnEdit)
+                    .addComponent(btnHapus))
+                .addGap(0, 13, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCountry_id)
-                                .addComponent(lblCountry_name)
-                                .addComponent(lblRegion_id)
-                                .addComponent(btnSimpan))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(btnEdit)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnHapus))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(34, 34, 34)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtCountry_id, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                                        .addComponent(txtCountry_name)
-                                        .addComponent(cbRegion_id, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCountry_id)
-                    .addComponent(txtCountry_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCountry_name)
-                    .addComponent(txtCountry_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRegion_id)
-                    .addComponent(cbRegion_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSimpan)
-                    .addComponent(btnEdit)
-                    .addComponent(btnHapus))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -275,9 +285,7 @@ public class CountryFrame extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Mohon Memilih Baris Data!", "Warning", JOptionPane.INFORMATION_MESSAGE);
         }else{
             String del = Tabel_Country.getModel().getValueAt(i, 0).toString();
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(this, "Yakin Akan Menghapus Data ", "Delete", dialogButton);
-            if(dialogResult == 0){
+            if(JOptionPane.showConfirmDialog(this, "Yakin Akan Menghapus Data ", "Delete", JOptionPane.YES_NO_OPTION) == 0){
                 icc.delete(del);
                 JOptionPane.showMessageDialog(rootPane, "Data Berhasil Dihapus", "Deleted", JOptionPane.INFORMATION_MESSAGE);
                 getDataCountry();
@@ -297,46 +305,41 @@ public class CountryFrame extends javax.swing.JInternalFrame {
         String val = txtSearch.getText();
         switch(filter){
             case "Country ID":
-                if(val.isEmpty()){
-                    getDataCountry();
-                }else{
-                    getDataCountry();
-                    tableCountry.getDataVector().removeAllElements();
-                    for(Country c : icc.search(val)){
-                        Object[] obj = new Object[3];
-                        obj[0] = c.getId();
-                        obj[1] = c.getName();
-                        obj[2] = c.getRegion_id();
-                        tableCountry.addRow(obj);
-                    }
-                }
+                searchCountry(val);
                 break;
              case "Country Name":
-                 try {
-                     if (val.isEmpty()) {
-                         getDataCountry();
-                     }else{
-                         getDataCountry();
-                         tableCountry.getDataVector().removeAllElements();
-                         for(Country c : icc.search(val)){
-                            Object[] obj = new Object[3];
-                            obj[0] = c.getId();
-                            obj[1] = c.getName();
-                            obj[2] = c.getRegion_id();
-                            tableCountry.addRow(obj); 
-                         }
-                     }
-                 } catch (Exception e) {
-                     System.out.println(e.getMessage());
-                     e.printStackTrace();
-                 }
+                 searchCountry(txtSearch.getText());
                  break;
              default:
                  break;
         }
     }//GEN-LAST:event_txtSearchActionPerformed
 
-
+    public void searchCountry(String val){
+        try {
+            if (val.isEmpty()) {
+                getDataCountry();
+            }else{
+                getDataCountry();
+                tableCountry.getDataVector().removeAllElements();
+                load(icc.search(val));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    public void load(List<Country> data){
+        for(Country c : data){
+            Object[] obj = new Object[3];
+            obj[0] = c.getId();
+            obj[1] = c.getName();
+            obj[2] = c.getRegion_id();
+            tableCountry.addRow(obj); 
+         }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabel_Country;
     private javax.swing.JButton btnEdit;
@@ -344,6 +347,7 @@ public class CountryFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSimpan;
     private javax.swing.JComboBox<String> cbRegion_id;
     private javax.swing.JComboBox<String> cbSearch;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCountry_id;
     private javax.swing.JLabel lblCountry_name;

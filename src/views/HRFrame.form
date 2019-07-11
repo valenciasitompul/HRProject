@@ -88,7 +88,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Laporan"/>
+            <Property name="text" type="java.lang.String" value="Reports"/>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu3">
@@ -98,7 +98,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="getCountryReportAll">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Semua Data"/>
+                    <Property name="text" type="java.lang.String" value="All Data"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getCountryReportAllActionPerformed"/>
@@ -106,7 +106,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="getCountryReportById">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
+                    <Property name="text" type="java.lang.String" value="By Id"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getCountryReportByIdActionPerformed"/>
@@ -121,7 +121,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="getDeptReportAll">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Semua Data"/>
+                    <Property name="text" type="java.lang.String" value="All Data"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getDeptReportAllActionPerformed"/>
@@ -129,7 +129,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="getDeptReportByID">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
+                    <Property name="text" type="java.lang.String" value="By Id"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getDeptReportByIDActionPerformed"/>
@@ -144,7 +144,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="getEmpAll">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Semua Data"/>
+                    <Property name="text" type="java.lang.String" value="All Data"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getEmpAllActionPerformed"/>
@@ -152,7 +152,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="getEmpById">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
+                    <Property name="text" type="java.lang.String" value="By Id"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getEmpByIdActionPerformed"/>
@@ -167,7 +167,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="getJobReportAll">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Semua Data"/>
+                    <Property name="text" type="java.lang.String" value="All Data"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getJobReportAllActionPerformed"/>
@@ -175,7 +175,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="getJobReportById">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
+                    <Property name="text" type="java.lang.String" value="By Id"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getJobReportByIdActionPerformed"/>
@@ -190,7 +190,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="getRegionReportAll">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Semua Data"/>
+                    <Property name="text" type="java.lang.String" value="All Data"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getRegionReportAllActionPerformed"/>
@@ -198,7 +198,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="getRegionReportById">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
+                    <Property name="text" type="java.lang.String" value="By Id"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getRegionReportByIdActionPerformed"/>
@@ -213,7 +213,7 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="getLocationReportAll">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Semua Data"/>
+                    <Property name="text" type="java.lang.String" value="All Data"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getLocationReportAllActionPerformed"/>
@@ -221,7 +221,7 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="getLocationReportById">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Berdasarkan ID"/>
+                    <Property name="text" type="java.lang.String" value="By Id"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getLocationReportByIdActionPerformed"/>

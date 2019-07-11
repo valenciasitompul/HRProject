@@ -111,7 +111,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         Label_CountryID = new javax.swing.JLabel();
         Label_StateProvince = new javax.swing.JLabel();
         Label_City = new javax.swing.JLabel();
-        locId_Text = new javax.swing.JTextField();
+        LocId_Text = new javax.swing.JTextField();
         SA_Text = new javax.swing.JTextField();
         Postal_Text = new javax.swing.JTextField();
         Button_Delete = new javax.swing.JButton();
@@ -122,6 +122,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         Label_LocationID = new javax.swing.JLabel();
 
         setClosable(true);
+        setTitle("Form Locations");
 
         Search_Text.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -129,7 +130,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        Combo_Search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "locId", "City" }));
+        Combo_Search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LocId", "City" }));
         Combo_Search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Combo_SearchMouseClicked(evt);
@@ -160,9 +161,9 @@ public class LocationFrame extends javax.swing.JInternalFrame {
 
         Label_City.setText("City");
 
-        locId_Text.addActionListener(new java.awt.event.ActionListener() {
+        LocId_Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                locId_TextActionPerformed(evt);
+                LocId_TextActionPerformed(evt);
             }
         });
 
@@ -226,7 +227,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                                 .addComponent(Label_PostalCode))
                             .addGap(25, 25, 25)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(locId_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                .addComponent(LocId_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                 .addComponent(SA_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                                 .addComponent(Postal_Text))
                             .addGap(64, 64, 64)
@@ -253,7 +254,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Label_LocationID)
-                    .addComponent(locId_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LocId_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_City)
                     .addComponent(City_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
@@ -441,7 +442,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel Label_PostalCode;
     private javax.swing.JLabel Label_StateProvince;
     private javax.swing.JLabel Label_StreetAddress;
-    private javax.swing.JTextField locId_Text;
+    private javax.swing.JTextField LocId_Text;
     private javax.swing.JTextField Postal_Text;
     private javax.swing.JTextField SA_Text;
     private javax.swing.JTextField SP_Text;
