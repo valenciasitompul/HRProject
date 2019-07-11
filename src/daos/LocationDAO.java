@@ -95,7 +95,7 @@ public class LocationDAO implements ILocationDAO{
     @Override
     public List<Location> search(String key) {
        List<Location> listLocation = new ArrayList<Location>();
-        String query = "SELECT * FROM LOCATIONS WHERE LOCATION_ID LIKE(?) OR STREET_ADDRESS (?) ORDER BY LOCATION_ID ASC";
+        String query = "SELECT * FROM LOCATIONS WHERE REGEXP_LIKE(LOCATION_ID, (?), 'i') OR REGEXP_LIKE(CITY, (?), 'i') ORDER BY LOCATION_ID";
         try {
             PreparedStatement preparedStatement = connection.prepareCall(query);
             preparedStatement.setString(1,"%" + key + "%");

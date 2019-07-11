@@ -36,12 +36,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         initComponents();
         tablocation = new DefaultTableModel();
         Tabel_Location.setModel(tablocation);
-        tablocation.addColumn("Location ID");
-        tablocation.addColumn("Street ad ");
-        tablocation.addColumn("Pose code ");
+        tablocation.addColumn("ID");
+        tablocation.addColumn("Street Address ");
+        tablocation.addColumn("Postal Code");
         tablocation.addColumn("City ");
-        tablocation.addColumn("staProv ");
-        tablocation.addColumn("Country Id");
+        tablocation.addColumn("State Province ");
+        tablocation.addColumn("Country");
         
         getDataLocation();
     }
@@ -105,23 +105,26 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         Combo_Search = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabel_Location = new javax.swing.JTable();
-        City_Text = new javax.swing.JTextField();
-        SP_Text = new javax.swing.JTextField();
-        Country_Text = new javax.swing.JTextField();
-        Label_CountryID = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        LocId_Text = new javax.swing.JTextField();
+        Label_LocationID = new javax.swing.JLabel();
+        Label_StreetAddress = new javax.swing.JLabel();
         Label_StateProvince = new javax.swing.JLabel();
         Label_City = new javax.swing.JLabel();
-        LocId_Text = new javax.swing.JTextField();
-        SA_Text = new javax.swing.JTextField();
-        Postal_Text = new javax.swing.JTextField();
-        Button_Delete = new javax.swing.JButton();
-        Button_Update = new javax.swing.JButton();
-        Button_Insert = new javax.swing.JButton();
+        Label_CountryID = new javax.swing.JLabel();
+        Country_Text = new javax.swing.JTextField();
+        SP_Text = new javax.swing.JTextField();
+        City_Text = new javax.swing.JTextField();
         Label_PostalCode = new javax.swing.JLabel();
-        Label_StreetAddress = new javax.swing.JLabel();
-        Label_LocationID = new javax.swing.JLabel();
+        Postal_Text = new javax.swing.JTextField();
+        Button_Update = new javax.swing.JButton();
+        Button_Delete = new javax.swing.JButton();
+        Button_Insert = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        SA_Text = new javax.swing.JTextArea();
 
         setClosable(true);
+        setTitle("Location Form");
 
         Search_Text.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -154,11 +157,7 @@ public class LocationFrame extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(Tabel_Location);
 
-        Label_CountryID.setText("Country ID");
-
-        Label_StateProvince.setText("State Province");
-
-        Label_City.setText("City");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Detail of Location"));
 
         LocId_Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,16 +165,21 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        Label_LocationID.setText("ID");
+
+        Label_StreetAddress.setText("Street Addres");
+
+        Label_StateProvince.setText("State Province");
+
+        Label_City.setText("City");
+
+        Label_CountryID.setText("Country ");
+
+        Label_PostalCode.setText("Postal Code");
+
         Postal_Text.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Postal_TextActionPerformed(evt);
-            }
-        });
-
-        Button_Delete.setText("Delete");
-        Button_Delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_DeleteActionPerformed(evt);
             }
         });
 
@@ -186,6 +190,13 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        Button_Delete.setText("Delete");
+        Button_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_DeleteActionPerformed(evt);
+            }
+        });
+
         Button_Insert.setText("Insert");
         Button_Insert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,87 +204,109 @@ public class LocationFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        Label_PostalCode.setText("Postal Code");
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        Label_StreetAddress.setText("Street Addres");
+        SA_Text.setColumns(20);
+        SA_Text.setRows(5);
+        jScrollPane2.setViewportView(SA_Text);
 
-        Label_LocationID.setText("Location ID");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Label_StreetAddress)
+                    .addComponent(Label_LocationID)
+                    .addComponent(Label_PostalCode))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LocId_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Postal_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_StateProvince)
+                            .addComponent(Label_City)
+                            .addComponent(Label_CountryID))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(City_Text)
+                            .addComponent(SP_Text)
+                            .addComponent(Country_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Button_Insert)
+                        .addGap(18, 18, 18)
+                        .addComponent(Button_Update)
+                        .addGap(18, 18, 18)
+                        .addComponent(Button_Delete)
+                        .addContainerGap())))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Label_LocationID)
+                        .addComponent(LocId_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Label_City)
+                        .addComponent(City_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_StateProvince)
+                            .addComponent(SP_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_CountryID)
+                            .addComponent(Country_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Label_StreetAddress)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Label_PostalCode)
+                    .addComponent(Postal_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Insert)
+                    .addComponent(Button_Update)
+                    .addComponent(Button_Delete))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Button_Insert)
-                        .addGap(18, 18, 18)
-                        .addComponent(Button_Update)
-                        .addGap(18, 18, 18)
-                        .addComponent(Button_Delete)
-                        .addGap(370, 370, 370))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Search_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Combo_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Label_StreetAddress)
-                                .addComponent(Label_LocationID)
-                                .addComponent(Label_PostalCode))
-                            .addGap(25, 25, 25)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(LocId_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                .addComponent(SA_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                .addComponent(Postal_Text))
-                            .addGap(64, 64, 64)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Label_City)
-                                .addComponent(Label_StateProvince)
-                                .addComponent(Label_CountryID))
-                            .addGap(37, 37, 37)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(City_Text)
-                                .addComponent(SP_Text)
-                                .addComponent(Country_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Search_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Combo_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Combo_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Search_Text, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Search_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_LocationID)
-                    .addComponent(LocId_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_City)
-                    .addComponent(City_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_StreetAddress)
-                    .addComponent(SA_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_StateProvince)
-                    .addComponent(SP_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_PostalCode)
-                    .addComponent(Postal_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_CountryID)
-                    .addComponent(Country_Text, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Button_Insert)
-                    .addComponent(Button_Update)
-                    .addComponent(Button_Delete))
-                .addGap(24, 24, 24))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -443,10 +476,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel Label_StreetAddress;
     private javax.swing.JTextField LocId_Text;
     private javax.swing.JTextField Postal_Text;
-    private javax.swing.JTextField SA_Text;
+    private javax.swing.JTextArea SA_Text;
     private javax.swing.JTextField SP_Text;
     private javax.swing.JTextField Search_Text;
     private javax.swing.JTable Tabel_Location;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
