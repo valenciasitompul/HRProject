@@ -18,7 +18,7 @@ import models.Job;
  */
 public class JobController implements IJobController{
     
-    private final IJobDAO ijdao;
+    private IJobDAO ijdao;
     
     /**
      * Constructor dengan satu parameter 
@@ -67,7 +67,7 @@ public class JobController implements IJobController{
      */
     @Override
     public String insert(String id,String title, String min, String max) {
-        String result = null;
+        String result = "";
         Job job = new Job(id, title, Integer.parseInt(min), Integer.parseInt(max));
         if(ijdao.insertupdate(job, false)){
             result = "Data berhasil disimpan";
@@ -88,7 +88,7 @@ public class JobController implements IJobController{
      */
     @Override
     public String update(String id, String title, String min, String max) {
-        String result = null;
+        String result = "";
         Job job = new Job(id, title, Integer.parseInt(min), Integer.parseInt(max));
         if(ijdao.insertupdate(job, true)){
             result = "Data berhasil diupdate";
@@ -105,7 +105,7 @@ public class JobController implements IJobController{
      */
     @Override
     public String delete(String id) {
-        String result = null;
+        String result = "";
         if(ijdao.delete(id)){
             result = "Data berhasil dihapus";
         }else{

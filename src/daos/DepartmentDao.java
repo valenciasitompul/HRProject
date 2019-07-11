@@ -46,9 +46,9 @@ public class DepartmentDao implements IDepartmentDao{
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Department d = new Department(resultSet.getString(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
-                d.setdptid(resultSet.getString(1));
-                d.setdptname(resultSet.getString(2));
-                d.setmgrid(resultSet.getInt(3));
+                d.setdptId(resultSet.getString(1));
+                d.setdptName(resultSet.getString(2));
+                d.setmgrId(resultSet.getInt(3));
                 d.setlocId(resultSet.getInt(4));
                 listdepartment.add(d);
             }
@@ -136,10 +136,10 @@ public class DepartmentDao implements IDepartmentDao{
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             
-            preparedStatement.setString(1, d.getdptname());
-            preparedStatement.setInt(2, d.getmgrid());
+            preparedStatement.setString(1, d.getdptName());
+            preparedStatement.setInt(2, d.getmgrId());
             preparedStatement.setInt(3, d.getlocId());
-            preparedStatement.setString(4, d.getdptid());
+            preparedStatement.setString(4, d.getdptId());
             preparedStatement.executeQuery();
             result = true;
         } catch (Exception e) {

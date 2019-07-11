@@ -30,8 +30,8 @@ public class ManualTest {
         Koneksi koneksi = new Koneksi();
         IDepartmentDao idd = new DepartmentDao(koneksi.getConnection());
         for(Department d : idd.getByName("bebas") ){
-            System.out.println(d.getdptid());
-            System.out.println(d.getdptname());
+            System.out.println(d.getdptId());
+            System.out.println(d.getdptName());
         }
 //        Department d = new Department("15", "IT", 103, 1400);
 //        idd.insertupdate(d, true);

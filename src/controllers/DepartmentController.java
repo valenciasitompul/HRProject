@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controllers;
-import daos.DepartmentDAO;
+import daos.DepartmentDao;
 import idaos.IDepartmentDao;
 import icontrollers.IDepartmentController;
 import models.Department;
@@ -23,7 +23,7 @@ public class DepartmentController implements icontrollers.IDepartmentController{
      * @param connection bertipe Connection
      */
     public DepartmentController(Connection connection){
-        idc = new DepartmentDAO(connection);
+        idc = new DepartmentDao(connection);
     }
 
     
