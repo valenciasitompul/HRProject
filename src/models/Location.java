@@ -10,12 +10,12 @@ package models;
  * @author Fachrurrozy
  */
 public class Location {
-    private int locId;
-    private String strAdd;
-    private String posCode;
+    private int locid;
+    private String Stradd;
+    private String poscode;
     private String city;
-    private String staProv;
-    private String counId;
+    private String staprov;
+    private String counid;
     
     public Location(){
         
@@ -23,44 +23,44 @@ public class Location {
     
     /**
      * constructor dari Location
-     * @param locId berupa tipe integer
-     * @param strAdd berupa tipe string
-     * @param posCode berupa tipe string
+     * @param locid berupa tipe integer
+     * @param Stradd berupa tipe string
+     * @param poscode berupa tipe string
      * @param city berupa tipe string
-     * @param staProv berupa tipe string
-     * @param counId berupa tipe string
+     * @param staprov berupa tipe string
+     * @param counid berupa tipe string
      */
-    public Location(int locId, String strAdd, String posCode, String city, String staProv, String counId){
-        this.locId = locId;
-        this.strAdd = strAdd;
-        this.posCode = posCode;
+    public Location(int locid, String Stradd, String poscode, String city, String staprov, String counid){
+        this.locid = locid;
+        this.Stradd = Stradd;
+        this.poscode = poscode;
         this.city = city;
-        this.staProv = staProv;
-        this.counId= counId;
+        this.staprov = staprov;
+        this.counid= counid;
     }
     
     /**
      * enkapsulasi getter pada location id
      * @return nilai kembalian berupa integer
      */
-    public int getlocId(){
-        return locId;
+    public int getLocid(){
+        return locid;
     }
     
     /**
      * enkapsulasi getter pada street address
      * @return nilai kembalian berupa string
      */
-    public String getstrAdd(){
-        return strAdd;
+    public String getStradd(){
+        return Stradd;
     }
     
     /**
      * enkapsulasi getter pada postal code
      * @return nilai kembalian berupa string
      */
-    public String getposCode(){
-        return posCode;
+    public String getPoscode(){
+        return poscode;
     }
     
     /**
@@ -75,40 +75,40 @@ public class Location {
      * enkapsulasi getter pada  state province
      * @return nilai kembalian berupa string
      */
-    public String getstaProv(){
-        return staProv;
+    public String getStaprov(){
+        return staprov;
     }
     
     /**
      * enkapsulasi getter pada country id
      * @return nilai kembalian berupa string
      */
-    public String getcounId(){
-        return counId;
+    public String getCounid(){
+        return counid;
     }
     
     /**
      * enkapsulasi setter pada location id
-     * @param locId berupa tipe integer
+     * @param locid berupa tipe integer
      */
-    public void setlocId(int locId){
-        this.locId = locId;
+    public void setLocid(int locid){
+        this.locid = locid;
     }
     
     /**
      * enkapsulasi setter pada street address
-     * @param strAdd berupa tipe string
+     * @param Stradd berupa tipe string
      */
-    public void setstrAdd(String strAdd){
-        this.strAdd = strAdd;
+    public void setStradd(String Stradd){
+        this.Stradd = Stradd;
     }
     
     /**
      * enkapsulasi setter pada postal code
-     * @param posCode berupa tipe string
+     * @param poscode berupa tipe string
      */
-    public void setposCode(String posCode){
-        this.posCode = posCode;
+    public void setPoscode(String poscode){
+        this.poscode = poscode;
     }
     
     /**
@@ -121,18 +121,18 @@ public class Location {
     
     /**
      * enkapsulasi setter pada state province
-     * @param staProv berupa tipe string
+     * @param staprov berupa tipe string
      */
-    public void setstaProv(String staProv){
-        this.staProv = staProv;
+    public void setStaprov(String staprov){
+        this.staprov = staprov;
     }
     
     /**
      * enkapsulasi setter pada country id
-     * @param counId berupa tipe string
+     * @param counid berupa tipe string
      */
-    public void setcounId(String counId){
-        this.counId = counId;
+    public void setCounid(String counid){
+        this.counid = counid;
     }
 
     

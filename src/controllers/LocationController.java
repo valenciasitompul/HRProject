@@ -72,7 +72,7 @@ public class LocationController implements ILocationController{
     public String insert(String locId, String strAdd, String posCode,String city, String staProv, String counId) {
       String result = "";
         Location location = new Location(Integer.parseInt(locId), strAdd, posCode, city, staProv, counId);
-        if (ildao.insertupdate(location, true)) {
+        if (ildao.insert(location)) {
             result = "Data berhasil disimpan";
         } else {
             result = "Maaf data gagal disimpan";
@@ -93,7 +93,7 @@ public class LocationController implements ILocationController{
     public String update(String locId, String strAdd, String posCode,String city, String staProv, String counId) {
         String result = "";
         Location location = new Location(Integer.parseInt(locId), strAdd, posCode, city, staProv, counId);
-        if (ildao.insertupdate(location, true)) {
+        if (ildao.update(location)) {
             result = "Data berhasil diupdate";
         } else {
             result = "Maaf data gagal diupdate";
