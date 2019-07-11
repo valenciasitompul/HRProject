@@ -43,8 +43,8 @@ public class HRFrame extends javax.swing.JFrame {
     File JobReportById = new File("src/reports/JobsReportBYID.jrxml");
     File RegionReportAll = new File("src/reports/RegionReportAll.jrxml");
     File RegionReportById = new File("src/reports/RegionReportById.jrxml");
-    File EmployeeReportAll = new File("src/reports/EmployeeReportALL.jrxml");
-    File EmployeeReportById = new File("src/reports/EmployeeReportBYID.jrxml");
+    File EmployeeReportAll = new File("src/reports/EmployeesReportALL.jrxml");
+    File EmployeeReportById = new File("src/reports/EmployeesReportBYID.jrxml");
     File LocationReportAll = new File("src/reports/LocationReport.jrxml");
     File LocationReportById = new File("src/reports/LocationReportByID.jrxml");
     
@@ -606,7 +606,7 @@ public class HRFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Masukkan inputan!!!!");
             }else{
                 JasDes = JRXmlLoader.load(LocationReportById);
-                param.put("emp_id", Integer.parseInt(id));
+                param.put("location_id", Integer.parseInt(id));
                 JasRep = JasperCompileManager.compileReport(JasDes);
                 JasPri = JasperFillManager.fillReport(JasRep, param, koneksi.getConnection());
                 JInternalFrame frame = new JInternalFrame("Laporan Location Berdasarkan ID");

@@ -35,10 +35,6 @@ WHERE LOCATIONS.LOCATION_ID =$P{location_id}]]>
 				</textElement>
 				<text><![CDATA[Location]]></text>
 			</staticText>
-			<image>
-				<reportElement x="445" y="0" width="104" height="65" uuid="754ea867-558d-4de1-9d1a-a41a03026899"/>
-				<imageExpression><![CDATA["D:\\ozies file\\Metrodata\\MII Logoo.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
