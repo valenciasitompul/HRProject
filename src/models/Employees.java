@@ -13,14 +13,18 @@ public class Employees {
     private int id;
     private String fname;
     private String lname;
-    private String email;
     private String pnumber;
-    private String hiredate;
-    private String jobid;
+    private String email;
+    private String name;
+    private String hireDate;
+    private String jobId;
+    private String jobTitle;
     private int salary;
     private int commissionpct;
     private int managerid;
+    private String managerName;
     private int departmentid;
+    private String departmentName;
     
     public Employees(){
         
@@ -31,21 +35,28 @@ public class Employees {
         this.salary = salary;
     }
     
-       
-    public Employees(int id, String fname, String lname, String email, String pnumber, String hiredate, String jobid, int salary, int commissionpct, int managerid, int departmentid){
+    public Employees(int id, String name, String hireDate, String jobTitle, String managerName, String departmentName){
+        this.id = id;
+        this.name = name;
+        this.hireDate = hireDate;
+        this.jobTitle = jobTitle;
+        this.managerName = managerName;
+        this.departmentName = departmentName;
+    }
+    
+    public Employees(int id, String fname, String lname, String email, String pnumber, String hireDate, String jobId, int salary, int commissionpct, int managerid, int departmentid){
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.pnumber = pnumber;
-        this.hiredate = hiredate;
-        this.jobid = jobid;
+        this.hireDate = hireDate;
+        this.jobId = jobId;
         this.salary = salary;
         this.commissionpct = commissionpct;
         this.managerid = managerid;
         this.departmentid = departmentid;
     }
-    
     
     
     public int getId(){
@@ -69,11 +80,11 @@ public class Employees {
     }
     
     public String getHiredate(){
-        return hiredate;
+        return hireDate;
     }
     
     public String getJobid(){
-        return jobid;
+        return jobId;
     }
     
     public int getSalary(){
@@ -112,12 +123,12 @@ public class Employees {
         this.pnumber = pnumber;
     }
     
-    public void setHiredate(String hiredate){
-        this.hiredate = hiredate;
+    public void setHiredate(String hireDate){
+        this.hireDate = hireDate;
     }
     
-    public void setJobid(String jobid){
-        this.jobid = jobid;
+    public void setJobid(String jobId){
+        this.jobId = jobId;
     }
     
     public void setSalary(int salary){
@@ -134,5 +145,61 @@ public class Employees {
     
     public void setDepartmentid(int departmentid){
         this.departmentid = departmentid;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the jobTitle
+     */
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    /**
+     * @param jobTitle the jobTitle to set
+     */
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    /**
+     * @return the managerName
+     */
+    public String getManagerName() {
+        return managerName;
+    }
+
+    /**
+     * @param managerName the managerName to set
+     */
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    /**
+     * @return the departmentName
+     */
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    /**
+     * @param departmentName the departmentName to set
+     */
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }
