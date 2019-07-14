@@ -189,21 +189,21 @@ public class LocationDAO implements ILocationDAO{
 
     @Override
     public List<Location> getByCity(String city) {
-        List<Location> listLocationCity = new ArrayList<Location>();
-        String query = "SELECT * FROM JOBS WHERE REGEXP_LIKE(CITY, (?), 'i')";
+        List<Location> listLocation = new ArrayList<Location>();
+        String query = "SELECT * FROM LOCATIONS WHERE REGEXP_LIKE(CITY, (?), 'i')";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, city);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Location j = new Location(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
-                listLocationCity.add(j);
+                Location l = new Location(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
+                listLocation.add(l);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        return listLocationCity;
+        return listLocation;
     }
        
 }

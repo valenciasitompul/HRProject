@@ -235,9 +235,9 @@ public class LocationFrame extends javax.swing.JInternalFrame {
                             .addComponent(Label_CountryID))
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(City_Text)
+                            .addComponent(City_Text, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                             .addComponent(SP_Text)
-                            .addComponent(Country_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Country_Text, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(58, 58, 58))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(Button_Insert)
@@ -316,12 +316,12 @@ public class LocationFrame extends javax.swing.JInternalFrame {
      * fungsi untuk meghapus nilai inputan pada text field
      */
     public void resetField(){
-        LocId_Text.setText("");
-        SA_Text.setText("");
-        Postal_Text.setText("");
-        City_Text.setText("");
-        SP_Text.setText("");
-        Country_Text.setText("");
+        LocId_Text.setText("          ");
+        SA_Text.setText("          ");
+        Postal_Text.setText("          ");
+        City_Text.setText("          ");
+        SP_Text.setText("          ");
+        Country_Text.setText("          ");
     }
      
        

@@ -141,9 +141,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="City_Text" max="32767" attributes="0"/>
+                              <Component id="City_Text" pref="157" max="32767" attributes="0"/>
                               <Component id="SP_Text" max="32767" attributes="0"/>
-                              <Component id="Country_Text" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                              <Component id="Country_Text" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       </Group>
